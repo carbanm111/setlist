@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>SA Tour Set List</title>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#eef1f4;--panel:#fff;--tx:#1b2430;--dim:#6b7785;--ch:#a85a00;--cue:#0b6b63;--cuebg:#d9efec;--line:#cfd6de;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#101a24;--panel:#17232f;--tx:#ece6d8;--dim:#8b99a8;--ch:#f2b84b;--cue:#7fe0d4;--cuebg:#14393a;--line:#2a3a4a}}
+:root[data-theme="dark"]{--bg:#101a24;--panel:#17232f;--tx:#ece6d8;--dim:#8b99a8;--ch:#f2b84b;--cue:#7fe0d4;--cuebg:#14393a;--line:#2a3a4a}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font-family:Archivo,system-ui,sans-serif;padding-bottom:110px}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--panel);z-index:10}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:var(--panel);border-bottom:1px solid var(--line);display:flex;gap:10px;align-items:center;padding:8px 12px}
+header select{flex:1;min-width:0;font:inherit;font-size:16px;padding:8px;background:var(--bg);color:var(--tx);border:1px solid var(--line);border-radius:6px}
+#status{font-size:13px;color:var(--cue);min-width:0;flex:0 1 40%;text-align:right}
+button{font:inherit;font-size:18px;min-width:48px;height:48px;border-radius:8px;border:1px solid var(--line);background:var(--bg);color:var(--tx);cursor:pointer}
+button:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid var(--cue);outline-offset:2px}
+button.go{background:var(--cue);color:var(--bg);border-color:var(--cue);min-width:84px;font-weight:800}
+.song{min-height:100vh;padding:28px 16px 45vh;max-width:900px;margin:0 auto;border-bottom:1px solid var(--line)}
+.song h2{font-weight:800;font-size:clamp(28px,6vw,48px);line-height:1.1;margin:0 0 12px}
+.cue{display:inline-block;background:var(--cuebg);color:var(--cue);padding:8px 12px;border-radius:6px;font-size:clamp(16px,3vw,22px);margin-bottom:18px}
+.body{font-family:"JetBrains Mono",ui-monospace,Menlo,monospace;white-space:pre;overflow-x:auto;line-height:1.5;font-size:var(--fs,20px)}
+.body .c{color:var(--ch);font-weight:700}.body .t{color:var(--dim)}
+.know{color:var(--dim);font-size:22px}
+bar,.bar{position:fixed;left:0;right:0;bottom:0;z-index:9;background:var(--panel);border-top:1px solid var(--line);display:flex;gap:8px;justify-content:center;align-items:center;flex-wrap:wrap;padding:8px 8px calc(8px + env(safe-area-inset-bottom,0px))}
+.bar span{min-width:42px;text-align:center;font-size:14px;color:var(--dim)}
+#imp{max-width:700px;margin:0 auto;padding:24px 16px}
+#imp textarea{width:100%;height:260px;font:14px "JetBrains Mono",monospace;background:var(--panel);color:var(--tx);border:1px solid var(--line);border-radius:6px;padding:10px}
+#imp p{line-height:1.5}
+.link{background:none;border:0;color:var(--dim);font-size:13px;min-width:0;height:auto;text-decoration:underline}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<script>
+var SONGS=[
+["GodLovesUgly","E, 4/4, bluesy hip hop, slowish, don’t let me speed, come in after 1 measure"],
+["Always coming back home","4/4, bluesy hip hop, drums start 1 measure"],
+["Lucy","punkish, faster (come in after measure)"],
+["Another innocent girl","Punkish scramble, come in same time"],
+["Linoleum (Nofx)","4/4, punk, faster"],
+["HURT (J Cash)",""],
+["Ice ice baby?","on ‘stop’"],
+["Heavy foot(Mon Rovia)","4/4, folk, ambient (same time)"],
+["Sleep when I’m dead",""],
+["For what its worth","same time"],
+["Help your friends get sober",""],
+["Space oddity","after first two chord swells"],
+["On the radio","after ‘bum ba dum ba dum’"],
+["Emma","same time"],
+["Have you ever seen the rain","you pick"],
+["Operator","light drums, brushes? You pick when"],
+["Life’s been good","same time"],
+["No children","after first verse"],
+["Irrationality of rationality","same time, punkish, slowish"],
+["Ohio","after first guitar thing"],
+["Is this thing cursed","same time"],
+["I’ll follow you into the dark","same time"],
+["Bad moon","after first two chord double stops with vocals"],
+["Wrapped up in you","same time"],
+["The metro","after first bass run"],
+["Working Class Hero",""],
+["Old Man","you pick"],
+["Moving out?",""],
+["Fall back down?","second word (worry), together"],
+["We will all go together","unsure"],
+["Flicker","feel it"],
+["Sylvia’s Mother",""],
+["The bad touch","same time"]
+];
+var KEY="sa-setlist-v1",$=function(s){return document.querySelector(s)};
+var S={songs:[],play:false,speed:40,fs:20,hold:0,acc:0,last:0};
+function ld(k){try{return localStorage.getItem(k)}catch(e){return null}}
+function sv(k,v){try{localStorage.setItem(k,v)}catch(e){}}
+function norm(s){return s.replace(/[’‘]/g,"'").replace(/[“”]/g,'"').replace(/\s+/g,' ').trim().toLowerCase()}
+function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
+var CH=/^\(?(N\.C\.?|[A-G][#b]?(maj|min|dim|aug|sus|m|M)?\d*(add\d+)?(\/[A-G][#b]?\d*)?|x\d+|\||%)\)?$/;
+function isChord(l){var t=l.trim().split(/\s+/);return t[0]!==''&&t.every(function(x){return CH.test(x)})}
+function parse(text){
+  var lines=text.replace(/\r/g,'').split('\n').filter(function(l){return l.indexOf('\t')<0});
+  var pos=[],cur=0,missing=[];
+  SONGS.forEach(function(s){
+    var f=-1;
+    for(var i=cur;i<lines.length;i++){if(norm(lines[i])===norm(s[0])){f=i;break}}
+    pos.push(f);if(f<0)missing.push(s[0]);else cur=f+1;
+  });
+  var out=[];
+  SONGS.forEach(function(s,k){
+    var b=[],cue=s[1];
+    if(pos[k]>=0){
+      var end=lines.length;
+      for(var j=k+1;j<SONGS.length;j++){if(pos[j]>=0){end=pos[j];break}}
+      b=lines.slice(pos[k]+1,end).map(function(l){return l.replace(/\s+$/,'')});
+      while(b.length&&!b[0].trim())b.shift();
+      if(b.length&&/^\(.*\)?$/.test(b[0].trim())){if(!cue)cue=b[0].trim().replace(/^\(|\)$/g,'');b.shift()}
+      while(b.length&&!b[b.length-1].trim())b.pop();
+    }
+    out.push({title:s[0],cue:cue,lines:b});
+  });
+  return {songs:out,missing:missing};
+}
+function lineHtml(l){
+  if(!l.trim())return '\n';
+  if(/^\s*\[.*\]\s*$/.test(l))return '<span class="t">'+esc(l)+'</span>\n';
+  if(isChord(l))return '<span class="c">'+esc(l)+'</span>\n';
+  return esc(l)+'\n';
+}
+function importScreen(msg){
+  $('#app').innerHTML='<div id="imp"><h1>Load your set list</h1><p>Paste the full text of your Google Doc once (Ctrl/Cmd+A, then copy in the doc). It stays saved in this browser.</p>'+(msg?'<p style="color:var(--ch)">'+msg+'</p>':'')+'<textarea id="ta" placeholder="Paste the doc text here"></textarea><p><button class="go" id="build">Build</button></p></div>';
+  $('#build').onclick=function(){
+    var t=$('#ta').value;if(t.trim().length<50){importScreen('Paste the whole document first.');return}
+    var r=parse(t);
+    if(r.missing.length>=SONGS.length-2){importScreen('Could not find the song titles. Paste the whole doc, including the song pages.');return}
+    sv(KEY,JSON.stringify(r.songs));start(r.songs,r.missing.length?'Not found in paste: '+r.missing.join(', '):'');
+  };
+}
+function start(songs,warn){
+  S.songs=songs;S.speed=+ld('speed')||40;S.fs=+ld('fs')||20;
+  var opts=songs.map(function(s,i){return '<option value="'+i+'">'+(i+1)+'. '+esc(s.title)+'</option>'}).join('');
+  var secs=songs.map(function(s,i){
+    var body=s.lines.length?s.lines.map(lineHtml).join(''):'';
+    return '<section class="song" id="s'+i+'"><h2>'+esc(s.title)+'</h2>'+(s.cue?'<div class="cue">'+esc(s.cue)+'</div>':'')+
+      (body?'<div class="body">'+esc('').concat(body)+'</div>':'<div class="know">'+(i<6?'You know this.':'—')+'</div>')+'<div class="end"></div></section>';
+  }).join('');
+  $('#app').innerHTML='<header><select id="sel" aria-label="Jump to song">'+opts+'</select><div id="status" role="status"></div></header>'+(warn?'<p style="padding:8px 16px;color:var(--ch)">'+esc(warn)+'</p>':'')+secs+
+  '<div class="bar"><button id="prev" aria-label="Previous song">⏮</button><button id="pp" class="go">Play</button><button id="next" aria-label="Next song">⏭</button>'+
+  '<button id="sd" aria-label="Slower">−</button><span id="sp"></span><button id="su" aria-label="Faster">+</button>'+
+  '<button id="fd" aria-label="Smaller text">A−</button><button id="fu" aria-label="Larger text">A+</button><button id="th" aria-label="Toggle light or dark">◐</button><button class="link" id="re">Re-import</button></div>';
+  document.documentElement.style.setProperty('--fs',S.fs+'px');
+  $('#sel').onchange=function(){goTo(+this.value)};
+  $('#pp').onclick=toggle;$('#next').onclick=function(){goTo(cur()+1)};$('#prev').onclick=function(){goTo(cur()-1)};
+  $('#sd').onclick=function(){spd(-5)};$('#su').onclick=function(){spd(5)};
+  $('#fd').onclick=function(){fsz(-2)};$('#fu').onclick=function(){fsz(2)};
+  $('#th').onclick=function(){var d=document.documentElement,dark=getComputedStyle(d).getPropertyValue('--bg').trim()==='#101a24';d.dataset.theme=dark?'light':'dark'};
+  $('#re').onclick=function(){stop();importScreen('')};
+  window.addEventListener('scroll',function(){var i=cur();var s=$('#sel');if(s&&+s.value!==i)s.value=i},{passive:true});
+  spd(0);status('Ready. Space = play');
+}
+function cur(){var n=S.songs.length,r=0;for(var i=0;i<n;i++){if(document.getElementById('s'+i).getBoundingClientRect().top<=innerHeight*0.35)r=i}return r}
+function atEnd(){var e=document.getElementById('s'+cur()).querySelector('.end');return e.getBoundingClientRect().top<innerHeight*0.8}
+function status(t){var s=$('#status');if(s)s.textContent=t}
+function spd(d){S.speed=Math.max(5,Math.min(200,S.speed+d));sv('speed',S.speed);$('#sp').textContent=S.speed}
+function fsz(d){S.fs=Math.max(12,Math.min(48,S.fs+d));sv('fs',S.fs);document.documentElement.style.setProperty('--fs',S.fs+'px')}
+function goTo(i){
+  if(i<0||i>=S.songs.length)return;
+  var el=document.getElementById('s'+i);scrollTo(0,el.getBoundingClientRect().top+scrollY-64);
+  $('#sel').value=i;
+}
+function stop(msg){S.play=false;var p=$('#pp');if(p)p.textContent='Play';if(msg)status(msg)}
+function run(){S.play=true;S.acc=0;S.last=performance.now();$('#pp').textContent='Pause';requestAnimationFrame(tick)}
+function toggle(){
+  if(S.play){stop('Paused');return}
+  if(atEnd()){
+    var n=cur()+1;
+    if(n>=S.songs.length){status('Set complete');return}
+    goTo(n);S.hold=performance.now()+3000;run();return;
+  }
+  S.hold=0;run();
+}
+function tick(t){
+  if(!S.play)return;
+  if(S.hold>t){status('Starting in '+Math.ceil((S.hold-t)/1000)+'…');S.last=t;requestAnimationFrame(tick);return}
+  var dt=t-S.last;S.last=t;S.acc+=S.speed*dt/1000;
+  var n=Math.floor(S.acc);if(n>0){scrollBy(0,n);S.acc-=n}
+  if(atEnd()){var last=cur()>=S.songs.length-1;stop(last?'Set complete':'End of song. Play for next');return}
+  status('Scrolling');requestAnimationFrame(tick);
+}
+document.addEventListener('keydown',function(e){
+  if(!S.songs.length||/TEXTAREA|SELECT/.test(e.target.tagName))return;
+  var k=e.key;
+  if(k===' '||k==='Enter'){if(e.target.tagName==='BUTTON')return;e.preventDefault();toggle()}
+  else if(k==='ArrowRight'||k==='PageDown'){e.preventDefault();goTo(cur()+1)}
+  else if(k==='ArrowLeft'||k==='PageUp'){e.preventDefault();goTo(cur()-1)}
+  else if(k==='ArrowUp'){e.preventDefault();spd(5)}
+  else if(k==='ArrowDown'){e.preventDefault();spd(-5)}
+});
+(function(){
+  function fromSaved(){
+    var saved=ld(KEY);
+    if(saved){try{var s=JSON.parse(saved);if(s&&s.length){start(s,'');return}}catch(e){}}
+    importScreen('');
+  }
+  try{
+    fetch('songs.txt',{cache:'no-cache'}).then(function(r){if(!r.ok)throw 0;return r.text()}).then(function(t){
+      var r=parse(t);
+      if(r.missing.length>=SONGS.length-2)throw 0;
+      start(r.songs,r.missing.length?'Not found in songs.txt: '+r.missing.join(', '):'');
+    }).catch(fromSaved);
+  }catch(e){fromSaved()}
+})();
+(function(){return;
+  var saved=ld(KEY);
+  if(saved){try{var s=JSON.parse(saved);if(s&&s.length){start(s,'');return}}catch(e){}}
+  importScreen('');
+})();
+</script>
+</body>
+</html>
