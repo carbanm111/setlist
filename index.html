@@ -55,14 +55,11 @@ button.go{background:var(--cue);color:var(--bg);border-color:var(--cue);min-widt
 <body>
 <div id="app"></div>
 
-<!-- Hidden file input for importing setlist backups -->
-<input type="file" id="import-file" accept=".json" style="display:none">
-
 <!-- Add Ultimate Guitar Link Modal -->
 <div id="ug-modal" role="dialog" aria-modal="true" aria-labelledby="ug-heading">
   <div class="ug-box">
     <h3 id="ug-heading">Add Ultimate Guitar Song</h3>
-    <p class="ug-hint">Paste the UG URL and paste the tab text below.</p>
+    <p class="ug-hint">Paste the UG link below to auto-detect the title, open the tab, and paste the chords.</p>
 
     <label for="ug-url">Ultimate Guitar URL</label>
     <div style="display:flex;gap:8px">
@@ -82,8 +79,8 @@ button.go{background:var(--cue);color:var(--bg);border-color:var(--cue);min-widt
     <label for="ug-cue">Cue / Tempo Note (optional)</label>
     <input type="text" id="ug-cue" placeholder="e.g., 4/4, punkish, come in after 1 measure">
 
-    <label for="ug-body">Tab Chords & Lyrics</label>
-    <textarea id="ug-body" placeholder="Paste the copied tab here..."></textarea>
+    <label for="ug-body">Tab Chords & Lyrics (Ctrl+A on UG tab page and paste here)</label>
+    <textarea id="ug-body" placeholder="Paste the copied tab here. UG markup is automatically cleaned..."></textarea>
 
     <div id="ug-err" class="ug-err"></div>
 
@@ -95,78 +92,82 @@ button.go{background:var(--cue);color:var(--bg);border-color:var(--cue);min-widt
 </div>
 
 <script>
-var SONGS=[
-["GodLovesUgly","E, 4/4, bluesy hip hop, slowish, don’t let me speed, come in after 1 measure"],
-["Always coming back home","4/4, bluesy hip hop, drums start 1 measure"],
-["Lucy","punkish, faster (come in after measure)"],
-["Another innocent girl","Punkish scramble, come in same time"],
-["Linoleum (Nofx)","4/4, punk, faster"],
-["HURT (J Cash)",""],
-["Ice ice baby?","on ‘stop’"],
-["Heavy foot(Mon Rovia)","4/4, folk, ambient (same time)"],
-["Sleep when I’m dead",""],
-["For what its worth","same time"],
-["Help your friends get sober",""],
-["Space oddity","after first two chord swells"],
-["On the radio","after ‘bum ba dum ba dum’"],
-["Emma","same time"],
-["Have you ever seen the rain","you pick"],
-["Operator","light drums, brushes? You pick when"],
-["Life’s been good","same time"],
-["No children","after first verse"],
-["Irrationality of rationality","same time, punkish, slowish"],
-["Ohio","after first guitar thing"],
-["Is this thing cursed","same time"],
-["I’ll follow you into the dark","same time"],
-["Bad moon","after first two chord double stops with vocals"],
-["Wrapped up in you","same time"],
-["The metro","after first bass run"],
-["Working Class Hero",""],
-["Old Man","you pick"],
-["Moving out?",""],
-["Fall back down?","second word (worry), together"],
-["We will all go together","unsure"],
-["Flicker","feel it"],
-["Sylvia’s Mother",""],
-["The bad touch","same time"]
-];
-var KEY="sa-setlist-v1",$=function(s){return document.querySelector(s)};
+/* Default cue dictionary for known songs (songs.txt can also define any new song with '# Title') */
+var DEFAULT_CUES={
+  "godlovesugly":"E, 4/4, bluesy hip hop, slowish, don’t let me speed, come in after 1 measure",
+  "always coming back home":"4/4, bluesy hip hop, drums start 1 measure",
+  "lucy":"punkish, faster (come in after measure)",
+  "another innocent girl":"Punkish scramble, come in same time",
+  "linoleum (nofx)":"4/4, punk, faster",
+  "hurt (j cash)":"",
+  "ice ice baby?":"on ‘stop’",
+  "heavy foot(mon rovia)":"4/4, folk, ambient (same time)",
+  "sleep when i'm dead":"",
+  "for what its worth":"same time",
+  "help your friends get sober":"",
+  "space oddity":"after first two chord swells",
+  "on the radio":"after ‘bum ba dum ba dum’",
+  "emma":"same time",
+  "have you ever seen the rain":"you pick",
+  "operator":"light drums, brushes? You pick when",
+  "life's been good":"same time",
+  "no children":"after first verse",
+  "irrationality of rationality":"same time, punkish, slowish",
+  "ohio":"after first guitar thing",
+  "is this thing cursed":"same time",
+  "i'll follow you into the dark":"same time",
+  "bad moon":"after first two chord double stops with vocals",
+  "wrapped up in you":"same time",
+  "the metro":"after first bass run",
+  "working class hero":"",
+  "old man":"you pick",
+  "moving out?":"",
+  "fall back down?":"second word (worry), together",
+  "we will all go together":"unsure",
+  "flicker":"feel it",
+  "sylvia's mother":"",
+  "the bad touch":"same time"
+};
+
+var KEY="sa-setlist-v2",$=function(s){return document.querySelector(s)};
 var S={songs:[],play:false,speed:40,fs:20,hold:0,acc:0,last:0};
 function ld(k){try{return localStorage.getItem(k)}catch(e){return null}}
-function sv(k,v){
-  try{
-    localStorage.setItem(k,v);
-  }catch(e){
-    alert('Storage full or blocked in private browsing mode.');
-  }
-}
+function sv(k,v){try{localStorage.setItem(k,v)}catch(e){}}
 function norm(s){return s.replace(/[’‘]/g,"'").replace(/[“”]/g,'"').replace(/\s+/g,' ').trim().toLowerCase()}
 function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
 var CH=/^\(?(N\.C\.?|[A-G][#b]?(maj|min|dim|aug|sus|m|M)?\d*(add\d+)?(\/[A-G][#b]?\d*)?|x\d+|\||%)\)?$/;
 function isChord(l){var t=l.trim().split(/\s+/);return t[0]!==''&&t.every(function(x){return CH.test(x)})}
+
+/* Dynamic parser: recognizes any '# Song Title' header OR any known title in DEFAULT_CUES */
 function parse(text){
-  var lines=text.replace(/\r/g,'').split('\n').filter(function(l){return l.indexOf('\t')<0});
-  var pos=[],cur=0,missing=[];
-  SONGS.forEach(function(s){
-    var f=-1;
-    for(var i=cur;i<lines.length;i++){if(norm(lines[i])===norm(s[0])){f=i;break}}
-    pos.push(f);if(f<0)missing.push(s[0]);else cur=f+1;
-  });
-  var out=[];
-  SONGS.forEach(function(s,k){
-    var b=[],cue=s[1];
-    if(pos[k]>=0){
-      var end=lines.length;
-      for(var j=k+1;j<SONGS.length;j++){if(pos[j]>=0){end=pos[j];break}}
-      b=lines.slice(pos[k]+1,end).map(function(l){return l.replace(/\s+$/,'')});
-      while(b.length&&!b[0].trim())b.shift();
-      if(b.length&&/^\(.*\)?$/.test(b[0].trim())){if(!cue)cue=b[0].trim().replace(/^\(|\)$/g,'');b.shift()}
-      while(b.length&&!b[b.length-1].trim())b.pop();
+  var rawLines=text.replace(/\r/g,'').split('\n').filter(function(l){return l.indexOf('\t')<0});
+  var headers=[];
+  for(var i=0;i<rawLines.length;i++){
+    var trimmed=rawLines[i].trim();
+    if(!trimmed)continue;
+    if(/^#\s+/.test(trimmed)){
+      headers.push({idx:i,title:trimmed.replace(/^#\s+/,'').trim()});
+    }else if(Object.prototype.hasOwnProperty.call(DEFAULT_CUES,norm(trimmed))){
+      headers.push({idx:i,title:trimmed});
     }
-    out.push({title:s[0],cue:cue,lines:b});
-  });
-  return {songs:out,missing:missing};
+  }
+  var out=[];
+  for(var k=0;k<headers.length;k++){
+    var start=headers[k].idx+1;
+    var end=k+1<headers.length?headers[k+1].idx:rawLines.length;
+    var b=rawLines.slice(start,end).map(function(l){return l.replace(/\s+$/,'')});
+    while(b.length&&!b[0].trim())b.shift();
+    var cue=DEFAULT_CUES[norm(headers[k].title)]||'';
+    if(b.length&&/^\(.*\)$/.test(b[0].trim())){
+      cue=b[0].trim().replace(/^\(|\)$/g,'');
+      b.shift();
+    }
+    while(b.length&&!b[b.length-1].trim())b.pop();
+    out.push({title:headers[k].title,cue:cue,lines:b});
+  }
+  return {songs:out};
 }
+
 function lineHtml(l){
   if(!l.trim())return '\n';
   if(/^\s*\[.*\]\s*$/.test(l))return '<span class="t">'+esc(l)+'</span>\n';
@@ -174,6 +175,24 @@ function lineHtml(l){
   return esc(l)+'\n';
 }
 
+/* Export current setlist back to clean songs.txt format */
+function exportSongsTxt(){
+  var txt=S.songs.map(function(s){
+    var out='# '+s.title+'\n';
+    if(s.cue)out+='('+s.cue+')\n';
+    if(s.lines&&s.lines.length)out+='\n'+s.lines.join('\n')+'\n';
+    return out;
+  }).join('\n');
+  if(navigator.clipboard&&navigator.clipboard.writeText){
+    navigator.clipboard.writeText(txt).then(function(){
+      status('Copied songs.txt to clipboard!');
+    }).catch(function(){prompt('Copy your updated songs.txt:',txt)});
+  }else{
+    prompt('Copy your updated songs.txt:',txt);
+  }
+}
+
+/* Parse UG URL slug into title/artist */
 function parseUgUrl(url){
   try{
     var u=new URL(url.trim());
@@ -185,7 +204,9 @@ function parseUgUrl(url){
           .replace(/\b\w/g,function(c){return c.toUpperCase()});
       };
       var artist=toTitle(parts[1]);
-      var slug=parts[2].replace(/-\d+$/,'').replace(/-(chords|tabs|ukulele|bass|power|guitar-pro|official|ver-\d+)$/gi,'');
+      var slug=parts[2]
+        .replace(/-\d+$/,'')
+        .replace(/-(chords|tabs|ukulele|bass|power|guitar-pro|official|ver-\d+)$/gi,'');
       var title=toTitle(slug);
       return {artist:artist,title:title,url:u.href};
     }
@@ -193,6 +214,7 @@ function parseUgUrl(url){
   }catch(e){return null}
 }
 
+/* Clean pasted UG text */
 function cleanUgPaste(raw){
   var lines=raw.replace(/\r/g,'').split('\n').map(function(l){return l.replace(/\s+$/,'')});
   var startIdx=0;
@@ -265,6 +287,7 @@ $('#ug-url').addEventListener('input',function(){
     openBtn.onclick=null;
     return;
   }
+
   openBtn.onclick=function(){window.open(info.url,'_blank','noopener')};
 
   if(info.title){
@@ -273,7 +296,7 @@ $('#ug-url').addEventListener('input',function(){
     var matchIdx=-1;
     for(var i=0;i<S.songs.length;i++){
       var sNorm=norm(S.songs[i].title);
-      if(sNorm===nTitle||sNorm.indexOf(nTitle)>=0||nTitle.indexOf(nTitle.replace(/\s*\(.*?\)\s*/g,''))>=0){
+      if(sNorm===nTitle||sNorm.indexOf(nTitle)>=0||nTitle.indexOf(sNorm.replace(/\s*\(.*?\)\s*/g,''))>=0){
         matchIdx=i;break;
       }
     }
@@ -314,13 +337,16 @@ $('#ug-save').onclick=function(){
   var cue=$('#ug-cue').value.trim();
   var target=$('#ug-target').value;
 
-  if(!S.songs.length){
-    S.songs=SONGS.map(function(s){return {title:s[0],cue:s[1],lines:[]}});
-  }
-
   var jumpIdx=0;
   if(target==='__new__'){
-    S.songs.push({title:title,cue:cue,lines:cleanedLines,ugUrl:url,addedViaUg:true,hasUg:true});
+    S.songs.push({
+      title:title,
+      cue:cue,
+      lines:cleanedLines,
+      ugUrl:url,
+      addedViaUg:true,
+      hasUg:true
+    });
     jumpIdx=S.songs.length-1;
   }else{
     jumpIdx=+target;
@@ -341,57 +367,14 @@ $('#ug-save').onclick=function(){
   status('Added "'+title+'"');
 };
 
-/* Export / Import functions for device syncing */
-function exportSetlist(){
-  var dataStr="data:text/json;charset=utf-8,"+encodeURIComponent(JSON.stringify(S.songs,null,2));
-  var dlAnchor=$('a#download-anchor')||document.createElement('a');
-  dlAnchor.setAttribute("id","download-anchor");
-  dlAnchor.setAttribute("href",dataStr);
-  dlAnchor.setAttribute("download","wil-and-the-noise-setlist.json");
-  document.body.appendChild(dlAnchor);
-  dlAnchor.click();
-  dlAnchor.remove();
-  status('Setlist exported!');
-}
-
-$('#import-file').addEventListener('change',function(e){
-  var file=e.target.files[0];
-  if(!file)return;
-  var reader=new FileReader();
-  reader.onload=function(evt){
-    try{
-      var imported=JSON.parse(evt.target.result);
-      if(Array.isArray(imported)&&imported.length){
-        S.songs=imported;
-        sv(KEY,JSON.stringify(S.songs));
-        start(S.songs,'');
-        status('Setlist imported successfully!');
-      }else{
-        alert('Invalid setlist file format.');
-      }
-    }catch(err){
-      alert('Could not parse JSON file.');
-    }
-  };
-  reader.readAsText(file);
-  e.target.value='';
-});
-
 function importScreen(msg){
-  $('#app').innerHTML='<div id="imp"><h1>Load your set list</h1><p>Paste the full text of your Google Doc once or import a backup file.</p>'+(msg?'<p style="color:var(--ch)">'+msg+'</p>':'')+'<textarea id="ta" placeholder="Paste the doc text here"></textarea><p style="display:flex;gap:10px;flex-wrap:wrap"><button class="go" id="build">Build from Doc</button><button id="skip-ug">Start Blank & Add UG Links</button><button id="import-btn" style="background:none;border:1px solid var(--line)">Import JSON Backup</button></p></div>';
+  $('#app').innerHTML='<div id="imp"><h1>Load your set list</h1><p>Paste the full text of your Google Doc or <code>songs.txt</code> once. Use <code># Song Title</code> for any new songs.</p>'+(msg?'<p style="color:var(--ch)">'+msg+'</p>':'')+'<textarea id="ta" placeholder="Paste the doc text here"></textarea><p style="display:flex;gap:10px;flex-wrap:wrap"><button class="go" id="build">Build</button></p></div>';
   $('#build').onclick=function(){
-    var t=$('#ta').value;if(t.trim().length<50){importScreen('Paste the whole document first.');return}
+    var t=$('#ta').value;if(t.trim().length<10){importScreen('Paste your setlist text first.');return}
     var r=parse(t);
-    if(r.missing.length>=SONGS.length-2){importScreen('Could not find the song titles.');return}
+    if(!r.songs.length){importScreen('No song titles found. Prefix new titles with # (e.g. # My Song).');return}
     sv(KEY,JSON.stringify(r.songs));start(r.songs,'');
   };
-  $('#skip-ug').onclick=function(){
-    var def=SONGS.map(function(s){return {title:s[0],cue:s[1],lines:[]}});
-    sv(KEY,JSON.stringify(def));
-    start(def,'');
-    openUgModal();
-  };
-  $('#import-btn').onclick=function(){$('#import-file').click()};
 }
 
 function start(songs,warn){
@@ -412,7 +395,7 @@ function start(songs,warn){
   '<div class="bar"><button id="prev" aria-label="Previous song">⏮</button><button id="pp" class="go">Play</button><button id="next" aria-label="Next song">⏭</button>'+
   '<button id="sd" aria-label="Slower">−</button><span id="sp"></span><button id="su" aria-label="Faster">+</button>'+
   '<button id="fd" aria-label="Smaller text">A−</button><button id="fu" aria-label="Larger text">A+</button><button id="th" aria-label="Toggle light or dark">◐</button>'+
-  '<button class="link" id="add-ug">+ UG Link</button><button class="link" id="export-setlist">Export</button><button class="link" id="import-setlist">Import</button><button class="link" id="re">Re-import</button></div>';
+  '<button class="link" id="add-ug">+ UG Link</button><button class="link" id="exp-txt">Copy songs.txt</button><button class="link" id="re">Re-import</button></div>';
   document.documentElement.style.setProperty('--fs',S.fs+'px');
   $('#sel').onchange=function(){goTo(+this.value)};
   $('#pp').onclick=toggle;$('#next').onclick=function(){goTo(cur()+1)};$('#prev').onclick=function(){goTo(cur()-1)};
@@ -420,8 +403,7 @@ function start(songs,warn){
   $('#fd').onclick=function(){fsz(-2)};$('#fu').onclick=function(){fsz(2)};
   $('#th').onclick=function(){var d=document.documentElement,dark=getComputedStyle(d).getPropertyValue('--bg').trim()==='#101a24';d.dataset.theme=dark?'light':'dark'};
   $('#add-ug').onclick=openUgModal;
-  $('#export-setlist').onclick=exportSetlist;
-  $('#import-setlist').onclick=function(){$('#import-file').click()};
+  $('#exp-txt').onclick=exportSongsTxt;
   $('#re').onclick=function(){stop();importScreen('')};
   document.querySelectorAll('.del-ug').forEach(function(btn){
     btn.onclick=function(){deleteUgSong(+this.getAttribute('data-idx'))};
@@ -469,6 +451,7 @@ document.addEventListener('keydown',function(e){
   else if(k==='ArrowUp'){e.preventDefault();spd(5)}
   else if(k==='ArrowDown'){e.preventDefault();spd(-5)}
 });
+
 (function(){
   function fromSaved(){
     var saved=ld(KEY);
@@ -478,8 +461,20 @@ document.addEventListener('keydown',function(e){
   try{
     fetch('songs.txt',{cache:'no-cache'}).then(function(r){if(!r.ok)throw 0;return r.text()}).then(function(t){
       var r=parse(t);
-      if(r.missing.length>=SONGS.length-2)throw 0;
-      start(r.songs,r.missing.length?'Not found in songs.txt: '+r.missing.join(', '):'');
+      if(!r.songs.length)throw 0;
+      /* Preserve locally added UG songs that aren't in songs.txt yet */
+      var saved=ld(KEY);
+      if(saved){
+        try{
+          var local=JSON.parse(saved);
+          local.forEach(function(ls){
+            if(ls.addedViaUg&&!r.songs.some(function(rs){return norm(rs.title)===norm(ls.title)})){
+              r.songs.push(ls);
+            }
+          });
+        }catch(e){}
+      }
+      start(r.songs,'');
     }).catch(fromSaved);
   }catch(e){fromSaved()}
 })();
