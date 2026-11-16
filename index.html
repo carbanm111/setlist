@@ -134,7 +134,7 @@ function ld(k){try{return localStorage.getItem(k)}catch(e){return null}}
 function sv(k,v){try{localStorage.setItem(k,v)}catch(e){}}
 function norm(s){return s.replace(/[’‘]/g,"'").replace(/[“”]/g,'"').replace(/\s+/g,' ').trim().toLowerCase()}
 function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
-var CH=/^\(?(N\.C\.?\vert{}[A-G][#b]?(maj\vert{}min\vert{}dim\vert{}aug\vert{}sus\vert{}m\vert{}M)?\d*(add\d+)?(\/[A-G][#b]?\d*)?\vert{}x\d+\vert{}\Vert{}\vert{}\%)\)?$/;
+var CH=/^\(?(N\.C\.?|[A-G][#b]?(maj|min|dim|aug|sus|m|M)?\d*(add\d+)?(\/[A-G][#b]?\d*)?|x\d+|\||%)\)?$/;
 function isChord(l){var t=l.trim().split(/\s+/);return t[0]!==''&&t.every(function(x){return CH.test(x)})}
 function parse(text){
   var lines=text.replace(/\r/g,'').split('\n').filter(function(l){return l.indexOf('\t')<0});
@@ -152,7 +152,7 @@ function parse(text){
       for(var j=k+1;j<SONGS.length;j++){if(pos[j]>=0){end=pos[j];break}}
       b=lines.slice(pos[k]+1,end).map(function(l){return l.replace(/\s+$/,'')});
       while(b.length&&!b[0].trim())b.shift();
-      if(b.length&&/^\(.*\)?$/.test(b[0].trim())){if(!cue)cue=b[0].trim().replace(/^\(\vert{}\)$/g,'');b.shift()}
+      if(b.length&&/^\(.*\)?$/.test(b[0].trim())){if(!cue)cue=b[0].trim().replace(/^\(|\)$/g,'');b.shift()}
       while(b.length&&!b[b.length-1].trim())b.pop();
     }
     out.push({title:s[0],cue:cue,lines:b});
@@ -197,4 +197,342 @@ function decodeUgContent(raw){
     .replace(/\r/g,'')
     .replace(/\[\/?ch\]/gi,'')
     .replace(/\[\/?tab\]/gi,'');
-  var lines=clean.split('\n').map(function(l){return l.replace(/\
+  var lines=clean.split('\n').map(function(l){return l.replace(/\s+$/,'')});
+  while(lines.length&&!lines[0].trim())lines.shift();
+  while(lines.length&&!lines[lines.length-1].trim())lines.pop();
+  return lines;
+}
+
+/* Extract tab content, title, artist, and capo from fetched UG HTML */
+function extractFromUgHtml(html){
+  var doc=new DOMParser().parseFromString(html,'text/html');
+  var storeEl=doc.querySelector('.js-store');
+  if(storeEl){
+    var rawAttr=storeEl.getAttribute('data-content');
+    if(rawAttr){
+      var data=JSON.parse(rawAttr);
+      var page=data&&data.store&&data.store.page&&data.store.page.data;
+      var tabView=page&&page.tab_view;
+      var wiki=tabView&&tabView.wiki_tab;
+      if(wiki&&wiki.content){
+        var meta=tabView.meta||{};
+        var tabInfo=page.tab||{};
+        var cueParts=[];
+        if(meta.capo)cueParts.push('Capo '+meta.capo);
+        if(meta.tonality)cueParts.push('Key: '+meta.tonality);
+        if(meta.tuning&&meta.tuning.value&&meta.tuning.value!=='E A D G B E')cueParts.push('Tuning: '+meta.tuning.name);
+        return {
+          title:tabInfo.song_name||'',
+          artist:tabInfo.artist_name||'',
+          cue:cueParts.join(', '),
+          lines:decodeUgContent(wiki.content)
+        };
+      }
+    }
+  }
+  // Regex fallback if data-content attribute formatting varies
+  var m=html.match(/"wiki_tab"\s*:\s*\{[\s\S]*?"content"\s*:\s*"((?:\\.|[^"\\])*)"/);
+  if(m&&m[1]){
+    var unescaped=JSON.parse('"'+m[1]+'"');
+    return {title:'',artist:'',cue:'',lines:decodeUgContent(unescaped)};
+  }
+  throw new Error('Could not locate chord data in the Ultimate Guitar page.');
+}
+
+/* Fetch UG HTML via CORS proxies */
+async function fetchUgTab(url){
+  var proxies=[
+    function(u){return 'https://api.allorigins.win/raw?url='+encodeURIComponent(u)},
+    function(u){return 'https://corsproxy.io/?'+encodeURIComponent(u)},
+    function(u){return 'https://api.codetabs.com/v1/proxy?quest='+encodeURIComponent(u)}
+  ];
+  var lastErr=null;
+  for(var i=0;i<proxies.length;i++){
+    try{
+      var res=await fetch(proxies[i](url));
+      if(!res.ok)throw new Error('HTTP '+res.status);
+      var html=await res.text();
+      if(!html||html.length<500)throw new Error('Empty response');
+      return extractFromUgHtml(html);
+    }catch(e){
+      lastErr=e;
+    }
+  }
+  throw lastErr||new Error('Unable to fetch Ultimate Guitar page.');
+}
+
+function openUgModal(){
+  stop('Paused');
+  var modal=$('#ug-modal');
+  var sel=$('#ug-target');
+  sel.innerHTML='<option value="__new__">+ Add as new song at end of setlist</option>'+
+    S.songs.map(function(s,i){
+      var emptyTag=s.lines.length?'':' (empty)';
+      return '<option value="'+i+'">Replace #'+(i+1)+': '+esc(s.title)+emptyTag+'</option>';
+    }).join('');
+  $('#ug-url').value='';
+  $('#ug-title').value='';
+  $('#ug-cue').value='';
+  $('#ug-body').value='';
+  $('#ug-parsed-info').textContent='';
+  $('#ug-err').textContent='';
+  $('#ug-fallback').style.display='none';
+  $('#ug-save').disabled=false;
+  $('#ug-save').textContent='Fetch & Add';
+  modal.classList.add('open');
+  $('#ug-url').focus();
+}
+
+function closeUgModal(){
+  $('#ug-modal').classList.remove('open');
+}
+
+function deleteUgSong(idx){
+  var song=S.songs[idx];
+  if(!song)return;
+  if(!confirm('Remove "'+song.title+'" from the setlist?'))return;
+  if(song.addedViaUg){
+    S.songs.splice(idx,1);
+  }else{
+    // If it was an original song whose chords were filled via UG, clear the UG addition
+    S.songs[idx].lines=[];
+    delete S.songs[idx].ugUrl;
+    delete S.songs[idx].hasUg;
+  }
+  sv(KEY,JSON.stringify(S.songs));
+  start(S.songs,'');
+  goTo(Math.min(idx,S.songs.length-1));
+  status('Removed UG entry');
+}
+
+$('#ug-url').addEventListener('input',function(){
+  var info=parseUgUrl(this.value);
+  var hint=$('#ug-parsed-info');
+  var titleInput=$('#ug-title');
+  var targetSel=$('#ug-target');
+  $('#ug-err').textContent='';
+
+  if(!info){
+    hint.textContent=this.value.trim()?'Paste a full tabs.ultimate-guitar.com link.':'';
+    return;
+  }
+
+  if(info.title){
+    hint.textContent='Detected: "'+info.title+'"'+(info.artist?' by '+info.artist:'');
+    var nTitle=norm(info.title);
+    var matchIdx=-1;
+    for(var i=0;i<S.songs.length;i++){
+      var sNorm=norm(S.songs[i].title);
+      if(sNorm===nTitle||sNorm.indexOf(nTitle)>=0||nTitle.indexOf(sNorm.replace(/\s*\(.*?\)\s*/g,''))>=0){
+        matchIdx=i;break;
+      }
+    }
+    if(matchIdx>=0){
+      targetSel.value=String(matchIdx);
+      titleInput.value=S.songs[matchIdx].title;
+      if(S.songs[matchIdx].cue)$('#ug-cue').value=S.songs[matchIdx].cue;
+      hint.textContent+=' — matched existing song #'+(matchIdx+1)+'!';
+    }else{
+      targetSel.value='__new__';
+      titleInput.value=info.artist?info.title+' ('+info.artist+')':info.title;
+    }
+  }else{
+    hint.textContent='UG link recognized.';
+  }
+});
+
+$('#ug-target').addEventListener('change',function(){
+  if(this.value!=='__new__'){
+    var idx=+this.value;
+    var existing=S.songs[idx];
+    if(existing){
+      if(!$('#ug-title').value)$('#ug-title').value=existing.title;
+      if(existing.cue&&!$('#ug-cue').value)$('#ug-cue').value=existing.cue;
+    }
+  }
+});
+
+$('#ug-cancel').onclick=closeUgModal;
+$('#ug-modal').addEventListener('click',function(e){if(e.target===this)closeUgModal()});
+
+$('#ug-save').onclick=async function(){
+  var url=$('#ug-url').value.trim();
+  var fallbackText=$('#ug-body').value.trim();
+  var btn=$('#ug-save');
+  var errEl=$('#ug-err');
+  errEl.textContent='';
+
+  if(!url&&!fallbackText){
+    errEl.textContent='Paste an Ultimate Guitar link first.';
+    $('#ug-url').focus();
+    return;
+  }
+
+  var fetched=null;
+  if(fallbackText){
+    fetched={title:'',artist:'',cue:'',lines:decodeUgContent(fallbackText)};
+  }else{
+    btn.disabled=true;
+    btn.textContent='Pulling chords…';
+    try{
+      fetched=await fetchUgTab(url);
+    }catch(err){
+      btn.disabled=false;
+      btn.textContent='Save Fallback';
+      errEl.textContent='Could not automatically pull the page ('+err.message+'). Open the link in another tab, copy the chords, and paste below—or try again.';
+      $('#ug-fallback').style.display='block';
+      $('#ug-body').focus();
+      return;
+    }
+  }
+
+  btn.disabled=false;
+  btn.textContent='Fetch & Add';
+
+  var title=$('#ug-title').value.trim();
+  if(!title&&fetched.title){
+    title=fetched.artist?fetched.title+' ('+fetched.artist+')':fetched.title;
+  }
+  if(!title)title='Untitled UG Song';
+
+  var cue=$('#ug-cue').value.trim()||fetched.cue||'';
+  var target=$('#ug-target').value;
+
+  if(!S.songs.length){
+    S.songs=SONGS.map(function(s){return {title:s[0],cue:s[1],lines:[]}});
+  }
+
+  var jumpIdx=0;
+  if(target==='__new__'){
+    S.songs.push({
+      title:title,
+      cue:cue,
+      lines:fetched.lines,
+      ugUrl:url,
+      addedViaUg:true,
+      hasUg:true
+    });
+    jumpIdx=S.songs.length-1;
+  }else{
+    jumpIdx=+target;
+    S.songs[jumpIdx]={
+      title:title,
+      cue:cue||S.songs[jumpIdx].cue,
+      lines:fetched.lines.length?fetched.lines:S.songs[jumpIdx].lines,
+      ugUrl:url||S.songs[jumpIdx].ugUrl,
+      addedViaUg:S.songs[jumpIdx].addedViaUg||false,
+      hasUg:true
+    };
+  }
+
+  sv(KEY,JSON.stringify(S.songs));
+  closeUgModal();
+  start(S.songs,'');
+  goTo(jumpIdx);
+  status('Added "'+title+'"');
+};
+
+function importScreen(msg){
+  $('#app').innerHTML='<div id="imp"><h1>Load your set list</h1><p>Paste the full text of your Google Doc once (Ctrl/Cmd+A, then copy in the doc). It stays saved in this browser.</p>'+(msg?'<p style="color:var(--ch)">'+msg+'</p>':'')+'<textarea id="ta" placeholder="Paste the doc text here"></textarea><p style="display:flex;gap:10px;flex-wrap:wrap"><button class="go" id="build">Build</button><button id="skip-ug">Start with default list & add UG links</button></p></div>';
+  $('#build').onclick=function(){
+    var t=$('#ta').value;if(t.trim().length<50){importScreen('Paste the whole document first.');return}
+    var r=parse(t);
+    if(r.missing.length>=SONGS.length-2){importScreen('Could not find the song titles. Paste the whole doc, including the song pages.');return}
+    sv(KEY,JSON.stringify(r.songs));start(r.songs,r.missing.length?'Not found in paste: '+r.missing.join(', '):'');
+  };
+  $('#skip-ug').onclick=function(){
+    var def=SONGS.map(function(s){return {title:s[0],cue:s[1],lines:[]}});
+    sv(KEY,JSON.stringify(def));
+    start(def,'');
+    openUgModal();
+  };
+}
+function start(songs,warn){
+  S.songs=songs;S.speed=+ld('speed')||40;S.fs=+ld('fs')||20;
+  var opts=songs.map(function(s,i){return '<option value="'+i+'">'+(i+1)+'. '+esc(s.title)+'</option>'}).join('');
+  var secs=songs.map(function(s,i){
+    var body=s.lines&&s.lines.length?s.lines.map(lineHtml).join(''):'';
+    var ugControls='';
+    if(s.hasUg||s.addedViaUg||s.ugUrl){
+      var linkHtml=s.ugUrl?'<a class="ug-ref" href="'+esc(s.ugUrl)+'" target="_blank" rel="noopener">UG ↗</a>':'';
+      var delLabel=s.addedViaUg?'Delete':'Clear UG';
+      ugControls='<div class="ug-actions-inline">'+linkHtml+'<button type="button" class="del-ug" data-idx="'+i+'" aria-label="Delete '+esc(s.title)+'">'+delLabel+'</button></div>';
+    }
+    return '<section class="song" id="s'+i+'"><div class="song-head"><h2>'+esc(s.title)+'</h2>'+ugControls+'</div>'+(s.cue?'<div class="cue">'+esc(s.cue)+'</div>':'')+
+      (body?'<div class="body">'+body+'</div>':'<div class="know">'+(i<6?'You know this.':'—')+'</div>')+'<div class="end"></div></section>';
+  }).join('');
+  $('#app').innerHTML='<header><select id="sel" aria-label="Jump to song">'+opts+'</select><div id="status" role="status"></div></header>'+(warn?'<p style="padding:8px 16px;color:var(--ch)">'+esc(warn)+'</p>':'')+secs+
+  '<div class="bar"><button id="prev" aria-label="Previous song">⏮</button><button id="pp" class="go">Play</button><button id="next" aria-label="Next song">⏭</button>'+
+  '<button id="sd" aria-label="Slower">−</button><span id="sp"></span><button id="su" aria-label="Faster">+</button>'+
+  '<button id="fd" aria-label="Smaller text">A−</button><button id="fu" aria-label="Larger text">A+</button><button id="th" aria-label="Toggle light or dark">◐</button>'+
+  '<button class="link" id="add-ug">+ UG Link</button><button class="link" id="re">Re-import</button></div>';
+  document.documentElement.style.setProperty('--fs',S.fs+'px');
+  $('#sel').onchange=function(){goTo(+this.value)};
+  $('#pp').onclick=toggle;$('#next').onclick=function(){goTo(cur()+1)};$('#prev').onclick=function(){goTo(cur()-1)};
+  $('#sd').onclick=function(){spd(-5)};$('#su').onclick=function(){spd(5)};
+  $('#fd').onclick=function(){fsz(-2)};$('#fu').onclick=function(){fsz(2)};
+  $('#th').onclick=function(){var d=document.documentElement,dark=getComputedStyle(d).getPropertyValue('--bg').trim()==='#101a24';d.dataset.theme=dark?'light':'dark'};
+  $('#add-ug').onclick=openUgModal;
+  $('#re').onclick=function(){stop();importScreen('')};
+  document.querySelectorAll('.del-ug').forEach(function(btn){
+    btn.onclick=function(){deleteUgSong(+this.getAttribute('data-idx'))};
+  });
+  window.addEventListener('scroll',function(){var i=cur();var s=$('#sel');if(s&&+s.value!==i)s.value=i},{passive:true});
+  spd(0);status('Ready. Space = play');
+}
+function cur(){var n=S.songs.length,r=0;for(var i=0;i<n;i++){if(document.getElementById('s'+i).getBoundingClientRect().top<=innerHeight*0.35)r=i}return r}
+function atEnd(){var e=document.getElementById('s'+cur()).querySelector('.end');return e.getBoundingClientRect().top<innerHeight*0.8}
+function status(t){var s=$('#status');if(s)s.textContent=t}
+function spd(d){S.speed=Math.max(5,Math.min(200,S.speed+d));sv('speed',S.speed);$('#sp').textContent=S.speed}
+function fsz(d){S.fs=Math.max(12,Math.min(48,S.fs+d));sv('fs',S.fs);document.documentElement.style.setProperty('--fs',S.fs+'px')}
+function goTo(i){
+  if(i<0||i>=S.songs.length)return;
+  var el=document.getElementById('s'+i);scrollTo(0,el.getBoundingClientRect().top+scrollY-64);
+  $('#sel').value=i;
+}
+function stop(msg){S.play=false;var p=$('#pp');if(p)p.textContent='Play';if(msg)status(msg)}
+function run(){S.play=true;S.acc=0;S.last=performance.now();$('#pp').textContent='Pause';requestAnimationFrame(tick)}
+function toggle(){
+  if(S.play){stop('Paused');return}
+  if(atEnd()){
+    var n=cur()+1;
+    if(n>=S.songs.length){status('Set complete');return}
+    goTo(n);S.hold=performance.now()+3000;run();return;
+  }
+  S.hold=0;run();
+}
+function tick(t){
+  if(!S.play)return;
+  if(S.hold>t){status('Starting in '+Math.ceil((S.hold-t)/1000)+'…');S.last=t;requestAnimationFrame(tick);return}
+  var dt=t-S.last;S.last=t;S.acc+=S.speed*dt/1000;
+  var n=Math.floor(S.acc);if(n>0){scrollBy(0,n);S.acc-=n}
+  if(atEnd()){var last=cur()>=S.songs.length-1;stop(last?'Set complete':'End of song. Play for next');return}
+  status('Scrolling');requestAnimationFrame(tick);
+}
+document.addEventListener('keydown',function(e){
+  if(e.key==='Escape'&&$('#ug-modal').classList.contains('open')){closeUgModal();return}
+  if(!S.songs.length||$('#ug-modal').classList.contains('open')||/TEXTAREA|SELECT|INPUT/.test(e.target.tagName))return;
+  var k=e.key;
+  if(k===' '||k==='Enter'){if(e.target.tagName==='BUTTON')return;e.preventDefault();toggle()}
+  else if(k==='ArrowRight'||k==='PageDown'){e.preventDefault();goTo(cur()+1)}
+  else if(k==='ArrowLeft'||k==='PageUp'){e.preventDefault();goTo(cur()-1)}
+  else if(k==='ArrowUp'){e.preventDefault();spd(5)}
+  else if(k==='ArrowDown'){e.preventDefault();spd(-5)}
+});
+(function(){
+  function fromSaved(){
+    var saved=ld(KEY);
+    if(saved){try{var s=JSON.parse(saved);if(s&&s.length){start(s,'');return}}catch(e){}}
+    importScreen('');
+  }
+  try{
+    fetch('songs.txt',{cache:'no-cache'}).then(function(r){if(!r.ok)throw 0;return r.text()}).then(function(t){
+      var r=parse(t);
+      if(r.missing.length>=SONGS.length-2)throw 0;
+      start(r.songs,r.missing.length?'Not found in songs.txt: '+r.missing.join(', '):'');
+    }).catch(fromSaved);
+  }catch(e){fromSaved()}
+})();
+</script>
+</body>
+</html>
