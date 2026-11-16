@@ -6,10 +6,10 @@
 <title>Wil And The Noise Set List</title>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
-:root{--bg:#eef1f4;--panel:#fff;--tx:#1b2430;--dim:#6b7785;--ch:#a85a00;--cue:#0b6b63;--cuebg:#d9efec;--line:#cfd6de;
+:root{--bg:#eef1f4;--panel:#fff;--tx:#1b2430;--dim:#6b7785;--ch:#a85a00;--cue:#0b6b63;--cuebg:#d9efec;--line:#cfd6de;--danger:#b91c1c;
 box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#101a24;--panel:#17232f;--tx:#ece6d8;--dim:#8b99a8;--ch:#f2b84b;--cue:#7fe0d4;--cuebg:#14393a;--line:#2a3a4a}}
-:root[data-theme="dark"]{--bg:#101a24;--panel:#17232f;--tx:#ece6d8;--dim:#8b99a8;--ch:#f2b84b;--cue:#7fe0d4;--cuebg:#14393a;--line:#2a3a4a}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#101a24;--panel:#17232f;--tx:#ece6d8;--dim:#8b99a8;--ch:#f2b84b;--cue:#7fe0d4;--cuebg:#14393a;--line:#2a3a4a;--danger:#f87171}}
+:root[data-theme="dark"]{--bg:#101a24;--panel:#17232f;--tx:#ece6d8;--dim:#8b99a8;--ch:#f2b84b;--cue:#7fe0d4;--cuebg:#14393a;--line:#2a3a4a;--danger:#f87171}
 html{scroll-padding-top:env(safe-area-inset-top,0px)}
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--tx);font-family:Archivo,system-ui,sans-serif;padding-bottom:110px}
@@ -20,10 +20,15 @@ header select{flex:1;min-width:0;font:inherit;font-size:16px;padding:8px;backgro
 button{font:inherit;font-size:18px;min-width:48px;height:48px;border-radius:8px;border:1px solid var(--line);background:var(--bg);color:var(--tx);cursor:pointer}
 button:focus-visible,select:focus-visible,textarea:focus-visible,input:focus-visible{outline:3px solid var(--cue);outline-offset:2px}
 button.go{background:var(--cue);color:var(--bg);border-color:var(--cue);min-width:84px;font-weight:800}
+button:disabled{opacity:0.55;cursor:wait}
 .song{min-height:100vh;padding:28px 16px 45vh;max-width:900px;margin:0 auto;border-bottom:1px solid var(--line)}
-.song h2{font-weight:800;font-size:clamp(28px,6vw,48px);line-height:1.1;margin:0 0 12px}
+.song-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:12px}
+.song h2{font-weight:800;font-size:clamp(28px,6vw,48px);line-height:1.1;margin:0}
+.ug-actions-inline{display:flex;align-items:center;gap:8px;flex-shrink:0;padding-top:6px}
+.ug-ref{font-size:13px;color:var(--dim);text-decoration:underline;padding:6px 8px}
+.del-ug{font-size:13px;min-width:0;height:32px;padding:0 10px;border-radius:6px;color:var(--danger);border-color:var(--danger);background:transparent}
+.del-ug:hover{background:var(--danger);color:var(--bg)}
 .cue{display:inline-block;background:var(--cuebg);color:var(--cue);padding:8px 12px;border-radius:6px;font-size:clamp(16px,3vw,22px);margin-bottom:18px}
-.ug-ref{display:inline-block;margin-left:10px;font-size:13px;color:var(--dim);text-decoration:underline;vertical-align:middle}
 .body{font-family:"JetBrains Mono",ui-monospace,Menlo,monospace;white-space:pre;overflow-x:auto;line-height:1.5;font-size:var(--fs,20px)}
 .body .c{color:var(--ch);font-weight:700}.body .t{color:var(--dim)}
 .know{color:var(--dim);font-size:22px}
@@ -37,16 +42,16 @@ button.go{background:var(--cue);color:var(--bg);border-color:var(--cue);min-widt
 /* UG Modal Styles */
 #ug-modal{position:fixed;inset:0;z-index:20;background:rgba(0,0,0,0.65);display:none;align-items:center;justify-content:center;padding:16px}
 #ug-modal.open{display:flex}
-.ug-box{background:var(--panel);color:var(--tx);border:1px solid var(--line);border-radius:12px;width:100%;max-width:600px;max-height:90vh;overflow-y:auto;padding:20px;box-shadow:0 12px 32px rgba(0,0,0,0.3)}
-.ug-box h3{margin:0 0 8px;font-size:22px}
+.ug-box{background:var(--panel);color:var(--tx);border:1px solid var(--line);border-radius:12px;width:100%;max-width:540px;max-height:90vh;overflow-y:auto;padding:20px;box-shadow:0 12px 32px rgba(0,0,0,0.3)}
+.ug-box h3{margin:0 0 6px;font-size:22px}
 .ug-box label{display:block;font-size:13px;color:var(--dim);margin:12px 0 4px}
 .ug-box input,.ug-box select,.ug-box textarea{width:100%;font-family:inherit;font-size:15px;padding:10px;background:var(--bg);color:var(--tx);border:1px solid var(--line);border-radius:6px}
-.ug-box textarea{font-family:"JetBrains Mono",monospace;font-size:13px;height:170px;resize:vertical}
-.ug-row{display:flex;gap:8px;align-items:center}
-.ug-row input{flex:1}
-.ug-btn-sm{font-size:14px;height:40px;padding:0 12px;min-width:auto;white-space:nowrap}
+.ug-box textarea{font-family:"JetBrains Mono",monospace;font-size:13px;height:140px;resize:vertical}
+.ug-btn-sm{font-size:15px;height:42px;padding:0 14px;min-width:auto;white-space:nowrap}
 .ug-actions{display:flex;gap:10px;justify-content:flex-end;margin-top:16px}
-.ug-hint{font-size:12px;color:var(--dim);margin:4px 0 0;line-height:1.4}
+.ug-hint{font-size:13px;color:var(--dim);margin:4px 0 0;line-height:1.4}
+.ug-err{font-size:13px;color:var(--danger);margin:8px 0 0;line-height:1.4}
+#ug-fallback{display:none;margin-top:10px;padding-top:10px;border-top:1px dashed var(--line)}
 </style>
 </head>
 <body>
@@ -55,33 +60,34 @@ button.go{background:var(--cue);color:var(--bg);border-color:var(--cue);min-widt
 <!-- Add Ultimate Guitar Link Modal -->
 <div id="ug-modal" role="dialog" aria-modal="true" aria-labelledby="ug-heading">
   <div class="ug-box">
-    <h3 id="ug-heading">Add Ultimate Guitar Tab</h3>
-    <p class="ug-hint">Paste a UG chord URL to auto-detect the title, open it if needed, and paste the copied tab text.</p>
+    <h3 id="ug-heading">Add Ultimate Guitar Link</h3>
+    <p class="ug-hint">Paste an Ultimate Guitar URL and it will automatically pull the chords and add it to your setlist.</p>
 
     <label for="ug-url">Ultimate Guitar URL</label>
-    <div class="ug-row">
-      <input type="url" id="ug-url" placeholder="https://tabs.ultimate-guitar.com/tab/...">
-      <button type="button" class="ug-btn-sm" id="ug-open" style="display:none">Open Tab ↗</button>
-    </div>
+    <input type="url" id="ug-url" placeholder="https://tabs.ultimate-guitar.com/tab/...">
     <p class="ug-hint" id="ug-parsed-info"></p>
 
-    <label for="ug-target">Where to put it</label>
+    <label for="ug-target">Placement</label>
     <select id="ug-target">
       <option value="__new__">+ Add as new song at end of setlist</option>
     </select>
 
-    <label for="ug-title">Song Title</label>
-    <input type="text" id="ug-title" placeholder="Song Title">
+    <label for="ug-title">Song Title (auto-filled from link)</label>
+    <input type="text" id="ug-title" placeholder="Auto-detected from URL">
 
     <label for="ug-cue">Cue / Tempo Note (optional)</label>
     <input type="text" id="ug-cue" placeholder="e.g., 4/4, punkish, come in after 1 measure">
 
-    <label for="ug-body">Paste Chords & Lyrics from UG (Ctrl/Cmd+A on the tab page, or select chords)</label>
-    <textarea id="ug-body" placeholder="Paste the copied UG tab here... We'll strip out UG's header/footer clutter automatically."></textarea>
+    <div id="ug-err" class="ug-err"></div>
+
+    <div id="ug-fallback">
+      <label for="ug-body">Fallback: UG blocked the automatic fetch — paste tab text here</label>
+      <textarea id="ug-body" placeholder="Paste tab text if automatic fetch was blocked..."></textarea>
+    </div>
 
     <div class="ug-actions">
       <button type="button" class="ug-btn-sm" id="ug-cancel">Cancel</button>
-      <button type="button" class="go ug-btn-sm" id="ug-save">Save to Setlist</button>
+      <button type="button" class="go ug-btn-sm" id="ug-save">Fetch & Add</button>
     </div>
   </div>
 </div>
@@ -128,7 +134,7 @@ function ld(k){try{return localStorage.getItem(k)}catch(e){return null}}
 function sv(k,v){try{localStorage.setItem(k,v)}catch(e){}}
 function norm(s){return s.replace(/[’‘]/g,"'").replace(/[“”]/g,'"').replace(/\s+/g,' ').trim().toLowerCase()}
 function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
-var CH=/^\(?(N\.C\.?|[A-G][#b]?(maj|min|dim|aug|sus|m|M)?\d*(add\d+)?(\/[A-G][#b]?\d*)?|x\d+|\||%)\)?$/;
+var CH=/^\(?(N\.C\.?\vert{}[A-G][#b]?(maj\vert{}min\vert{}dim\vert{}aug\vert{}sus\vert{}m\vert{}M)?\d*(add\d+)?(\/[A-G][#b]?\d*)?\vert{}x\d+\vert{}\Vert{}\vert{}\%)\)?$/;
 function isChord(l){var t=l.trim().split(/\s+/);return t[0]!==''&&t.every(function(x){return CH.test(x)})}
 function parse(text){
   var lines=text.replace(/\r/g,'').split('\n').filter(function(l){return l.indexOf('\t')<0});
@@ -146,7 +152,7 @@ function parse(text){
       for(var j=k+1;j<SONGS.length;j++){if(pos[j]>=0){end=pos[j];break}}
       b=lines.slice(pos[k]+1,end).map(function(l){return l.replace(/\s+$/,'')});
       while(b.length&&!b[0].trim())b.shift();
-      if(b.length&&/^\(.*\)?$/.test(b[0].trim())){if(!cue)cue=b[0].trim().replace(/^\(|\)$/g,'');b.shift()}
+      if(b.length&&/^\(.*\)?$/.test(b[0].trim())){if(!cue)cue=b[0].trim().replace(/^\(\vert{}\)$/g,'');b.shift()}
       while(b.length&&!b[b.length-1].trim())b.pop();
     }
     out.push({title:s[0],cue:cue,lines:b});
@@ -166,7 +172,6 @@ function parseUgUrl(url){
     var u=new URL(url.trim());
     if(!/ultimate-guitar\.com$/i.test(u.hostname))return null;
     var parts=u.pathname.split('/').filter(Boolean);
-    // Standard UG pattern: /tab/<artist>/<song-name-chords-123456>
     if(parts[0]==='tab'&&parts.length>=3){
       var toTitle=function(str){
         return decodeURIComponent(str).replace(/[-_]+/g,' ').trim()
@@ -184,242 +189,12 @@ function parseUgUrl(url){
   }catch(e){return null}
 }
 
-/* Sensibly clean pasted UG page text (strips nav headers/footers if user did Ctrl+A) */
-function cleanUgPaste(raw){
-  var lines=raw.replace(/\r/g,'').split('\n').map(function(l){return l.replace(/\s+$/,'')});
-  // If user pasted entire page via Ctrl+A, trim above first [Section] or Difficulty/Tuning/Capo block
-  var startIdx=0;
-  for(var i=0;i<Math.min(lines.length,80);i++){
-    if(/^(Difficulty|Tuning|Capo|Key|Author)\s*:/i.test(lines[i].trim())){
-      startIdx=i+1;
-    }
-  }
-  if(startIdx>0)lines=lines.slice(startIdx);
-
-  // Trim UG footer boilerplate
-  var endIdx=lines.length;
-  for(var j=0;j<lines.length;j++){
-    if(/^(By helping UG you make the world better|Please rate this tab|Show all chords diagrams|Be the first to comment|More versions)/i.test(lines[j].trim())){
-      endIdx=j;break;
-    }
-  }
-  lines=lines.slice(0,endIdx);
-
-  // Filter obvious UG UI noise lines
-  var noise=/^(Tabs|Chords|Ukulele|Pro|Official|Transpose|Autoscroll|Font size|Simplify|Print|Report bad tab|Favorite|Add to playlist|\d+\s*views|\d+\s*saves)$/i;
-  lines=lines.filter(function(l){return !noise.test(l.trim())});
-
-  while(lines.length&&!lines[0].trim())lines.shift();
-  while(lines.length&&!lines[lines.length-1].trim())lines.pop();
-  return lines;
-}
-
-function openUgModal(){
-  stop('Paused');
-  var modal=$('#ug-modal');
-  var sel=$('#ug-target');
-  // Populate target dropdown with current songs so user can fill in an existing slot or add new
-  sel.innerHTML='<option value="__new__">+ Add as new song at end of setlist</option>'+
-    S.songs.map(function(s,i){
-      var emptyTag=s.lines.length?'':' (empty)';
-      return '<option value="'+i+'">Replace #'+(i+1)+': '+esc(s.title)+emptyTag+'</option>';
-    }).join('');
-  $('#ug-url').value='';
-  $('#ug-title').value='';
-  $('#ug-cue').value='';
-  $('#ug-body').value='';
-  $('#ug-parsed-info').textContent='';
-  $('#ug-open').style.display='none';
-  modal.classList.add('open');
-  $('#ug-url').focus();
-}
-
-function closeUgModal(){
-  $('#ug-modal').classList.remove('open');
-}
-
-$('#ug-url').addEventListener('input',function(){
-  var info=parseUgUrl(this.value);
-  var openBtn=$('#ug-open');
-  var hint=$('#ug-parsed-info');
-  var titleInput=$('#ug-title');
-  var targetSel=$('#ug-target');
-
-  if(!info){
-    openBtn.style.display='none';
-    hint.textContent=this.value.trim()?'Not a recognized Ultimate Guitar tab URL, but you can still fill in the fields below.':'';
-    return;
-  }
-
-  openBtn.style.display='inline-block';
-  openBtn.onclick=function(){window.open(info.url,'_blank','noopener')};
-
-  if(info.title){
-    hint.textContent='Detected: "'+info.title+'"'+(info.artist?' by '+info.artist:'');
-    // Check if this song already exists in the setlist (fuzzy match)
-    var nTitle=norm(info.title);
-    var matchIdx=-1;
-    for(var i=0;i<S.songs.length;i++){
-      var sNorm=norm(S.songs[i].title);
-      if(sNorm===nTitle||sNorm.indexOf(nTitle)>=0||nTitle.indexOf(sNorm.replace(/\s*\(.*?\)\s*/g,''))>=0){
-        matchIdx=i;break;
-      }
-    }
-    if(matchIdx>=0){
-      targetSel.value=String(matchIdx);
-      titleInput.value=S.songs[matchIdx].title;
-      if(S.songs[matchIdx].cue)$('#ug-cue').value=S.songs[matchIdx].cue;
-      hint.textContent+=' — matched existing song #'+(matchIdx+1)+'!';
-    }else{
-      targetSel.value='__new__';
-      titleInput.value=info.artist?info.title+' ('+info.artist+')':info.title;
-    }
-  }else{
-    hint.textContent='Valid UG link detected.';
-  }
-});
-
-$('#ug-target').addEventListener('change',function(){
-  if(this.value!=='__new__'){
-    var idx=+this.value;
-    var existing=S.songs[idx];
-    if(existing){
-      if(!$('#ug-title').value)$('#ug-title').value=existing.title;
-      if(existing.cue&&!$('#ug-cue').value)$('#ug-cue').value=existing.cue;
-    }
-  }
-});
-
-$('#ug-cancel').onclick=closeUgModal;
-$('#ug-modal').addEventListener('click',function(e){if(e.target===this)closeUgModal()});
-
-$('#ug-save').onclick=function(){
-  var title=$('#ug-title').value.trim();
-  if(!title){alert('Please enter a song title.');$('#ug-title').focus();return}
-  var cue=$('#ug-cue').value.trim();
-  var url=$('#ug-url').value.trim();
-  var cleanedLines=cleanUgPaste($('#ug-body').value);
-  var target=$('#ug-target').value;
-
-  // Ensure S.songs is initialized even if saved from blank import screen
-  if(!S.songs.length){
-    S.songs=SONGS.map(function(s){return {title:s[0],cue:s[1],lines:[]}});
-  }
-
-  var jumpIdx=0;
-  if(target==='__new__'){
-    S.songs.push({title:title,cue:cue,lines:cleanedLines,ugUrl:url});
-    jumpIdx=S.songs.length-1;
-  }else{
-    jumpIdx=+target;
-    S.songs[jumpIdx]={
-      title:title,
-      cue:cue||S.songs[jumpIdx].cue,
-      lines:cleanedLines.length?cleanedLines:S.songs[jumpIdx].lines,
-      ugUrl:url||S.songs[jumpIdx].ugUrl
-    };
-  }
-
-  sv(KEY,JSON.stringify(S.songs));
-  closeUgModal();
-  start(S.songs,'');
-  goTo(jumpIdx);
-  status('Saved "'+title+'"');
-};
-
-function importScreen(msg){
-  $('#app').innerHTML='<div id="imp"><h1>Load your set list</h1><p>Paste the full text of your Google Doc once (Ctrl/Cmd+A, then copy in the doc). It stays saved in this browser.</p>'+(msg?'<p style="color:var(--ch)">'+msg+'</p>':'')+'<textarea id="ta" placeholder="Paste the doc text here"></textarea><p style="display:flex;gap:10px;flex-wrap:wrap"><button class="go" id="build">Build</button><button id="skip-ug">Start with default list & add UG links</button></p></div>';
-  $('#build').onclick=function(){
-    var t=$('#ta').value;if(t.trim().length<50){importScreen('Paste the whole document first.');return}
-    var r=parse(t);
-    if(r.missing.length>=SONGS.length-2){importScreen('Could not find the song titles. Paste the whole doc, including the song pages.');return}
-    sv(KEY,JSON.stringify(r.songs));start(r.songs,r.missing.length?'Not found in paste: '+r.missing.join(', '):'');
-  };
-  $('#skip-ug').onclick=function(){
-    var def=SONGS.map(function(s){return {title:s[0],cue:s[1],lines:[]}});
-    sv(KEY,JSON.stringify(def));
-    start(def,'');
-    openUgModal();
-  };
-}
-function start(songs,warn){
-  S.songs=songs;S.speed=+ld('speed')||40;S.fs=+ld('fs')||20;
-  var opts=songs.map(function(s,i){return '<option value="'+i+'">'+(i+1)+'. '+esc(s.title)+'</option>'}).join('');
-  var secs=songs.map(function(s,i){
-    var body=s.lines&&s.lines.length?s.lines.map(lineHtml).join(''):'';
-    var ugLink=s.ugUrl?'<a class="ug-ref" href="'+esc(s.ugUrl)+'" target="_blank" rel="noopener">UG Tab ↗</a>':'';
-    return '<section class="song" id="s'+i+'"><h2>'+esc(s.title)+ugLink+'</h2>'+(s.cue?'<div class="cue">'+esc(s.cue)+'</div>':'')+
-      (body?'<div class="body">'+body+'</div>':'<div class="know">'+(i<6?'You know this.':'—')+'</div>')+'<div class="end"></div></section>';
-  }).join('');
-  $('#app').innerHTML='<header><select id="sel" aria-label="Jump to song">'+opts+'</select><div id="status" role="status"></div></header>'+(warn?'<p style="padding:8px 16px;color:var(--ch)">'+esc(warn)+'</p>':'')+secs+
-  '<div class="bar"><button id="prev" aria-label="Previous song">⏮</button><button id="pp" class="go">Play</button><button id="next" aria-label="Next song">⏭</button>'+
-  '<button id="sd" aria-label="Slower">−</button><span id="sp"></span><button id="su" aria-label="Faster">+</button>'+
-  '<button id="fd" aria-label="Smaller text">A−</button><button id="fu" aria-label="Larger text">A+</button><button id="th" aria-label="Toggle light or dark">◐</button>'+
-  '<button class="link" id="add-ug">+ UG Link</button><button class="link" id="re">Re-import</button></div>';
-  document.documentElement.style.setProperty('--fs',S.fs+'px');
-  $('#sel').onchange=function(){goTo(+this.value)};
-  $('#pp').onclick=toggle;$('#next').onclick=function(){goTo(cur()+1)};$('#prev').onclick=function(){goTo(cur()-1)};
-  $('#sd').onclick=function(){spd(-5)};$('#su').onclick=function(){spd(5)};
-  $('#fd').onclick=function(){fsz(-2)};$('#fu').onclick=function(){fsz(2)};
-  $('#th').onclick=function(){var d=document.documentElement,dark=getComputedStyle(d).getPropertyValue('--bg').trim()==='#101a24';d.dataset.theme=dark?'light':'dark'};
-  $('#add-ug').onclick=openUgModal;
-  $('#re').onclick=function(){stop();importScreen('')};
-  window.addEventListener('scroll',function(){var i=cur();var s=$('#sel');if(s&&+s.value!==i)s.value=i},{passive:true});
-  spd(0);status('Ready. Space = play');
-}
-function cur(){var n=S.songs.length,r=0;for(var i=0;i<n;i++){if(document.getElementById('s'+i).getBoundingClientRect().top<=innerHeight*0.35)r=i}return r}
-function atEnd(){var e=document.getElementById('s'+cur()).querySelector('.end');return e.getBoundingClientRect().top<innerHeight*0.8}
-function status(t){var s=$('#status');if(s)s.textContent=t}
-function spd(d){S.speed=Math.max(5,Math.min(200,S.speed+d));sv('speed',S.speed);$('#sp').textContent=S.speed}
-function fsz(d){S.fs=Math.max(12,Math.min(48,S.fs+d));sv('fs',S.fs);document.documentElement.style.setProperty('--fs',S.fs+'px')}
-function goTo(i){
-  if(i<0||i>=S.songs.length)return;
-  var el=document.getElementById('s'+i);scrollTo(0,el.getBoundingClientRect().top+scrollY-64);
-  $('#sel').value=i;
-}
-function stop(msg){S.play=false;var p=$('#pp');if(p)p.textContent='Play';if(msg)status(msg)}
-function run(){S.play=true;S.acc=0;S.last=performance.now();$('#pp').textContent='Pause';requestAnimationFrame(tick)}
-function toggle(){
-  if(S.play){stop('Paused');return}
-  if(atEnd()){
-    var n=cur()+1;
-    if(n>=S.songs.length){status('Set complete');return}
-    goTo(n);S.hold=performance.now()+3000;run();return;
-  }
-  S.hold=0;run();
-}
-function tick(t){
-  if(!S.play)return;
-  if(S.hold>t){status('Starting in '+Math.ceil((S.hold-t)/1000)+'…');S.last=t;requestAnimationFrame(tick);return}
-  var dt=t-S.last;S.last=t;S.acc+=S.speed*dt/1000;
-  var n=Math.floor(S.acc);if(n>0){scrollBy(0,n);S.acc-=n}
-  if(atEnd()){var last=cur()>=S.songs.length-1;stop(last?'Set complete':'End of song. Play for next');return}
-  status('Scrolling');requestAnimationFrame(tick);
-}
-document.addEventListener('keydown',function(e){
-  if(e.key==='Escape'&&$('#ug-modal').classList.contains('open')){closeUgModal();return}
-  if(!S.songs.length||$('#ug-modal').classList.contains('open')||/TEXTAREA|SELECT|INPUT/.test(e.target.tagName))return;
-  var k=e.key;
-  if(k===' '||k==='Enter'){if(e.target.tagName==='BUTTON')return;e.preventDefault();toggle()}
-  else if(k==='ArrowRight'||k==='PageDown'){e.preventDefault();goTo(cur()+1)}
-  else if(k==='ArrowLeft'||k==='PageUp'){e.preventDefault();goTo(cur()-1)}
-  else if(k==='ArrowUp'){e.preventDefault();spd(5)}
-  else if(k==='ArrowDown'){e.preventDefault();spd(-5)}
-});
-(function(){
-  function fromSaved(){
-    var saved=ld(KEY);
-    if(saved){try{var s=JSON.parse(saved);if(s&&s.length){start(s,'');return}}catch(e){}}
-    importScreen('');
-  }
-  try{
-    fetch('songs.txt',{cache:'no-cache'}).then(function(r){if(!r.ok)throw 0;return r.text()}).then(function(t){
-      var r=parse(t);
-      if(r.missing.length>=SONGS.length-2)throw 0;
-      start(r.songs,r.missing.length?'Not found in songs.txt: '+r.missing.join(', '):'');
-    }).catch(fromSaved);
-  }catch(e){fromSaved()}
-})();
-</script>
-</body>
-</html>
+/* Decode HTML entities and UG [ch]/[tab] markup into clean lines */
+function decodeUgContent(raw){
+  var txt=document.createElement('textarea');
+  txt.innerHTML=raw;
+  var clean=txt.value
+    .replace(/\r/g,'')
+    .replace(/\[\/?ch\]/gi,'')
+    .replace(/\[\/?tab\]/gi,'');
+  var lines=clean.split('\n').map(function(l){return l.replace(/\
