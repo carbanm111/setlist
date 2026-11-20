@@ -1,15 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="utf-8">
+<!-- saved from url=(0037)https://carbanm111.github.io/setlist/ -->
+<html lang="en" style="--fs: 20px;"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Wil And The Noise Set List</title>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@800&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link href="./Wil And The Noise Set List_files/css2" rel="stylesheet">
 <style>
-:root{--bg:#eef1f4;--panel:#fff;--tx:#1b2430;--dim:#6b7785;--ch:#a85a00;--cue:#0b6b63;--cuebg:#d9efec;--line:#cfd6de;
+:root{--bg:#eef1f4;--panel:#fff;--tx:#1b2430;--dim:#6b7785;--ch:#a85a00;--cue:#0b6b63;--cuebg:#d9efec;--line:#cfd6de;--danger:#b91c1c;
 box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#101a24;--panel:#17232f;--tx:#ece6d8;--dim:#8b99a8;--ch:#f2b84b;--cue:#7fe0d4;--cuebg:#14393a;--line:#2a3a4a}}
-:root[data-theme="dark"]{--bg:#101a24;--panel:#17232f;--tx:#ece6d8;--dim:#8b99a8;--ch:#f2b84b;--cue:#7fe0d4;--cuebg:#14393a;--line:#2a3a4a}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#101a24;--panel:#17232f;--tx:#ece6d8;--dim:#8b99a8;--ch:#f2b84b;--cue:#7fe0d4;--cuebg:#14393a;--line:#2a3a4a;--danger:#f87171}}
+:root[data-theme="dark"]{--bg:#101a24;--panel:#17232f;--tx:#ece6d8;--dim:#8b99a8;--ch:#f2b84b;--cue:#7fe0d4;--cuebg:#14393a;--line:#2a3a4a;--danger:#f87171}
 html{scroll-padding-top:env(safe-area-inset-top,0px)}
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--tx);font-family:Archivo,system-ui,sans-serif;padding-bottom:110px}
@@ -18,24 +18,3049 @@ header{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:var
 header select{flex:1;min-width:0;font:inherit;font-size:16px;padding:8px;background:var(--bg);color:var(--tx);border:1px solid var(--line);border-radius:6px}
 #status{font-size:13px;color:var(--cue);min-width:0;flex:0 1 40%;text-align:right}
 button{font:inherit;font-size:18px;min-width:48px;height:48px;border-radius:8px;border:1px solid var(--line);background:var(--bg);color:var(--tx);cursor:pointer}
-button:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid var(--cue);outline-offset:2px}
+button:focus-visible,select:focus-visible,textarea:focus-visible,input:focus-visible{outline:3px solid var(--cue);outline-offset:2px}
 button.go{background:var(--cue);color:var(--bg);border-color:var(--cue);min-width:84px;font-weight:800}
+button:disabled{opacity:0.55;cursor:wait}
 .song{min-height:100vh;padding:28px 16px 45vh;max-width:900px;margin:0 auto;border-bottom:1px solid var(--line)}
-.song h2{font-weight:800;font-size:clamp(28px,6vw,48px);line-height:1.1;margin:0 0 12px}
+.song-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;margin-bottom:12px}
+.song h2{font-weight:800;font-size:clamp(28px,6vw,48px);line-height:1.1;margin:0}
+.ug-actions-inline{display:flex;align-items:center;gap:8px;flex-shrink:0;padding-top:6px}
+.ug-ref{font-size:13px;color:var(--dim);text-decoration:underline;padding:6px 8px}
+.del-ug{font-size:13px;min-width:0;height:32px;padding:0 10px;border-radius:6px;color:var(--danger);border-color:var(--danger);background:transparent}
+.del-ug:hover{background:var(--danger);color:var(--bg)}
 .cue{display:inline-block;background:var(--cuebg);color:var(--cue);padding:8px 12px;border-radius:6px;font-size:clamp(16px,3vw,22px);margin-bottom:18px}
 .body{font-family:"JetBrains Mono",ui-monospace,Menlo,monospace;white-space:pre;overflow-x:auto;line-height:1.5;font-size:var(--fs,20px)}
 .body .c{color:var(--ch);font-weight:700}.body .t{color:var(--dim)}
 .know{color:var(--dim);font-size:22px}
-bar,.bar{position:fixed;left:0;right:0;bottom:0;z-index:9;background:var(--panel);border-top:1px solid var(--line);display:flex;gap:8px;justify-content:center;align-items:center;flex-wrap:wrap;padding:8px 8px calc(8px + env(safe-area-inset-bottom,0px))}
+.bar{position:fixed;left:0;right:0;bottom:0;z-index:9;background:var(--panel);border-top:1px solid var(--line);display:flex;gap:8px;justify-content:center;align-items:center;flex-wrap:wrap;padding:8px 8px calc(8px + env(safe-area-inset-bottom,0px))}
 .bar span{min-width:42px;text-align:center;font-size:14px;color:var(--dim)}
 #imp{max-width:700px;margin:0 auto;padding:24px 16px}
 #imp textarea{width:100%;height:260px;font:14px "JetBrains Mono",monospace;background:var(--panel);color:var(--tx);border:1px solid var(--line);border-radius:6px;padding:10px}
 #imp p{line-height:1.5}
-.link{background:none;border:0;color:var(--dim);font-size:13px;min-width:0;height:auto;text-decoration:underline}
+.link{background:none;border:0;color:var(--dim);font-size:13px;min-width:0;height:auto;text-decoration:underline;padding:4px 6px}
+
+/* UG Modal */
+#ug-modal{position:fixed;inset:0;z-index:20;background:rgba(0,0,0,0.65);display:none;align-items:center;justify-content:center;padding:16px}
+#ug-modal.open{display:flex}
+.ug-box{background:var(--panel);color:var(--tx);border:1px solid var(--line);border-radius:12px;width:100%;max-width:520px;max-height:90vh;overflow-y:auto;padding:20px}
+.ug-box h3{margin:0 0 6px;font-size:22px}
+.ug-box label{display:block;font-size:13px;color:var(--dim);margin:12px 0 4px}
+.ug-box input,.ug-box select,.ug-box textarea{width:100%;font-family:inherit;font-size:15px;padding:10px;background:var(--bg);color:var(--tx);border:1px solid var(--line);border-radius:6px}
+.ug-box textarea{font-family:"JetBrains Mono",monospace;font-size:13px;height:140px;resize:vertical}
+.ug-btn-sm{font-size:15px;height:42px;padding:0 14px;min-width:auto}
+.ug-actions{display:flex;gap:10px;justify-content:flex-end;margin-top:16px}
+.ug-hint{font-size:13px;color:var(--dim);margin:4px 0 0;line-height:1.4}
+.ug-err{font-size:13px;color:var(--danger);margin:8px 0 0;line-height:1.4}
+#ug-fallback{display:none;margin-top:10px;padding-top:10px;border-top:1px dashed var(--line)}
 </style>
 </head>
 <body>
-<div id="app"></div>
+<div id="app"><header><select id="sel" aria-label="Jump to song"><option value="0">1. GodLovesUgly</option><option value="1">2. Always coming back home</option><option value="2">3. Lucy</option><option value="3">4. Another innocent girl</option><option value="4">5. Linoleum (Nofx)</option><option value="5">6. HURT (J Cash)</option><option value="6">7. Ice ice baby?</option><option value="7">8. Heavy foot(Mon Rovia)</option><option value="8">9. Sleep when I’m dead</option><option value="9">10. For what its worth</option><option value="10">11. Help your friends get sober</option><option value="11">12. Space oddity</option><option value="12">13. On the radio</option><option value="13">14. Emma</option><option value="14">15. Have you ever seen the rain</option><option value="15">16. Operator</option><option value="16">17. Life’s been good</option><option value="17">18. No children</option><option value="18">19. Irrationality of rationality</option><option value="19">20. Ohio</option><option value="20">21. Is this thing cursed</option><option value="21">22. I’ll follow you into the dark</option><option value="22">23. Bad moon</option><option value="23">24. Wrapped up in you</option><option value="24">25. The metro</option><option value="25">26. Working Class Hero</option><option value="26">27. Old Man</option><option value="27">28. Moving out?</option><option value="28">29. Fall back down?</option><option value="29">30. We will all go together</option><option value="30">31. Flicker</option><option value="31">32. Sylvia’s Mother</option><option value="32">33. The bad touch</option><option value="33">34. Amarillo By Morning (George Strait)</option></select><div id="status" role="status">Ready. Space = play</div></header><section class="song" id="s0"><div class="song-head"><h2>GodLovesUgly</h2></div><div class="cue">E, 4/4, bluesy hip hop, slowish, don’t let me speed, come in after 1 measure</div><div class="body">I wear my scars like the rings on a pimp
+I live life like the captain of a sinking ship
+The one thing that I can guarantee
+I'm like a stepping razor, I suggest you stay fair with me
+Been paying dues for a decade plus
+Before that I was just another face on the bus
+Tappin' my foot, to the beat on the radio
+Dreaming 'bout the mic and the money and the ladies
+Oh mom, I promise I'm gonna be large
+Some day I'ma stop trying to borrow your car
+Gonna go far, with charisma and skill
+Until they put my face on a million dollar bill
+Atmosphere, it's just a ten letter word
+Discretion is the name of my cement-feathered bird
+And if you didn't hear, then fuck what others heard
+I think you got the sickness, I suggest you get it cured
+Caught up in the mix of a bottle full of fix
+I'mma hobble down the street till I reach Knob Creek
+It's not that I don't like you, I just don't want to speak
+You fucking freak, now keep your days out my week
+The world keeps a balance, through mathematics
+Defined by whatever you've added and subtracted
+I'm pushin' on the hammer to trigger the brain
+Embrace how I live, 'cause God loves ugly
+
+Chorus
+
+Once upon a time in Minneapolis, yo
+I damn near had to steal the show
+I stepped on the stage - "Who is it?"
+"My name's Slug, I've come to kill a couple minutes"
+And what's up with the way that everybody gathers around
+Each other, so they can steal each others' sound
+If it's all about getting down, with the get down
+How long I gotta wait for these fools to sit down?
+Appears more clear in its simplest form
+Nobody sees tears when you're standin' in the storm
+Abandonin' the norm, and handlin' the harvest
+Measurin' the worth by the depth of the hardship
+I welcome all the hatred you can aim at my name
+I held onto the sacred ways of how to play the game
+When the soldiers started runnin' short on rations
+I began tappin' the egg to spark the hatchin'
+Make it happen, and take this captain to the gallows
+I keep steering us into an area that's shallow
+Talking to my shadow, he advised me not to worry
+Said, I should plant my tree and let it rise out of the fury
+So give me some light, a little love and some liquid
+I'ma creep through the night and put a plug in the spigot
+And when the water grows, and the dam starts to overflow
+I'll float atop the flood holdin' on to my ugly
+
+Chorus
+
+Why scream, when you can lose yourself inside the widescreen
+Let life be a bowl of melted ice cream
+Or be the deer that's caught in my high beams
+I'm rolling with the brights on
+Scared stiff, reality is just too much to bear with
+Paranoid, walking around, careless
+No wonder you're in love with your therapist
+Go to sleep my little time bomb
+
+Chorus/Outro
+</div><div class="end"></div></section><section class="song" id="s1"><div class="song-head"><h2>Always coming back home</h2></div><div class="cue">4/4, bluesy hip hop, drums start 1 measure</div><div class="body">YOU KNOW THIS.
+</div><div class="end"></div></section><section class="song" id="s2"><div class="song-head"><h2>Lucy</h2></div><div class="cue">punkish, faster (come in after measure)</div><div class="body">YOU KNOW THIS.
+________________
+</div><div class="end"></div></section><section class="song" id="s3"><div class="song-head"><h2>Another innocent girl</h2></div><div class="cue">Punkish scramble, come in same time</div><div class="body">Intro: A-E/G#-D-- x2
+
+
+Verse 1:
+<span class="c">A             E/G#</span>
+  He likes to act like
+<span class="c">         D</span>
+he's all grown up
+He wanted to grow
+<span class="c">      A     E/G#</span>
+up to be an actor
+<span class="c">       D</span>
+But he never told
+<span class="c">       A</span>
+anybody He
+<span class="c">          E/G#</span>
+likes to spill
+<span class="c">           D</span>
+all of his guts
+On the top of a
+<span class="c">             A</span>
+well stocked bar
+<span class="c">         E/G#</span>
+And then swallow them
+<span class="c">       D</span>
+bit by bit
+remembering every-
+
+
+Refrain 1:
+<span class="c">  F#m        E</span>
+-scar It's a valid
+<span class="c">      Bm</span>
+reason  for every
+<span class="c">D           F#m</span>
+drink And a new tattoo
+     E             D--
+is a new reason to think
+
+
+Interlude: A-E-D-- x2
+
+
+Verse 2:
+<span class="c">A                E/G#</span>
+  He likes to pretend
+<span class="c">               D</span>
+that he is all sewn up
+It makes for a much
+<span class="c">         A</span>
+stronger case
+But there is blood
+<span class="c">E/G#</span>
+underneath that skin
+<span class="c">D</span>
+That scar is not
+so easy to erase
+<span class="c">A</span>
+  He walks with a
+<span class="c">E/G#</span>
+glass cane now
+<span class="c">     D</span>
+He's careful when
+holding his body
+<span class="c">    A</span>
+up straight
+<span class="c">            E/G#</span>
+Can't go outside
+anymore when
+<span class="c">     D</span>
+it's raining
+Can't smash up
+that beautiful-
+
+
+Refrain 2:
+<span class="c"> F#m</span>
+-face Another
+<span class="c">E</span>
+innocent girl
+<span class="c">Bm              D</span>
+  just made his list
+<span class="c">          F#m</span>
+That self pity shit
+<span class="c">        E</span>
+is just too hard
+      D--
+too resist
+
+
+Chorus 1:
+<span class="c">         A</span>
+And when we get home
+<span class="c">       D</span>
+you'll see that
+<span class="c">     A</span>
+this part of him
+<span class="c">       D</span>
+is now part of me
+
+
+Post Chorus: A-E-D-- x2
+
+
+(Repeat Verse 1)
+
+
+Refrain 3:
+<span class="c">  F#m        E</span>
+-scar It's a valid
+<span class="c">      Bm</span>
+reason  for stronger
+<span class="c">D           F#m</span>
+taste And a new tattoo
+     E             D--
+is a new reason to think
+
+
+Chorus 2:
+<span class="c">         A</span>
+And when we get home
+<span class="c">       D</span>
+you'll see that
+<span class="c">     A</span>
+this part of him
+<span class="c">       D</span>
+is now part of me
+<span class="c">         A</span>
+And when we get home
+<span class="c">       D</span>
+you'll see that
+<span class="c">     A</span>
+this part of him
+<span class="c">   D</span>
+is controlling me
+
+
+Outro:
+<span class="c">          E</span>
+Yeah it's way too easy
+<span class="c">   D</span>
+to fake this smile
+<span class="c">         E</span>
+lead you on Well maybe
+<span class="c">              D</span>
+I'm wrong but everyone
+     E               A(hold)
+gets bored once in a while
+________________
+</div><div class="end"></div></section><section class="song" id="s4"><div class="song-head"><h2>Linoleum (Nofx)</h2></div><div class="cue">4/4, punk, faster</div><div class="body">YOU KNOW THIS.
+________________
+</div><div class="end"></div></section><section class="song" id="s5"><div class="song-head"><h2>HURT (J Cash)</h2></div><div class="body"><span class="t">[Verse 1]</span>
+<span class="c">Am   C       D     Am       C      D       Am</span>
+   I hurt myself today   to see if I still feel
+<span class="c">  C    D        Am        C      D          Am</span>
+I focus on the pain   the only thing that's real
+<span class="c">    C      D       Am         C      D       Am</span>
+The needle tears a hole   the old familiar sting
+<span class="c">       C      D      Am           C      D      G</span>
+Try to kill it all away   but I remember everything
+
+
+<span class="t">[Chorus 1]</span>
+<span class="c">Am              F     C               G</span>
+What have I become?     My sweetest friend
+<span class="c">Am          F             C        G</span>
+Everyone I know  goes away in the end
+<span class="c">    Am                 F    G               G</span>
+And you could have it all   My empire of dirt
+<span class="c">Am              F      G                Am</span>
+I will let you down    I will make you hurt
+
+
+<span class="t">[Transition]</span>
+<span class="c">(Am)   C  D  Am    C  D</span>
+
+
+<span class="t">[Verse 2]</span>
+<span class="c">Am   C         D        Am        C      D       Am</span>
+   I wear this crown of thorns   upon my liar's chair
+<span class="c">C       D        Am       C     D    Am</span>
+Full of broken thoughts   I cannot repair
+<span class="c">  C          D        Am         C       D       Am</span>
+Beneath the stains of time   the feelings disappear
+<span class="c">C         D      Am    C     D           G</span>
+You are someone else   I am still right here
+
+
+<span class="t">[Chorus 2]</span>
+<span class="c">Am              F     C               G</span>
+What have I become?     My sweetest friend
+<span class="c">Am          F             C        G</span>
+Everyone I know  goes away in the end
+<span class="c">    Am                 F    G            G</span>
+And you could have it all   My empire of dirt
+<span class="c">Am              F     G               G</span>
+I will let you down   I will make you hurt
+
+
+<span class="t">[Outro]</span>
+<span class="c">   Am               F     G              G</span>
+If I could start again  a million miles away
+<span class="c">Am              F    G</span>
+I would keep myself  I would find a way
+                 (single strum)
+________________
+</div><div class="end"></div></section><section class="song" id="s6"><div class="song-head"><h2>Ice ice baby?</h2></div><div class="cue">on ‘stop’</div><div class="body">________________
+</div><div class="end"></div></section><section class="song" id="s7"><div class="song-head"><h2>Heavy foot(Mon Rovia)</h2></div><div class="cue">4/4, folk, ambient (same time)</div><div class="body">
+
+<span class="c">B                F#           E</span>
+Do you hear the sound of a bell?
+<span class="c">        B        F#      E</span>
+Did you wish your family well
+<span class="c">B                F#           E</span>
+Times ain’t the same in the neighborhood
+<span class="c">         B          F#             E</span>
+Got the parents all going through hell
+<span class="c">          B           F#             E</span>
+Cause the guns keep flying off the shelf
+
+<span class="c">B              F#           E</span>
+Do you see the man on the street?
+<span class="c">      B              F#      E</span>
+Just fighting for a meal to eat
+<span class="c">B                 F#         E</span>
+You can write him off as a lunatic
+<span class="c">       B             F#     E</span>
+But it could've been you or me
+<span class="c">       B           F#       E</span>
+If we didn't ever find our feet
+
+<span class="t">[Chorus]</span>
+<span class="c">B          E</span>
+Love me now
+<span class="c">B          E</span>
+Hold me down
+<span class="c">          B            F#          E</span>
+And the government's staying on a heavy foot
+<span class="c">         B        F#        E</span>
+And they try to keep us all down
+<span class="c">           B            F#          E</span>
+No they're never gonna keep us all down
+
+<span class="t">[Verse 3]</span>
+<span class="c">B              F#            E</span>
+Do you see the birds in the cage?
+<span class="c">        B        F#           E</span>
+On the highway working likе slaves
+<span class="c">       B            F#            E</span>
+It's a con, it's a rouse, it's a gaslight
+<span class="c">         B          F#         E</span>
+Ain't it funny, how far wе've came
+<span class="c">            B        F#        E</span>
+For them to go and change the name
+
+<span class="t">[Verse 4]</span>
+<span class="c">B              F#          E</span>
+Do you see the man on the screen?
+<span class="c">        B                 F#             E</span>
+Just a puppet though you never see the strings
+<span class="c">B            F#         E</span>
+Calling it a war not a genocide
+<span class="c">        B       F#            E</span>
+Telling us "It isn't what it seems"
+<span class="c">B               F#               E</span>
+Man, that's a different kind of greed
+
+<span class="t">[Chorus]</span>
+
+<span class="c">B          E</span>
+Love me now
+<span class="c">B          E</span>
+Hold me down
+<span class="c">          B            F#          E</span>
+And the government's staying on a heavy foot
+<span class="c">         B        F#        E</span>
+And they try to keep us all down
+<span class="c">B          E</span>
+Love me now
+<span class="c">B          E</span>
+Hold me down
+<span class="c">          B            F#          E</span>
+And the government's staying on a heavy foot
+<span class="c">         B        F#        E</span>
+And they try to keep us all down
+<span class="c">           B            F#          E</span>
+No they're never gonna keep us all down
+<span class="c">           B            F#          E</span>
+No they're never gonna keep us all down
+________________
+</div><div class="end"></div></section><section class="song" id="s8"><div class="song-head"><h2>Sleep when I’m dead</h2></div><div class="cue">4/4, punkish/folkish</div><div class="body">
+<span class="c">F</span>
+I've got a feeling that I'm gonna be depressed
+<span class="c">        C</span>
+For the next couple o' weeks I won't be getting out of bed
+<span class="c">         Dm</span>
+Or doing anything important or anything worthwhile
+<span class="c">      Bb</span>
+If my mother calls I'll open a window and I'll smile and I'll say
+
+<span class="c">F</span>
+I'm doing fine and I'll crawl right back to bed
+<span class="c">           C</span>
+Where I'll ruminate on past experiences in my head
+<span class="c">         Dm</span>
+And I'll think about my life, how I really missed the mark
+<span class="c">         Bb</span>
+How I'll never break the cycle 'cause I like being in the dark
+
+
+<span class="t">[Chorus]</span>
+<span class="c">             Dm       Bb                 F</span>
+I'll leave my   tab unpaid, goodbyes unsaid
+<span class="c">                     C</span>
+I'm letting off stеam, he's losing his head
+<span class="c">Dm         Bb                   F</span>
+   Sold my car, put it all on red
+<span class="c">             C</span>
+Stay up all night, I'll sleep whеn I'm dead
+
+
+<span class="t">[Verse 2]</span>
+<span class="c">F</span>
+I had at chance at life and drank that chance away
+<span class="c">        C</span>
+I had a future that was promising but chose a life of pain
+<span class="c">            Dm</span>
+I'll suffer endlessly until the day I die with no relief
+<span class="c">        Bb</span>
+Push my family away so when I'm gone no one will grieve
+
+<span class="c">                F</span>
+And they'll say: "He's in a better place", knowing damn well I'm in hell
+<span class="c">            C</span>
+For all the sins that I committed, for the things I did not tell
+<span class="c">            Dm</span>
+For all the lies that I have told and the things that I have stole
+<span class="c">        Bb</span>
+For the hearts that I left broken when I jumped into that hole
+
+
+<span class="t">[Chorus]</span>
+
+
+<span class="t">[Instrumental]</span>
+<span class="c">Dm   Bb   F   C   x2</span>
+
+<span class="t">[Chorus]</span>
+
+<span class="t">[Instrumental]</span>
+<span class="c">Dm   Bb   F   C   x2</span>
+
+N.C. (Drums)
+
+
+________________
+</div><div class="end"></div></section><section class="song" id="s9"><div class="song-head"><h2>For what its worth</h2></div><div class="cue">same time</div><div class="body"><span class="c">E                           A</span>
+There's somethin' happenin' here.
+<span class="c">        E                A</span>
+What it is ain't exactly clear.
+<span class="c">          E                   A</span>
+There's a man with a gun over there
+<span class="c">          E                    A</span>
+A-tellin' me I've got to beware.
+<span class="t">[Chorus]</span>
+<span class="c">                     E</span>
+I think it's time we stop.
+<span class="c">          D</span>
+Children, what's that sound?
+<span class="c">A                     A7</span>
+Everybody look what's goin' down.
+<span class="c">E   A   E   A</span>
+<span class="t">[Verse 2]</span>
+<span class="c">E                          A</span>
+There's battle lines bein' drawn.
+<span class="c">         E                    A</span>
+Nobody's right if everybody's wrong.
+<span class="c">E                           A</span>
+Young people speakin' their minds
+<span class="c">          E                  A</span>
+A-gettin' so much resistance from behind.
+<span class="t"> [Chorus]</span>
+<span class="c">             E</span>
+It's time we stop.
+<span class="c">     D</span>
+Hey, what's that sound?
+<span class="c">A                     A7</span>
+Everybody look what's goin' down.
+<span class="c">E   A   E   A</span>
+<span class="t">[Verse 3]</span>
+<span class="c">E                        A       G</span>
+What a field day for the heat.
+<span class="c">  E                      A       G</span>
+A thousand people in the street
+<span class="c">        E                    A  G</span>
+Singin' songs and a-carryin' signs
+<span class="c">        E                    A    G</span>
+Mostly sayin' hooray for our side.
+<span class="t">[Chorus]</span>
+<span class="c">             E</span>
+It's time we stop.
+<span class="c">     D</span>
+Hey, what's that sound?
+<span class="c">A                     A7</span>
+Everybody look what's goin' down.
+<span class="c">E   A   E   A</span>
+<span class="t">[Verse 4]</span>
+<span class="c">E                A</span>
+Paranoia strikes deep.
+<span class="c"> E                      A</span>
+Into your life it will creep.
+<span class="c">E                             A</span>
+It starts when you're always afraid.
+<span class="c">            E                      A</span>
+Step out of line, the men come and take you away.
+<span class="t">[Chorus/Outro]</span>
+<span class="c">           E</span>
+You better stop.
+<span class="c">     D</span>
+Hey, what's that sound?
+<span class="c">A                     A7</span>
+Everybody look what's goin'...
+<span class="c">           E</span>
+You better stop.
+<span class="c">     D</span>
+Hey, what's that sound?
+<span class="c">A                     A7</span>
+Everybody look what's goin'...
+<span class="c">           E</span>
+You better stop.
+<span class="c">     D</span>
+Now, what's that sound?
+<span class="c">A                     A7</span>
+Everybody look what's goin'...
+<span class="c">           E</span>
+You better stop.
+<span class="c">          D</span>
+Children, what's that sound? (fade out)
+<span class="c">A                     A7</span>
+Everybody look what's goin'.
+________________
+</div><div class="end"></div></section><section class="song" id="s10"><div class="song-head"><h2>Help your friends get sober</h2></div><div class="body">CAPO 1
+<span class="t">[Verse 1]</span>
+<span class="c">C</span>
+Jimmy's got depression, he's got some shit at home
+<span class="c">G</span>
+All his friends are texting, they know where to go
+<span class="c">Am</span>
+There's a party on the east side of town
+<span class="c">F</span>
+We'll get some bags and some beers and we'll talk it all out
+<span class="t">[Pre-Chorus]</span>
+<span class="c">C</span>
+But where does he go when the party's over?
+<span class="c">G</span>
+When he's coming down and he's never been lower?
+<span class="c">Am</span>
+It's hard to say, but you're digging his grave, oh oh
+<span class="c">F</span>
+Help your friends get sober
+<span class="t">[Chorus]</span>
+<span class="c">C</span>
+In December, just gone, I lost a friend
+<span class="c">G</span>
+I remember the last thing he said
+<span class="c">Am</span>
+"Where do I go now the party's over?"
+<span class="c">F</span>
+Fuck, help your friends get sober
+<span class="t">[Verse 2]</span>
+<span class="c">C</span>
+Her daddy died in April, and Sarah never healed
+<span class="c">G</span>
+Credit cards on tables, all over drawn but she'll
+<span class="c">Am</span>
+Grab a round of drinks from the promoter she knows
+<span class="c">F</span>
+Then move on to the strip club 'cause they never close
+<span class="t">[Pre-Chorus]</span>
+<span class="c">C</span>
+But where does she go when the party's over?
+<span class="c">G</span>
+When she's coming down and she's never been lower?
+<span class="c">Am</span>
+It's hard to say, but you're digging her grave, oh oh
+<span class="c">F</span>
+Help your friends get sober
+<span class="t">[Chorus]</span>
+<span class="c">C</span>
+In December, just gone, I lost a friend
+<span class="c">G</span>
+I remember the last thing he said
+<span class="c">Am</span>
+"Where do I go now the party's over?"
+<span class="c">F</span>
+Fuck, help your friends get sober
+
+<span class="t">[Bridge]</span>
+<span class="c">C        G        Am</span>
+Whoa oh, whoa oh, whoa oh
+<span class="c">F</span>
+Help your friends get sober
+<span class="c">C                   G</span>
+No more Fridays to Sunday nights
+<span class="c">Am                     F</span>
+No more "one more" to feel alright
+<span class="c">C                   G</span>
+No more Fridays to Sunday nights
+<span class="c">Am                     F</span>
+No more "one more" to feel alright
+
+<span class="t">[Pre-Chorus]</span>
+<span class="c">C</span>
+But where does she go when the party's over?
+<span class="c">G</span>
+When she's coming down and she's never been lower?
+<span class="c">Am</span>
+It's hard to say, but you're digging her grave, oh oh
+<span class="c">F</span>
+Help your friends get sober
+<span class="t">[Chorus]</span>
+<span class="c">C</span>
+In December, just gone, I lost a friend
+<span class="c">G</span>
+Got a call from his mom, saying, "Jimmy's dead"
+<span class="c">Am</span>
+"Where do I go now the party's over?"
+
+Fuck
+</div><div class="end"></div></section><section class="song" id="s11"><div class="song-head"><h2>Space oddity</h2></div><div class="cue">after first two chord swells</div><div class="body"><span class="c">| Fmaj7 | Em   | Fmaj7 | Em   |</span>
+<span class="c">| Fmaj7 | Em   | Fmaj7 | Em   |</span>
+<span class="t"> [Pre-Verse]</span>
+<span class="c">C                           Em</span>
+  Ground control to Major Tom
+<span class="c">C                           Em</span>
+  Ground control to Major Tom
+<span class="c">Am          Am/G              D7/F#</span>
+  Take your protein pills and put your helmet on
+<span class="c">C                           Em</span>
+  Ground control to Major Tom
+<span class="c">C                              Em</span>
+  Commencing countdown engines on
+<span class="c">Am        Am/G           D7/F#</span>
+  Check ignition and may God's love be with you
+<span class="t"> [Verse 1]</span>
+<span class="c">C                                E7</span>
+This is ground control to Major Tom
+<span class="c">                         F</span>
+You've really made the grade
+<span class="c">        Fm              C                     F</span>
+And the papers want to know whose shirts you wear
+<span class="c">         Fm                 C              F</span>
+Now it's time to leave the capsule if you dare
+<span class="c">  C                              E7</span>
+This is Major Tom to ground control
+<span class="c">                          F</span>
+I'm stepping through the door
+<span class="c">         Fm            C             F</span>
+And I'm floating in a most peculiar way
+<span class="c">         Fm              C           F</span>
+And the stars look very different today
+<span class="t">[Chorus]</span>
+<span class="c">    Fmaj7     Em</span>
+For here am I sitting in a tin can
+<span class="c">Fmaj7         Em</span>
+Far above the world
+<span class="c">Bb              Am               G             F</span>
+Planet Earth is blue and there's nothing I can do
+<span class="t">[Instrumental]</span>
+<span class="c">| C  F  G   A A   |</span>
+<span class="c">| C  F  G   A A   |</span>
+<span class="c">| Fmaj7   | Em      | A       |</span>
+<span class="c">| C       | D       | E       |</span>
+<span class="t">[Verse 2]</span>
+<span class="c">C                                      E7</span>
+Though I'm past one hundred thousand miles
+<span class="c">                   F</span>
+I'm feeling very still
+<span class="c">       Fm                 C                  F</span>
+And I think my spaceship knows which way to go
+<span class="c">         Fm              C             F</span>
+Tell my wife I love her very much she knows
+<span class="t">[Bridge]</span>
+<span class="c">G                 E7              Am                      C/G</span>
+Ground control to Major Tom, your circuit's dead, there's something wrong
+<span class="c">        D7/F#</span>
+Can you hear me Major Tom?
+<span class="c">        C</span>
+Can you hear me Major Tom?
+<span class="c">        G</span>
+Can you hear me Major Tom? Can you...
+<span class="t">[Chorus]</span>
+<span class="c">Fmaj7     Em</span>
+Here am I floating 'round my tin can
+<span class="c">Fmaj7         Em</span>
+Far above the Moon
+<span class="c">Bb              Am               G             F</span>
+Planet Earth is blue and there's nothing I can do
+
+<span class="t">[Outro]</span>
+<span class="c">| C  F  G   A A   |</span>
+<span class="c">| C  F  G   A A   |</span>
+<span class="c">| Fmaj7   | Em      | A       |</span>
+<span class="c">| C       | D       | E       |</span>
+
+
+________________
+</div><div class="end"></div></section><section class="song" id="s12"><div class="song-head"><h2>On the radio</h2></div><div class="cue">after ‘bum ba dum ba dum’</div><div class="body">
+
+<span class="t">[Intro]</span>
+<span class="c">C G Am F</span>
+<span class="t">[Verse 1]</span>
+<span class="c">C</span>
+This is how it works
+<span class="c">   G</span>
+It feels a little worse
+<span class="c">     Am</span>
+Than when we drove our hearse
+<span class="c">      F</span>
+Right through that screaming crowd
+<span class="c">      C</span>
+While laughing up a storm
+<span class="c">  G</span>
+Until we were just bone
+<span class="c">  Am</span>
+Until it got so warm
+<span class="c">     F</span>
+That none of us could sleep
+<span class="c">    C</span>
+And all the styrofoam
+<span class="c">  G</span>
+Began to melt away
+<span class="c">   Am</span>
+We tried to find some worms
+<span class="c">   F</span>
+To aid in the decay
+<span class="c">    C</span>
+But none of them were home
+<span class="c">  G</span>
+Inside their catacomb
+<span class="c">  Am</span>
+A million ancient bees
+<span class="c">  F</span>
+Began to sting our knees
+<span class="c">      C</span>
+While we were on our knees
+<span class="c">G</span>
+Praying that disease
+<span class="c">      Am</span>
+Would leave the ones we love
+<span class="c">    F</span>
+And never come again
+
+
+<span class="t">[Hook]</span>
+
+<span class="c">C</span>
+On the radio
+<span class="c">   G</span>
+We heard November Rain
+<span class="c">     Am</span>
+That solo's real long
+<span class="c">    F</span>
+But it's a pretty song
+<span class="c">   C</span>
+We listened to it twice
+<span class="c">           G</span>
+'Cause the DJ was asleep
+<span class="c">Am F</span>
+
+
+<span class="t">[Verse 2]</span>
+
+<span class="c">C</span>
+This is how it works
+<span class="c">       G</span>
+You're young until you're not
+<span class="c">    Am</span>
+You love until you don't
+<span class="c">    F</span>
+You try until you can't
+<span class="c">    C</span>
+You laugh until you cry
+<span class="c">    G</span>
+You cry until you laugh
+<span class="c">    Am</span>
+And everyone must breathe
+<span class="c">  F</span>
+Until their dying breath
+<span class="c">    C</span>
+No, this is how it works
+<span class="c">    G</span>
+You peer inside yourself
+<span class="c">    Am</span>
+You take the things you like
+<span class="c">           F</span>
+And try to love the things you took
+<span class="c">             C</span>
+And then you take that love you made
+<span class="c">    G</span>
+And stick it into some
+<span class="c">Am</span>
+Someone else's heart
+<span class="c">        F</span>
+Pumping someone else's blood
+<span class="c">    C</span>
+And walking arm in arm
+<span class="c">    G</span>
+You hope it don't get harmed
+<span class="c">    Am</span>
+But even if it does
+<span class="c">            F</span>
+You'll just do it all again
+
+
+<span class="t">[Outro]</span>
+
+<span class="c">    C</span>
+And on the radio
+<span class="c">       G</span>
+You'll hear November Rain
+<span class="c">     Am</span>
+That solo's awful long
+<span class="c">    F</span>
+But it's a good refrain
+<span class="c">       C</span>
+You'll listen to it twice
+<span class="c">           G</span>
+'Cause the DJ is asleep
+<span class="c">Am</span>
+On the radio
+<span class="c">F</span>
+On the radio
+<span class="c">C</span>
+On the radio (uh-oh)
+<span class="c">G</span>
+On the radio (uh-oh)
+<span class="c">Am</span>
+On the radio (uh-oh)
+<span class="c">F</span>
+On the radio
+
+<span class="c">C G Am F</span>
+
+
+________________
+</div><div class="end"></div></section><section class="song" id="s13"><div class="song-head"><h2>Emma</h2></div><div class="cue">same time</div><div class="body">Into: E--A-
+Verse 1:
+<span class="c">E</span>
+Emma appeared like an angel
+<span class="c">A              B</span>
+Emma fell like rain
+<span class="c">  E</span>
+Into my lap like a heart attack
+<span class="c">     A                  B</span>
+like lightning from her name
+<span class="c">    E</span>
+I'm running dry of bad excuses
+<span class="c">A                    B</span>
+Don't want to lie or seem intrusive
+<span class="c">E</span>
+But time hasn't told me
+<span class="c">   A                     B</span>
+anything and neither has she
+
+Chorus 1:
+<span class="c">      C#m</span>
+A poinsettia in
+<span class="c">       A</span>
+poison rain
+<span class="c">       E</span>
+Traded true love for
+<span class="c">           B</span>
+insult and injury
+<span class="c">   C#m</span>
+We washed it down
+<span class="c">    A          E</span>
+the drain with one silver
+<span class="c">       B           E  A B</span>
+bullet and two vicodin
+<span class="c">             E  A B</span>
+With two vicodin
+
+Verse 2:
+<span class="c">E</span>
+Emma woke up in darkness
+<span class="c">    A            B</span>
+suitcase already packed
+<span class="c">E</span>
+  Note on the bedstand signed
+<span class="c">                 A</span>
+in blood "Sincerely
+<span class="c">             B</span>
+never coming back"
+<span class="c">  E</span>
+A nightmare on my street
+the day she arrived
+<span class="c">  A</span>
+A nightmarish household
+<span class="c">   B</span>
+in which she died because
+<span class="c">   E</span>
+it made her feel at home
+<span class="c">        A               B</span>
+Somehow made me feel at home
+
+Chorus 2:
+<span class="c">      C#m              A</span>
+A poinsettia in poison rain
+<span class="c">       E</span>
+Traded true love for
+<span class="c">           B</span>
+insult and injury
+<span class="c">   C#m                A</span>
+We washed it down the drain
+<span class="c">     E</span>
+with one wooden stake
+<span class="c">            B                 E  A B E A B</span>
+through the heart and two vicodin
+
+Chorus 3:
+<span class="c">      C#m</span>
+A poinsettia in
+<span class="c">       A</span>
+poison rain
+<span class="c">       E</span>
+Traded true love for
+<span class="c">           B</span>
+insult and injury
+<span class="c">   C#m</span>
+We washed it down
+<span class="c">    A          E</span>
+the drain with one silver
+<span class="c">           B</span>
+bullet and two vicodin
+
+Chorus 4:
+<span class="c">   C#m                  A</span>
+We watched the sun fall crown
+<span class="c">     E</span>
+on a city that sleeps
+<span class="c">     B</span>
+in a world upside down
+<span class="c">   C#m</span>
+A slow ticket
+<span class="c">                A</span>
+straight out of town
+<span class="c">         E</span>
+You went out with a bang when
+<span class="c">    B</span>
+you took with you all
+<span class="c">               E     A</span>
+my dreams underground
+<span class="c">     B</span>
+With you all my
+<span class="c">            E     A</span>
+dreams underground
+<span class="c">     B</span>
+With you all my
+<span class="c">            E     A</span>
+dreams underground
+<span class="c">     B</span>
+With you all my
+            E     A B E(hold)
+dreams underground
+
+
+________________
+</div><div class="end"></div></section><section class="song" id="s14"><div class="song-head"><h2>Have you ever seen the rain</h2></div><div class="cue">you pick</div><div class="body">
+
+<span class="c">Am    F/C    C    G    C</span>
+<span class="t">[Verse]</span>
+<span class="c">C</span>
+Someone told me long ago
+<span class="c">C                                   G</span>
+There's a calm before the storm, I know
+<span class="c">                   C</span>
+It's been coming for some time
+
+<span class="c">C</span>
+When it's over, so they say
+<span class="c">C                          G</span>
+It'll rain a sunny day, I know
+<span class="c">                   C</span>
+Shining down like water
+
+
+<span class="t">[Chorus]</span>
+
+<span class="c">F         G</span>
+I wanna know
+<span class="c">         C    C/B      Am    Am7/G</span>
+Have you ever seen the rain
+<span class="c">F         G</span>
+I wanna know
+<span class="c">         C    C/B      Am    Am7/G</span>
+Have you ever seen the rain
+<span class="c">F        G               C</span>
+Coming down on a sunny day
+
+
+<span class="t">[Verse]</span>
+
+<span class="c">C</span>
+Yesterday and days before
+<span class="c">C                                G</span>
+Sun is cold and rain is hard, I know
+<span class="c">                    C</span>
+Been that way for all my time
+
+<span class="c">C</span>
+'Til forever on it goes
+<span class="c">C                                    G</span>
+Through the circle fast and slow, I know
+<span class="c">                   C</span>
+It can't stop, I wonder
+
+
+<span class="t">[Chorus]</span>
+
+<span class="c">F         G</span>
+I wanna know
+<span class="c">         C    C/B      Am    Am7/G</span>
+Have you ever seen the rain
+<span class="c">F         G</span>
+I wanna know
+<span class="c">         C    C/B      Am    Am7/G</span>
+Have you ever seen the rain
+<span class="c">F        G                C</span>
+Coming down on a sunny day
+
+
+<span class="t">[Chorus]</span>
+
+<span class="c">F         G</span>
+I wanna know
+<span class="c">         C    C/B      Am    Am7/G</span>
+Have you ever seen the rain
+<span class="c">F         G</span>
+I wanna know
+<span class="c">         C    C/B      Am    Am7/G</span>
+Have you ever seen the rain
+<span class="c">F        G                C     G    C</span>
+Coming down on a sunny day
+________________
+</div><div class="end"></div></section><section class="song" id="s15"><div class="song-head"><h2>Operator</h2></div><div class="cue">light drums, brushes? You pick when</div><div class="body">
+
+<span class="t">[Intro]</span>
+<span class="c">G Bm Am C Bm Am D7/F#</span>
+
+<span class="t">[Verse]</span>
+<span class="c">G  Bm                 C    Bm  Am   G    C  G</span>
+Operator oh could you help me place this call
+<span class="c">Am                        D7/F#                    Em   D5/C D5/B D5/A</span>
+'See the number on the matchbook is old and faded
+<span class="c">G                    Bm         C    Bm  Am G     C  G</span>
+She's living in L.A. with my best old ex-friend Ray
+<span class="c">Am                 D7/F#                      Em    D5/C D5/B D5/A</span>
+A guy she said she knew well and sometimes hated
+
+<span class="t">[Chorus]</span>
+<span class="c">G                 C/G               G</span>
+Isn't that the way they say it goes
+<span class="c">             C       D</span>
+But let's forget all that
+<span class="c">    G                     Am</span>
+And give me the number if you can find it
+<span class="c">   C D   Em           Bm           D            Am</span>
+So I can call just to tell 'em I'm fine and to show
+<span class="c">D7                      C</span>
+I've overcome the blow, I've learned to take it well
+<span class="c">G/B                  Am                          C</span>
+I only wish my words could just convince myself
+<span class="c">                       D        C</span>
+That it just wasn't real, but that's not the way it feels
+
+<span class="t">[Interlude]</span>
+<span class="c">G Bm Am C Bm Am D7/F#</span>
+
+<span class="t">[Verse]</span>
+<span class="c">G   Bm                C   Bm Am   G          C  G</span>
+Operator oh could you help me place this call
+<span class="c">Am                     D7/F#                   Em     D5 D5/C D5/B D5/A</span>
+Cause I can't read the number that you just gave me
+<span class="c">G                       Bm                C Bm    Am     G C G</span>
+There's something in my eyes, you know it happens every time
+<span class="c">Am                D7/F#                         Em     D5 D5/C D5/B D5/A</span>
+I think about the love that I thought would save me
+
+<span class="t">[Chorus]</span>
+<span class="c">G                  C/G           G</span>
+Isn't that the way they say it goes
+<span class="c">            C       D</span>
+But lets forget all that
+<span class="c">    G                     Am</span>
+And give me the number if you can find it
+<span class="c">   C D   Em           Bm           D            Am</span>
+So I can call just to tell 'em I'm fine and to show
+<span class="c">D7                      C</span>
+I've overcome the blow, I've learned to take it well
+<span class="c">G/B                  Am                          C</span>
+I only wish my words could just convince myself
+<span class="c">                       D        C                       G</span>
+That it just wasn't real, but that's not the way it feels
+<span class="c"> C         G  C</span>
+No no no no   That's not the way it feels
+
+<span class="t">[Verse]</span>
+<span class="c">G   Bm            C   Bm   Am   G   C  G</span>
+Operator let's forget about this call
+<span class="c">Am                   D7/F#                 Em     D5  D5/C D5/B D5/A</span>
+There's no one there I really wanted to talk to
+<span class="c">G</span>
+Thank you for your time,
+<span class="c">Bm                C      Bm  Am    G     C  G</span>
+Cause you've been so much more than kind
+<span class="c">Am               D7/F#    Em D5 D5/C D5/B D5/A</span>
+You can keep the dime
+
+<span class="t">[Chorus]</span>
+<span class="c">G              C/G               G</span>
+Isn't that the way they say it goes
+<span class="c">            C       D</span>
+But lets forget all that
+<span class="c">    G                     Am</span>
+And give me the number if you can find it
+<span class="c">   C D   Em           Bm           D            Am</span>
+So I can call just to tell her I'm fine and to show
+<span class="c">D7                      C</span>
+I've overcome the blow, I've learned to take it well
+<span class="c">G/B                  Am                          C</span>
+I only wish my words could just convince myself
+<span class="c">                       D        C</span>
+That it just wasn't real, but that's not the way it feels
+
+<span class="t">[Interlude]</span>
+<span class="c">G Bm Am C Bm Am D7/F#</span>
+
+<span class="t">[Outro]</span>
+<span class="c">G Bm Am C Bm Am D7/F#</span>
+</div><div class="end"></div></section><section class="song" id="s16"><div class="song-head"><h2>Life’s been good</h2></div><div class="cue">same time</div><div class="body">
+
+<span class="c">F C F  F C F</span>
+<span class="c">Am G Am  Am G Am</span>
+<span class="c">F C F  F C F</span>
+<span class="c">Am G Am  Am</span>
+
+<span class="t">[Verse 1]</span>
+<span class="c">F        C         Dm         C</span>
+I have a mansion, forget the price
+<span class="c">F           C                Dm            C</span>
+Ain't never been there, they tell me it's nice
+<span class="c">F         C       Dm           C</span>
+I live in hotels, tear out the walls
+<span class="c">F        C         Dm         C</span>
+I have accountants pay for it all
+
+<span class="t">[Chorus 1]</span>
+<span class="c">G            F           C           G    C  G  C  G</span>
+They say I'm crazy but I have a good time
+<span class="c">         G           F            C            G</span>
+I'm just looking for clues at the scene of the crime
+<span class="c">            C       G/B    A</span>
+Life's been good to me so far...
+
+<span class="t">[Verse 2]</span>
+<span class="c">F      C         Dm   C</span>
+My Maserati does 185
+<span class="c">F           C      Dm           C</span>
+I lost my license, now I don't drive
+<span class="c">F        C     Dm          C</span>
+I have a limo, ride in the back
+<span class="c">F          C        Dm          C</span>
+I lock the doors in case I'm attacked
+
+<span class="t">[Verse 3]</span>
+<span class="c">F          C           Dm              C</span>
+I'm making records, my fans they can't wait
+<span class="c">F             C        Dm          C</span>
+They write me letters, tell me I'm great
+<span class="c">     F         C            Dm             C</span>
+So I got me an office, gold records on the wall
+<span class="c">F            C        Dm         C</span>
+Just leave a message, maybe I'll call
+
+<span class="t">[Chorus 2]</span>
+<span class="c">G         F          C              G</span>
+Lucky I'm sane after all I've been through
+<span class="c">G          F   C   G     C    G</span>
+Everybody says I'm cool (He's cool)
+<span class="c">G          F             C             G</span>
+I can't complain but sometimes I still do
+<span class="c">            C       G/B    A</span>
+Life's been good to me so far...
+
+<span class="t">[Verse 4]</span>
+<span class="c">F       C            Dm          C</span>
+I go to parties, sometimes until four
+<span class="c">F            C              Dm             C</span>
+It's hard to leave when you can't find the door
+<span class="c">F              C          Dm          C</span>
+It's tough to handle this fortune and fame
+<span class="c">     F          C         Dm        C</span>
+Everybody's so different, I haven't changed
+
+<span class="t">[Chorus 3]</span>
+<span class="c">G            F           C             G</span>
+They say I'm lazy but it takes all my time
+<span class="c">G              C  G      C  G</span>
+Everybody says Oh yeah  (Oh yeah)
+<span class="c">G         F                 C          G</span>
+I keep on going, guess I'll never know why
+<span class="c">            C       G/B    A</span>
+Life's been good to me so far...
+
+
+________________
+</div><div class="end"></div></section><section class="song" id="s17"><div class="song-head"><h2>No children</h2></div><div class="cue">after first verse</div><div class="body">Capo on 1st fret
+
+<span class="t">[Intro]</span>
+<span class="c">Em  A  Em  A</span>
+<span class="c">F  G  C</span>
+
+<span class="t">[Verse]</span>
+<span class="c">C                     G</span>
+I hope that our few remaining friends
+<span class="c">F                    C</span>
+Give up on trying to save us
+<span class="c">  C                      G</span>
+I hope we come up with a fail-safe plot
+<span class="c">        F                        C</span>
+To piss off the dumb few that forgave us
+
+<span class="c">C                    G</span>
+I hope the fences we mended
+<span class="c">F                           G</span>
+Fall down beneath their own weight
+<span class="c">      C                        Am</span>
+And I hope we hang on past the last exit
+<span class="c">  F                     G</span>
+I hope it's already too late
+
+<span class="c">    C</span>
+And I hope the junkyard a few blocks from here
+<span class="c">Am</span>
+   Someday burns down
+<span class="c">    F</span>
+And I hope the rising black smoke carries me far away
+<span class="c">                 G                  F</span>
+And I never come back to this town again
+
+<span class="t">[Chorus]</span>
+<span class="c">      G              C</span>
+In my life, I hope I lie
+<span class="c">         F</span>
+And tell everyone you were a good wife
+<span class="c">                  C</span>
+And I hope you die
+<span class="c">               G      C</span>
+I hope we both die
+
+<span class="t">[Instrumental]</span>
+<span class="c">Em  A  Em  A</span>
+<span class="c">F  G  C</span>
+
+<span class="t">[Verse]</span>
+<span class="c">C                   G</span>
+I hope I cut myself shaving tomorrow
+<span class="c">F                        C</span>
+I hope it bleeds all day long
+<span class="c">    C                          G</span>
+Our friends say it's darkest before the sun rises
+<span class="c">F                             C</span>
+We're pretty sure they're all wrong
+
+<span class="c">C                       G</span>
+I hope it stays dark forever
+<span class="c">F                      G</span>
+I hope the worst isn't over
+<span class="c">    C                       Am</span>
+And I hope you blink before I do
+<span class="c">    F                  G</span>
+And I hope I never get sober
+
+<span class="c">      C</span>
+And I hope when you think of me years down the line,
+<span class="c">    Am</span>
+You can't find one good thing to say
+<span class="c">        F</span>
+And I'd hope that if I found the strength to walk out
+<span class="c">                              G</span>
+You'd stay the hell out of my way
+
+<span class="t">[Chorus]</span>
+<span class="c">     F                             G</span>
+I am drowning, there is no sign of land
+<span class="c">                    C</span>
+You are coming down with me
+<span class="c">F</span>
+Hand in unlovable hand
+<span class="c">                  C</span>
+And I hope you die
+<span class="c">              G       C</span>
+I hope we both die
+
+<span class="t">[Outro]</span>
+<span class="c">Em  A  Em  A</span>
+<span class="c">F</span>
+
+
+________________
+</div><div class="end"></div></section><section class="song" id="s18"><div class="song-head"><h2>Irrationality of rationality</h2></div><div class="cue">same time, punkish, slowish</div><div class="body">
+
+<span class="t">[Intro]</span>
+<span class="c">Am   G F G x5</span>
+
+
+<span class="t">[Verse]</span>
+<span class="c">Am     C          F       F             Am   G F G  Am   G F G</span>
+Frank, the new CEO had to answer to the board.
+<span class="c">    Am                C       F        F</span>
+The board was getting anxious, and the shareholders were
+
+
+<span class="t">[Chorus]</span>
+<span class="c">C         Am           F               C</span>
+On a bed, legs in air, ass-cheeks open wide
+<span class="c">C               Am                  F                  C</span>
+They were about to get fucked like it was their first time.
+<span class="c">     C            G           F                C</span>
+When one makes 20 million, ten thousand people lose.
+<span class="c">     C                   G            Am   G F G</span>
+What keeps that one from swallowing a shotgun?
+<span class="c">Am   G F G x3</span>
+
+
+<span class="t">[Verse]</span>
+<span class="c">Am         C       F           F            Am   G F G  Am   G F G</span>
+Dan, the company man, felt loyalty to the corp.
+<span class="c">      Am          C       F      F</span>
+After 16 years of service, and a family to support
+
+
+<span class="t">[Chorus]</span>
+<span class="c">C       Am  F          C</span>
+He actually started to believe
+<span class="c">    C            Am                 F             C</span>
+The weaponry and chemicals were for national defense.
+<span class="c">       C           G               F              C</span>
+'Cause Danny had a mortgage, and a boss to answer to.
+<span class="c">C                     G                      Am   G F G  Am G G C</span>
+The guilty don't feel guilty, they learn not to.
+
+
+<span class="t">[Bridge]</span>
+<span class="c">Am C F F</span>
+
+
+<span class="t">[Verse]</span>
+<span class="c">Am        C              F      F              Am   G F G  Am   G F G</span>
+Helen is living in her car, trying to feed her kids.
+<span class="c">Am                  C    F        F</span>
+She got laid off at work, and her house was repossessed.
+
+
+<span class="t">[Chorus]</span>
+<span class="c">C            Am                      F       C</span>
+It's hard to think clearly when it's 38 degrees.
+<span class="c">C                 Am                F                C</span>
+Desperate people have been known to render desperate deeds.
+<span class="c">    C                  G          F                C</span>
+But when she shot that family and moved into their home,
+<span class="c">    C              G             F</span>
+The paper read she suffered from dementia.
+
+
+<span class="t">[Outro]</span>
+<span class="c">G F G   Am Am</span>
+</div><div class="end"></div></section><section class="song" id="s19"><div class="song-head"><h2>Ohio</h2></div><div class="cue">after first guitar thing</div><div class="body">
+
+<span class="t">[Chords]</span>
+Dm  - xx0231
+F   - 133211
+C   - x32010
+Gm7 - 353333
+
+
+<span class="t">[Hook]</span>
+
+<span class="c">Dm                 F     C     Dm              F      C</span>
+  Tin soldiers and Nixon coming, we're finally on our own
+<span class="c">Dm              F        C       Dm             F  C</span>
+  This summer I hear the drumming, four dead in Ohio
+
+
+<span class="t">[Verse]</span>
+
+<span class="c">Gm7                    C</span>
+   Gotta get down to it, soldiers are gunning us down
+<span class="c">Gm7                            C</span>
+   Should have been done long ago
+<span class="c">Gm7                        C</span>
+   What if you knew her and found her dead on the ground
+<span class="c">Gm7                          C</span>
+   How can you run when you know?
+
+
+<span class="t">[Bridge]</span>
+
+<span class="c">Dm           F     C     Dm           F     C</span>
+  La lalala  la la la la   la lalala  la la la
+<span class="c">Dm           F     C     Dm           F     C</span>
+  La lalala  la la la la   la lalala  la la la
+
+
+<span class="t">[Verse]</span>
+
+<span class="c">Gm7                    C</span>
+   Gotta get down to it, soldiers are gunning us down
+<span class="c">Gm7                            C</span>
+   Should have been done long ago
+<span class="c">Gm7                        C</span>
+   What if you knew her and found her dead on the ground
+<span class="c">Gm7                          C</span>
+   How can you run when you know?
+
+
+<span class="t">[Hook]</span>
+
+<span class="c">Dm                 F     C     Dm              F      C</span>
+  Tin soldiers and Nixon coming, we're finally on our own
+<span class="c">Dm              F        C       Dm             F  C</span>
+  This summer I hear the drumming, four dead in Ohio
+
+
+<span class="t">[Outro]</span>
+
+<span class="c">Dm             F  C</span>
+  Four dead in Ohio
+<span class="c">Dm             F  C</span>
+  Four dead in Ohio
+<span class="c">Dm             F  C</span>
+  Four dead in Ohio
+<span class="c">Dm             F  C</span>
+  Four dead in Ohio
+<span class="c">Dm             F  C</span>
+  Four dead in Ohio
+<span class="c">Dm             F  C</span>
+  Four dead in Ohio
+<span class="c">Dm             F  C</span>
+  Four dead in Ohio
+<span class="c">Dm             F  C</span>
+  Four dead in Ohio
+<span class="c">Dm             F  C</span>
+  Four dead in Ohio
+<span class="c">Dm             F  C</span>
+  Four dead in Ohio
+</div><div class="end"></div></section><section class="song" id="s20"><div class="song-head"><h2>Is this thing cursed</h2></div><div class="cue">same time</div><div class="body">
+
+<span class="t">[Intro]</span>
+<span class="c">E</span>
+
+<span class="t">[Verse 1]</span>
+<span class="c">              E</span>
+Is this thing cursed?
+<span class="c">     G#m</span>
+This goddamn thing's the worst
+<span class="c">        A            E</span>
+Now one look in that direction
+<span class="c">    B</span>
+And everything starts to hurt
+
+<span class="c">              E</span>
+Is this thing cursed?
+<span class="c">     G#m</span>
+It's been around for years
+<span class="c">    A                    E</span>
+And everytime my boat's about tits up
+<span class="c">     B</span>
+That goddamn thing is near
+
+
+<span class="t">[Break]</span>
+<span class="c">           G#m              A</span>
+I tried to throw it in the river
+<span class="c">       B               C#m</span>
+But it washed up in my sink
+<span class="c">            D</span>
+And now the city cut my water
+<span class="c">         A             B</span>
+And it's all I have to drink
+
+
+<span class="t">[Verse 2]</span>
+<span class="c">              E</span>
+Is this thing cursed?
+<span class="c">      G#m</span>
+If it is then I'm the jerk
+<span class="c">    A                 E</span>
+Who keeps on hanging around
+<span class="c">       B                                  E</span>
+When I simply should just burn it to the ground
+<span class="c">      G#m</span>
+Maybe it's some kind of spell
+<span class="c">     A                E</span>
+That I've been living under
+<span class="c">           B                                    G#m</span>
+Collecting coins found near a nightmare wishing well
+
+
+<span class="t">[Break]</span>
+<span class="c">        A</span>
+Coldest regards
+<span class="c">          B                   C#m</span>
+Signed my name and sealed the card
+<span class="c">         D</span>
+Tried to leave it all behind me
+<span class="c">           A             B</span>
+And almost blew up in my car
+
+
+<span class="t">[Bridge]</span>
+<span class="c">              E</span>
+Is this thing cursed?
+
+<span class="c">G#m   C#m   A   E   B</span>
+
+<span class="c">              E</span>
+Is this thing cursed?
+
+<span class="c">G#m   C#m   A   E   B</span>
+
+
+<span class="t">[Verse 3]</span>
+<span class="c">              E</span>
+Is this thing cursed?
+<span class="c">   G#m</span>
+My haunted head aches so much worse
+<span class="c">     A                  E</span>
+Than those that can't remember
+<span class="c">    B</span>
+How dismemberment works
+
+<span class="c">              E</span>
+Is this thing cursed?
+<span class="c">     G#m</span>
+It's been around for years
+<span class="c">        A               E</span>
+And evertime my life's about tits up
+<span class="c">     B</span>
+That goddamn thing is near
+
+
+<span class="t">[Break]</span>
+<span class="c">           G#m              A</span>
+I tried to throw it in the river
+<span class="c">       B               C#m</span>
+But it washed up in my sink
+<span class="c">            D</span>
+And now the city cut my water
+<span class="c">         A             B</span>
+And it's all I have to drink
+
+
+<span class="t">[Outro]</span>
+<span class="c">              E</span>
+Is this thing cursed?
+</div><div class="end"></div></section><section class="song" id="s21"><div class="song-head"><h2>I’ll follow you into the dark</h2></div><div class="cue">same time</div><div class="body"><span class="t">[Intro]</span>
+<span class="c">Am  C  F  C  G/B</span>
+<span class="c">Am  C  G</span>
+<span class="c">Am  C  E  Am  Am/G  F  Fm  C/G</span>
+<span class="t">[Verse]</span>
+<span class="c">C/G</span>
+Love of mine
+<span class="c">        Am/E</span>
+someday you will die,
+<span class="c">            F</span>
+but I'll be close behind;
+<span class="c">             C            G</span>
+I'll follow you into the dark.
+<span class="c">   C/G</span>
+No blinding light
+<span class="c">              Am/E</span>
+or tunnels to gates of white,
+<span class="c">               F</span>
+just our hands clasped so tight
+<span class="c">         C                  G</span>
+waiting for the hint of a spark.
+<span class="t">[Chorus]</span>
+<span class="c">     Am               C              F             C    G/B</span>
+If heaven and hell decide that they both are satisfied,
+<span class="c">  Am           C              G</span>
+illuminate the "no"s on their vacancy signs.
+<span class="c">     Am              C                 E      Am     Am/G</span>
+If there's no one beside you when your soul embarks
+<span class="c">     F           Fm           C/G</span>
+then I'll follow you into the dark.
+<span class="t">[Verse]</span>
+<span class="c">   C/G</span>
+In Catholic school,
+<span class="c">              Am/E</span>
+as vicious as Roman rule,
+<span class="c">          F</span>
+I got my knuckles bruised
+<span class="c">     C        G</span>
+by a lady in black.
+<span class="c">      C/G</span>
+And I held my tongue
+<span class="c">       Am/E</span>
+as she told me "Son,
+<span class="c">            F</span>
+fear is the heart of love".
+<span class="c">     C          G</span>
+So I never went back.
+
+<span class="t">[Chorus]</span>
+<span class="c">     Am               C              F             C    G/B</span>
+If heaven and hell decide that they both are satisfied,
+<span class="c">  Am           C              G</span>
+illuminate the "no"s on their vacancy signs.
+<span class="c">     Am              C                 E      Am     Am/G</span>
+If there's no one beside you when your soul embarks
+<span class="c">     F           Fm           C/G</span>
+then I'll follow you into the dark.
+<span class="t"> [Verse]</span>
+<span class="c">C/G</span>
+You and me
+<span class="c">                Am/E</span>
+have seen everything to see
+<span class="c">                F</span>
+from Bangkok to Calgary,
+<span class="c">        C             G</span>
+and the soles of your shoes
+<span class="c">     C/G</span>
+are all worn down.
+<span class="c">             Am/E</span>
+The time for sleep is now
+<span class="c">                    F</span>
+but it's nothing to cry about
+<span class="c">             C               G</span>
+'cause we'll hold each other soon
+<span class="c">       Am          F</span>
+in the blackest of rooms.
+
+<span class="t">[Chorus]</span>
+<span class="c">     Am               C              F             C    G/B</span>
+If heaven and hell decide that they both are satisfied,
+<span class="c">  Am           C              G</span>
+illuminate the "no"s on their vacancy signs.
+<span class="c">     Am              C                 E      Am     Am/G</span>
+If there's no one beside you when your soul embarks
+<span class="c">     F           Fm           C       G/B  Am</span>
+Then I'll follow you into the dark
+<span class="c">     F           Fm           C/G</span>
+Then I'll follow you into the d
+</div><div class="end"></div></section><section class="song" id="s22"><div class="song-head"><h2>Bad moon</h2></div><div class="cue">after first two chord double stops with vocals</div><div class="body">
+<span class="c">| D   | A G | D   | D   |</span>
+
+<span class="t">[Verse 1]</span>
+<span class="c">D         A   G      D</span>
+I see the bad moon a-rising
+<span class="c">D     A       G     D</span>
+I see trouble on the way
+<span class="c">D     A    G          D</span>
+I see earthquakes and lightning
+<span class="c">D     A   G       D</span>
+I see bad times today
+
+<span class="t">[Chorus]</span>
+<span class="c">G</span>
+Don't go around tonight
+<span class="c">           D</span>
+Well, it's bound to take your life
+<span class="c">A         G               D</span>
+There's a bad moon on the rise
+
+<span class="t">[Verse 2]</span>
+<span class="c">D      A    G       D</span>
+I hear hurricanes a-blowing
+<span class="c">D          A      G      D</span>
+I know the end is coming soon
+<span class="c">D      A      G   D</span>
+I fear rivers overflowing
+<span class="c">D          A        G        D</span>
+I hear the voice of rage and ruin
+
+<span class="t">[Chorus]</span>
+<span class="c">G</span>
+Don't go around tonight
+<span class="c">           D</span>
+Well, it's bound to take your life
+<span class="c">A         G               D</span>
+There's a bad moon on the rise
+
+<span class="t">[Solo]</span>
+<span class="c">| D   | A G | D   | D   |</span>
+<span class="c">| D   | A G | D   | D   |</span>
+<span class="c">| G   | G   | D   | D   |</span>
+<span class="c">| A   | G   | D   | D   |</span>
+
+<span class="t">[Verse 3]</span>
+<span class="c">D        A        G       D</span>
+Hope you got your things together
+<span class="c">D            A     G           D</span>
+Hope you are quite prepared to die
+<span class="c">D                A      G     D</span>
+Looks like we're in for nasty weather
+<span class="c">D          A     G      D</span>
+One eye is taken for an eye
+
+<span class="t">[Chorus]</span>
+<span class="c">      G</span>
+Well, don't go around tonight
+<span class="c">           D</span>
+Well, it's bound to take your life
+<span class="c">A         G               D</span>
+There's a bad moon on the rise
+
+<span class="c">G</span>
+Don't go around tonight
+<span class="c">           D</span>
+Well, it's bound to take your life
+<span class="c">A         G               D</span>
+There's a bad moon on the rise
+
+
+________________
+</div><div class="end"></div></section><section class="song" id="s23"><div class="song-head"><h2>Wrapped up in you</h2></div><div class="cue">same time</div><div class="body">
+
+<span class="t">[Verse 1]</span>
+<span class="c">G</span>
+How do I love ya
+<span class="c">B</span>
+Well let me see
+<span class="c">Em                             A</span>
+I love ya like a lyric loves a melody
+<span class="c">G     A</span>
+Baby, completely
+<span class="c">C       Cm    G</span>
+Wrapped up in you
+<span class="c">G</span>
+How do I need ya
+<span class="c">B</span>
+Can't you tell
+<span class="c">Em                             A</span>
+I need ya like a penny needs a wishing well
+<span class="c">G     A</span>
+Baby, completely
+<span class="c">C       Cm    G</span>
+Wrapped up in you
+
+<span class="t">[Chorus]</span>
+<span class="c">G                                                        A</span>
+Every now and then when the world that we're livin' in's crazy
+<span class="c">Em                     A        G</span>
+You gladly hold me and carry me through
+<span class="c">G</span>
+Now one in the world's ever done what you did for me
+<span class="c">    A      Em</span>
+And I'd be sad and lonely
+<span class="c">G                C  Cm</span>
+If there were no you
+
+<span class="t">[Bridge]</span>
+<span class="c">G</span>
+How do I love ya
+<span class="c">B</span>
+Count the ways
+<span class="c">Em                                   A</span>
+There ain?t no number high enough to end this phrase
+<span class="c">G     A</span>
+Baby, completely
+<span class="c">C       Cm    G</span>
+Wrapped up in you
+<span class="c">         G  A  C</span>
+Ba Ba??
+I'm wrapped up in you
+
+<span class="t">[Chorus]</span>
+<span class="c">G                                                        A</span>
+Every now and then when the world that we're livin' in's crazy
+<span class="c">Em                     A        G</span>
+You gladly hold me and carry me through
+<span class="c">G</span>
+Now one in the world ever did what you did for me
+<span class="c">    A      Em</span>
+And I'd be sad and lonely
+<span class="c">G               C   Cm</span>
+If there was no you
+
+<span class="t">[Outro]</span>
+<span class="c">G</span>
+How do I love ya
+<span class="c">B</span>
+Don't you know
+<span class="c">Em                              A</span>
+I love you 'bout as deep as any love can go
+<span class="c">G     A</span>
+Baby, completely
+<span class="c">C       Cm    G</span>
+Wrapped up in you
+<span class="c">G     A</span>
+Baby, completely
+<span class="c">C       Cm</span>
+Wrapped up
+Wrapped up in you
+I'm so wrapped up in you
+Yeah
+Wrapped up in you
+Every now and then when the world that we're livin' in's crazy
+Wrapped up in y
+</div><div class="end"></div></section><section class="song" id="s24"><div class="song-head"><h2>The metro</h2></div><div class="cue">after first bass run</div><div class="body">
+
+<span class="t">[Verse 1]</span>
+<span class="c">C</span>
+I'm alone
+<span class="c">Em</span>
+Sitting with my empty glass
+<span class="c">G</span>
+My four walls
+<span class="c">Bm</span>
+Follow me through my past
+<span class="c">C</span>
+I was on a Paris train
+<span class="c">Em</span>
+I emerged in London rain
+<span class="c">G</span>
+And you were waiting there
+<span class="c">Bm</span>
+Swimming through apologies
+
+
+<span class="t">[Chorus]</span>
+<span class="c">C</span>
+I remember searching for the perfect words
+<span class="c">Em</span>
+I was hoping you might change your mind
+<span class="c">G</span>
+I remember a soldier sleeping next to me
+<span class="c">Bm</span>
+Riding on the Metro
+
+
+<span class="t">[Verse 2]</span>
+<span class="c">C</span>
+You wore white
+<span class="c">Em</span>
+Smiling as you took my hand
+<span class="c">G</span>
+So removed
+<span class="c">Bm</span>
+We spoke of wintertime in France
+<span class="c">C</span>
+Minutes passed with shallow words
+<span class="c">Em</span>
+Years have passed and still the hurt
+<span class="c">G</span>
+Minutes passed with shallow words
+<span class="c">Bm</span>
+Years have passed and still the hurt
+
+
+<span class="t">[Chorus]</span>
+<span class="c">C</span>
+I can see you now
+<span class="c">Em</span>
+Smiling as you pulled away
+<span class="c">G</span>
+Sorry
+
+
+
+
+________________
+</div><div class="end"></div></section><section class="song" id="s25"><div class="song-head"><h2>Working Class Hero</h2></div><div class="body"><span class="c">| Am | % |</span>
+<span class="t">[Verse 1]</span>
+<span class="c">   Am                       G             Am</span>
+As soon as you're born they make you feel small
+<span class="c">   Am                    G          Am</span>
+By giving you no time instead of it all
+<span class="c">         Am                      G          Am</span>
+Till the pain is so big you feel nothing at all
+<span class="c">  Am                    G            Am</span>
+A working class hero is something to be
+<span class="c">  Am            G       D            Am</span>
+A working class hero is something to be
+
+
+<span class="t">[Verse 2]</span>
+<span class="c">     Am                        G          Am</span>
+They hurt you at home and they hit you at school
+<span class="c">     Am                                 G         Am</span>
+They hate you if you're clever and they despise a fool
+<span class="c">            Am                         G            Am</span>
+Till you're so fucking crazy you can't follow their rules
+<span class="c">  Am                    G            Am</span>
+A working class hero is something to be
+<span class="c">  Am            G       D            Am</span>
+A working class hero is something to be
+
+
+<span class="t">[Verse 3]</span>
+<span class="c">             Am                          G          Am</span>
+When they've tortured and scared you for twenty odd years
+<span class="c">Am                      G        Am</span>
+Then they expect you to pick a career
+<span class="c">         Am                           G          Am</span>
+When you can't really function you're so full of fear
+<span class="c">  Am                    G            Am</span>
+A working class hero is something to be
+<span class="c">  Am            G       D            Am</span>
+A working class hero is something to be
+
+
+<span class="t">[Verse 4]</span>
+<span class="c">         Am                      G         Am</span>
+Keep you doped with religion and sex and T.V.
+<span class="c">        Am                         G             Am</span>
+And you think you're so clever and classless and free
+<span class="c">           Am                        G            Am</span>
+But you're still fucking peasants as far as I can see
+<span class="c">  Am                    G            Am</span>
+A working class hero is something to be
+<span class="c">  Am            G       D            Am</span>
+A working class hero is something to be
+
+
+<span class="t">[Verse 5]</span>
+<span class="c">        Am                       G           Am</span>
+There's room at the top they are telling you still
+<span class="c">    Am                          G            Am</span>
+But first you must learn how to smile as you kill
+<span class="c">       Am                  G            Am</span>
+If you want to be like the folks on the hill
+<span class="c">  Am                    G            Am</span>
+A working class hero is something to be
+<span class="c">  Am            G       D            Am</span>
+A working class hero is something to be
+
+
+<span class="t">[Outro]</span>
+<span class="c">       Am                     G           Am</span>
+If you want to be a hero well just follow me
+<span class="c">       Am                     G           D          Am</span>
+If you want to be a hero well just follow me
+________________
+</div><div class="end"></div></section><section class="song" id="s26"><div class="song-head"><h2>Old Man</h2></div><div class="cue">you pick</div><div class="body">
+
+<span class="c">FM7       D Dsus4 D</span>
+<span class="c">FM7       D Dsus4 D</span>
+
+
+<span class="t">[Chorus]</span>
+
+<span class="c">FM7                                         D</span>
+   Old man, look at my life, I'm a lot like you were
+<span class="c">FM7                                         D</span>
+   Old man, look at my life, I'm a lot like you were
+
+<span class="t">[Instrumental]</span>
+
+<span class="c">D F C G</span>
+<span class="c">D F C F</span>
+
+<span class="t">[Verse 1]</span>
+
+<span class="c">D          F</span>
+  Old man, look at my life
+<span class="c">C                         G</span>
+  Twenty four and there's so much more
+<span class="c">D                 F</span>
+  Live alone in a paradise
+<span class="c">     C                  F</span>
+That makes me think of two
+
+
+<span class="c">D            F</span>
+  Love lost, such a cost
+<span class="c">C                     G</span>
+  Give me things that don't get lost
+<span class="c">D                  C</span>
+  Like a coin that won't get tossed
+<span class="c">F                 G</span>
+Rollin' home to you
+
+<span class="c">D   Am7 Em7 G D/F#</span>
+
+(Between D and Am7, try Dsus4-&gt;D-&gt;Dsus2-&gt;D, pulling off the high E from the
+3rd fret to 2nd fret to open E, then a quick punch on the 2nd fret again)
+
+
+<span class="c">D                                       Am7      Em7  G</span>
+  Old man, take a look at my life I'm a lot like you
+<span class="c">D                               Am7       Em7      G</span>
+  I need someone to love me the whole day through
+<span class="c">D                                     Am7         Em7</span>
+  Oh, one look in my eyes and you can tell that's true
+
+
+<span class="t">[Instrumental]</span>
+
+<span class="c">D F C G</span>
+<span class="c">D F C F</span>
+
+
+<span class="t">[Verse 3]</span>
+
+<span class="c">D            F</span>
+  Lullabies, look in your eyes
+<span class="c">C                G</span>
+  Run around the same old town
+<span class="c">D                   F</span>
+  Doesn't mean that much to me
+<span class="c">   C                   F</span>
+To mean that much to you
+
+
+<span class="t">[Verse 4]</span>
+
+<span class="c">D           F</span>
+  I've been first and last
+<span class="c">C                 G</span>
+  Look at how the time goes past
+<span class="c">D              C</span>
+  But I'm all alone at last
+<span class="c">F                 G</span>
+Rolling home to you
+
+
+<span class="t">[Link]</span>
+
+<span class="c">D   Am7 Em7 G D/F#</span>
+
+
+<span class="t">[Chorus]</span>
+
+<span class="c">D                                       Am7      Em7  G</span>
+  Old man, take a look at my life I'm a lot like you
+<span class="c">D                               Am7       Em7      G</span>
+  I need someone to love me the whole day through
+<span class="c">D                                     Am7         Em7</span>
+  Oh, one look in my eyes and you can tell that's true
+
+
+<span class="t">[Outro]</span>
+
+<span class="c">FM7                                         D    Dsus4  D</span>
+   Old man, look at my life, I'm a lot like you were
+<span class="c">FM7                                         D</span>
+   Old man, look at my life, I'm a lot like you were
+
+<span class="c">D F C G</span>
+</div><div class="end"></div></section><section class="song" id="s27"><div class="song-head"><h2>Moving out?</h2></div><div class="body"><span class="t">[Intro]</span>
+<span class="c">Bm  Em  A A/C# D  (x2)</span>
+
+<span class="t">[Verse 1]</span>
+<span class="c">Bm                    Em</span>
+Anthony works in the grocery store
+<span class="c">A             A/C#         D</span>
+saving his pennies for someday
+<span class="c">Bm                 E7</span>
+Mama Leone left a note on the door
+<span class="c">           A           A/C#        D</span>
+She said, "Sonny, move out to the country"
+<span class="c">        Bm                              E9</span>
+Ah, but working too hard can give you a heart attack-ack-ack-ack-ack-ack!
+<span class="c">G                   A</span>
+You oughta know by now (You oughta know by now)
+
+<span class="c">Bm                        Em</span>
+Who needs a house out in Hackensack?
+<span class="c">   A          A/C#             D</span>
+Is that all you get for your money?
+<span class="c">       G                     A        F#                    Bm</span>
+And it seems such a waste of time, if that's what it's all about
+<span class="c">Bm/A         G                 C#m7  F#7</span>
+Mama, if that's movin' up then I'm       movin' out
+
+<span class="t">[Instrumental]</span>
+<span class="c">Bm  Em  A A/C# D  (x2)</span>
+
+<span class="t">[Verse 2]</span>
+<span class="c">Bm                   Em</span>
+Sergeant O'Leary is walking the beat
+<span class="c">   A           A/C#       D</span>
+At night he becomes a bartender
+<span class="c">            Bm                          E7</span>
+He works at Mister Cacciatore's down on Sullivan Street
+<span class="c"> A               A/C#     D</span>
+Across from the medical center
+<span class="c">               Bm                         E9</span>
+Yeah, and he's trading in his Chevy for a Cadillac-ac-ac-ac-ac-ac!
+<span class="c">G                   A</span>
+You oughta know by now (You oughta know by now)
+
+<span class="c">    Bm                       E7</span>
+And if he can't drive with a broken back
+<span class="c">   A            A/C#           D</span>
+At least he can polish the fenders
+<span class="c">       G                     A        F#                    Bm</span>
+And it seems such a waste of time, if that's what it's all about
+<span class="c">Bm/A        G                   C#m7 F#7</span>
+Mama, if that's movin' up then I'm      movin' out
+
+<span class="t">[Instrumental]</span>
+<span class="c">Bm  Em  A A/C# D  (x2)</span>
+
+<span class="t">[Verse 3]</span>
+<span class="c">Bm                            E9</span>
+You should never argue with a crazy mind-mind-mind-mind-mind-mind!
+<span class="c">G                   A</span>
+You oughta know by now (You oughta know by now)
+<span class="c">         Bm                     E7</span>
+You can pay Uncle Sam with the overtime
+<span class="c">   A            A/C#            D</span>
+Is that all you get for your money?
+<span class="c">       G                        A             F#                      Bm</span>
+And if that's what you have in mind, yeah, if that's what you're all about
+<span class="c">Bm/A   G                C#m7  F#7</span>
+Good luck movin' up cuz I'm      movin' out
+
+<span class="t">[Instrumental]</span>
+<span class="c">Bm  Em  A A/C# D  (x2)</span>
+
+
+
+
+
+
+________________
+</div><div class="end"></div></section><section class="song" id="s28"><div class="song-head"><h2>Fall back down?</h2></div><div class="cue">second word (worry), together</div><div class="body">
+
+With the Bass line (x2)
+<span class="c">               (E)   (F#m) (A)   (E)</span>
+e|--------------0-----2-----0-----0--------|
+B|--------------0-----2-----2-----0--------|
+G|--------------1-----2-----2-----1--------|
+D|--------2-----2--3--4-----2-----2--------|
+A|--2--4-----4--2-----4-----0-----2--------|
+E|--------------0-----2-----0-----0--------|
+
+<span class="t">[Verse 1]</span>
+
+<span class="c">E</span>
+Don't worry about me I'm gonna make it alright
+<span class="c">F#m</span>
+Got my enemies cross haired and in my sight
+<span class="c">A</span>
+I take a bad situation gonna make it right
+<span class="c">E</span>
+In the shadows of darkness I stand in the light
+
+
+<span class="t">[Verse 2]</span>
+
+<span class="c">E</span>
+Ya see it's my style and I'll keep true
+<span class="c">F#m</span>
+I had a bad year but I got through
+<span class="c">A</span>
+I've been knocked out, beat down, black and blue
+<span class="c">B</span>
+She's not the one coming back for you
+<span class="c">B</span>
+She's not the one coming back for you
+
+
+<span class="t">[Chorus]</span>
+
+<span class="c">E              F#m</span>
+If I fall back down
+<span class="c">A                    E</span>
+You're gonna help me back up again
+<span class="c">E              F#m</span>
+If I fall back down
+<span class="c">A                    E</span>
+You're gonna be my friend
+
+<span class="c">E              F#m</span>
+If I fall back down
+<span class="c">A                    E</span>
+You're gonna help me back up again
+<span class="c">E              F#m</span>
+If I fall back down
+<span class="c">A                    E</span>
+You're gonna be my friend
+
+
+<span class="t">[Verse 3]</span>
+
+<span class="c">C#m                             E</span>
+It takes disaster to learn a lesson
+<span class="c">B                                       A</span>
+We're gonna make it through the darkest ni-ah-ah-ights
+<span class="c">C#m                             E</span>
+Some people betray one and cause treason
+<span class="c">B                                       A</span>
+But that one make everything alri-ah-ah-ight
+
+<span class="t">[Verse 4]</span>
+
+Well the rest of times they don't faze me
+<span class="c">F#m</span>
+Even if I look and act pretty crazy
+<span class="c">A</span>
+On my way down she betrayed me
+<span class="c">E</span>
+Now my vision is no longer hazy
+
+
+<span class="t">[Verse 5]</span>
+
+<span class="c">E</span>
+See I'm very lucky to have my crew
+<span class="c">F#m</span>
+They stood by me when she flew
+<span class="c">A</span>
+I've been knocked out, beat down, black and blue
+<span class="c">B</span>
+She's not the one coming back for you
+<span class="c">B</span>
+She's not the one coming back for you
+
+
+<span class="t">[Chorus]</span>
+
+<span class="c">E              F#m</span>
+If I fall back down
+<span class="c">A                    E</span>
+You're gonna help me back up again
+<span class="c">E              F#m</span>
+If I fall back down
+<span class="c">A                    E</span>
+You're gonna be my friend
+
+<span class="c">E              F#m</span>
+If I fall back down
+<span class="c">A                    E</span>
+You're gonna help me back up again
+<span class="c">E              F#m</span>
+If I fall back down
+<span class="c">A                    E</span>
+You're gonna be my friend
+
+<span class="c">E E         F#m F#m</span>
+If I fall back down
+<span class="c">A A                   E E</span>
+You're gonna help me back up again
+<span class="c">E E          F#m F#m</span>
+If I fall back down
+<span class="c">A A                 E E</span>
+You're gonna be my friend
+
+<span class="c">E              F#m</span>
+If I fall back down
+<span class="c">A                    E</span>
+You're gonna help me back up again
+<span class="c">E              F#m</span>
+If I fall back down
+<span class="c">A                    E</span>
+You're gonna be my friend
+
+
+<span class="t">[Chorus]</span>
+
+<span class="c">E              F#m</span>
+If I fall back down
+<span class="c">A                    E</span>
+You're gonna help me back up again
+<span class="c">E              F#m</span>
+If I fall back down
+<span class="c">A                    E</span>
+You're gonna be my friend
+
+<span class="c">E              F#m</span>
+If I fall back down
+<span class="c">A                    E</span>
+You're gonna help me back up again
+<span class="c">E              F#m</span>
+If I fall back down
+<span class="c">A                    E</span>
+You're gonna be my friend
+
+<span class="c">E             F</span>
+If I fall back down
+<span class="c">A                    E</span>
+You're gonna help me back up again
+<span class="c">E              F#m</span>
+If I fall back down
+<span class="c">A                    E</span>
+You're gonna be my friend
+
+
+________________
+</div><div class="end"></div></section><section class="song" id="s29"><div class="song-head"><h2>We will all go together</h2></div><div class="cue">unsure</div><div class="body">________________
+</div><div class="end"></div></section><section class="song" id="s30"><div class="song-head"><h2>Flicker</h2></div><div class="cue">feel it</div><div class="body">One little flicker of light
+Can erase the dark
+One little flicker of light
+Can erase the dark
+
+
+<span class="t">[Verse 1]</span>
+Yeah I been drinkin’, You already know
+Do I smell like escape? Probably so
+I found your tape in my old collection
+Put it in pushed play then I poured a fresh one
+I look back with a hesitant laugh
+But in reality it’s dark down memory ave
+All the trials and suffering we shared with each other
+A lot of people thought that we were actually brothers
+You know me, you know I’m a control freak
+Who told you, you could die before me?
+
+
+Gone, another dog lost to the wild
+I feel like a snot-nosed child
+
+
+And when I hear your Smile
+Its outlined in sadness
+
+
+You poked holes in the magic
+You taught jokes to the clowns
+That never learned how
+To appreciate the lights
+Before the bulbs burned out
+
+
+Flicker
+
+
+<span class="t">[Hook]</span>
+One little flicker of light
+Can erase the dark
+One little flicker of light
+Can erase the dark
+
+
+<span class="t">[Verse 2]</span>
+Yeah, I been thinking, You already know
+Do I sound frustrated? Probably so
+Sometimes I feel guilty, I was out on the road
+If I’da seen where it was going I’da stopped the whole show
+
+
+I realize it ain’t realistic
+I keep tryna make the pieces fit with
+The info presented
+I felt resentment
+I held this against myself
+I wanna help my friend
+It stays in my head
+That I was on a stage when you were laying in bed
+Body was discovered by your own mother
+It penetrates my chest, I still taste the regret
+That I slept through a late night call from your homie
+But then I spoke with Siddiq the next morning
+
+
+And then I smoked one million cigarettes
+Go figure, maybe I was tryna catch up with ya
+
+
+Flicker
+<span class="t">[Hook]</span>
+<span class="t">[Verse 3]</span>
+Yeah I been sinkin’, you already know
+
+
+Do I look exhausted? Probably so
+
+
+I don’t get much sleep
+I’m not sick, I’m fine
+I’m just tryna make the most of this limited time
+
+
+And I’m missing you but I ain’t gonna lie
+The distance grew between Eye and I
+And at the end, even though we didn’t speak enough
+You were easily one of the best people I’ve loved
+
+
+Now I’m tryna write a song for a dead songwriter
+That wrote they own songs about life and death
+
+
+And every breath is full of self-awareness
+Don’t ever be afraid to be embarrassed
+So I wrote these words to describe what I cry about
+But I’m certain if you were here right now
+You’d ridicule these lyrics, you’d hate this chorus
+You’d probably tell me that the concept is too straight forward
+Flicker
+
+
+<span class="t">[Hook]</span>
+________________
+</div><div class="end"></div></section><section class="song" id="s31"><div class="song-head"><h2>Sylvia’s Mother</h2></div><div class="body"><span class="c">A</span>
+Sylvia’s mother says, “Sylvia's busy,
+<span class="c">                          E</span>
+Too busy to come to the phone.
+
+Sylvia's mother says, “Sylvia's trying,
+<span class="c">                E7         A   A7</span>
+To start a new life of her own.”
+<span class="c">D                       A</span>
+Sylvia's mother says, “Sylvia's happy,
+<span class="c">   E                           A</span>
+So why don't you leave her a - lone?”
+<span class="c">        E</span>
+And the operator says:" Forty cents more,
+
+For the next three minutes."
+
+
+<span class="t">[Chorus]</span>
+
+<span class="c">    D                     A</span>
+Pl -ease Mrs. Avery, I've just got to talk to her,
+<span class="c">E                     A       A7</span>
+I'll only keep her a while.
+<span class="c">D                     A                           E</span>
+Please Mrs. Avery, I just want to tell her good - bye.
+
+
+<span class="t">[Verse]</span>
+
+<span class="c"> A</span>
+Sylvia's mother says, “Sylvia's packing,
+<span class="c">                           E</span>
+She’s goin' to be leaving today.”
+
+Sylvia's mother says, “Sylvia's marrying,
+<span class="c">    E7                  A    A7</span>
+A fellow down Galveston way.”
+<span class="c">D                      A</span>
+Sylvia's mother says, “Please don't say nothing,
+<span class="c">   E                          A</span>
+To make her start crying and stay
+
+<span class="c">        E</span>
+And the operator says:" Forty cents more,
+
+For the next three minutes."
+
+
+<span class="t">[Chorus]</span>
+
+<span class="c">    D                     A</span>
+Pl -ease Mrs. Avery, I've just got to talk to her,
+<span class="c">E                     A       A7</span>
+I'll only keep her a while.
+<span class="c">D                     A                            E</span>
+Please Mrs. Avery, I just want to tell her good - bye.
+
+
+<span class="t">[Verse]</span>
+
+<span class="c"> A</span>
+Sylvia's mother says, “Sylvia's hurrying,
+<span class="c">                                 E</span>
+She’s catching the nine o'clock train.”
+
+Sylvia's mother says, "Take your umbrella,
+<span class="c">         E7                      A       A7</span>
+‘cause, Sylvia, it's starting to rain."
+<span class="c">     D                      A</span>
+And Sylvia's mother says, "Thank you for calling,
+<span class="c">      E                            A</span>
+And, sir, won't you call back a - gain."
+<span class="c">         E</span>
+And the operator says:" Forty cents more,
+
+For the next three minutes."
+
+
+<span class="t">[Chorus]</span>
+
+<span class="c">     D                      A</span>
+Pl - ease Mrs. Avery, I've just got to talk to her,
+<span class="c">E                     A    A7</span>
+I'll only keep her a while.
+<span class="c">    D                 A                           E</span>
+Please Mrs. Avery, I just want to tell her good - bye.
+
+<span class="c">                           E</span>
+Tell her goodbye, please, tell her goodbye   AND FADE
+
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+
+<span class="t">[Verse]</span>
+
+<span class="c">D</span>
+Sylvia’s mother says, “Sylvia's busy,
+<span class="c">                          A</span>
+Too busy to come to the phone.
+
+Sylvia's mother says, “Sylvia's trying,
+<span class="c">                A7         D   D7</span>
+To start a new life of her own.”
+<span class="c">G                       D</span>
+Sylvia's mother says, “Sylvia's happy,
+<span class="c">   A                           D</span>
+So why don't you leave her a - lone?”
+<span class="c">        A</span>
+And the operator says:" Forty cents more,
+
+For the next three minutes."
+
+
+<span class="t">[Chorus]</span>
+
+<span class="c">    G                     D</span>
+Pl -ease Mrs. Avery, I've just got to talk to her,
+<span class="c">A                     D       D7</span>
+I'll only keep her a while.
+<span class="c">G                     D                           A</span>
+Please Mrs. Avery, I just want to tell her good - bye.
+
+
+<span class="t">[Verse]</span>
+
+<span class="c"> D</span>
+Sylvia's mother says, “Sylvia's packing,
+<span class="c">                           A</span>
+She’s goin' to be leaving today.”
+
+Sylvia's mother says, “Sylvia's marrying,
+<span class="c">    A7                  D    D7</span>
+A fellow down Galveston way.”
+<span class="c">G                      D</span>
+Sylvia's mother says, “Please don't say nothing,
+<span class="c">   A                          D</span>
+To make her start crying and stay
+
+<span class="c">        A</span>
+And the operator says:" Forty cents more,
+
+For the next three minutes."
+
+
+<span class="t">[Chorus]</span>
+
+<span class="c">    G                     D</span>
+Pl -ease Mrs. Avery, I've just got to talk to her,
+<span class="c">A                     D       D7</span>
+I'll only keep her a while.
+<span class="c">G                     D                            A</span>
+Please Mrs. Avery, I just want to tell her good - bye.
+
+
+<span class="t">[Verse]</span>
+
+<span class="c"> D</span>
+Sylvia's mother says, “Sylvia's hurrying,
+<span class="c">                                 A</span>
+She’s catching the nine o'clock train.”
+
+Sylvia's mother says, "Take your umbrella,
+<span class="c">         A7                      D       D7</span>
+‘cause, Sylvia, it's starting to rain."
+<span class="c">     G                      D</span>
+And Sylvia's mother says, "Thank you for calling,
+<span class="c">      A                            D</span>
+And, sir, won't you call back a - gain."
+<span class="c">         A</span>
+And the operator says:" Forty cents more,
+
+For the next three minutes."
+
+
+<span class="t">[Chorus]</span>
+
+<span class="c">     G                      D</span>
+Pl - ease Mrs. Avery, I've just got to talk to her,
+<span class="c">A                     D    D7</span>
+I'll only keep her a while.
+<span class="c">    G                 D                           A</span>
+Please Mrs. Avery, I just want to tell her good - bye.
+
+<span class="c">                           A</span>
+Tell her goodbye, please, tell her goodbye   AND FADE
+
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+
+<span class="t">[Verse]</span>
+
+<span class="c">C</span>
+Sylvia’s mother says, “Sylvia's busy,
+<span class="c">                          G</span>
+Too busy to come to the phone.
+
+Sylvia's mother says, “Sylvia's trying,
+<span class="c">                G7         C   C7</span>
+To start a new life of her own.”
+<span class="c">F                       C</span>
+Sylvia's mother says, “Sylvia's happy,
+<span class="c">   G                           C</span>
+So why don't you leave her a - lone?”
+<span class="c">        G</span>
+And the operator says:" Forty cents more,
+
+For the next three minutes."
+
+
+<span class="t">[Chorus]</span>
+
+<span class="c">    F                     C</span>
+Pl -ease Mrs. Avery, I've just got to talk to her,
+<span class="c">G                     C       C7</span>
+I'll only keep her a while.
+<span class="c">F                     C                           G</span>
+Please Mrs. Avery, I just want to tell her good - bye.
+
+
+<span class="t">[Verse]</span>
+
+<span class="c"> C</span>
+Sylvia's mother says, “Sylvia's packing,
+<span class="c">                           G</span>
+She’s goin' to be leaving today.”
+
+Sylvia's mother says, “Sylvia's marrying,
+<span class="c">    G7                  C    C7</span>
+A fellow down Galveston way.”
+<span class="c">F                      C</span>
+Sylvia's mother says, “Please don't say nothing,
+<span class="c">   G                          C</span>
+To make her start crying and stay
+
+<span class="c">        G</span>
+And the operator says:" Forty cents more,
+
+For the next three minutes."
+
+
+<span class="t">[Chorus]</span>
+
+<span class="c">    F                     C</span>
+Pl -ease Mrs. Avery, I've just got to talk to her,
+<span class="c">G                     C       C7</span>
+I'll only keep her a while.
+<span class="c">F                     C                            G</span>
+Please Mrs. Avery, I just want to tell her good - bye.
+
+
+<span class="t">[Verse]</span>
+
+<span class="c"> C</span>
+Sylvia's mother says, “Sylvia's hurrying,
+<span class="c">                                 G</span>
+She’s catching the nine o'clock train.”
+
+Sylvia's mother says, "Take your umbrella,
+<span class="c">         G7                      C       C7</span>
+‘cause, Sylvia, it's starting to rain."
+<span class="c">     F                      C</span>
+And Sylvia's mother says, "Thank you for calling,
+<span class="c">      G                            C</span>
+And, sir, won't you call back a - gain."
+<span class="c">         G</span>
+And the operator says:" Forty cents more,
+
+For the next three minutes."
+
+
+<span class="t">[Chorus]</span>
+
+<span class="c">     F                      C</span>
+Pl - ease Mrs. Avery, I've just got to talk to her,
+<span class="c">G                     C    C7</span>
+I'll only keep her a while.
+<span class="c">    F                 C                           G</span>
+Please Mrs. Avery, I just want to tell her good - bye.
+
+<span class="c">                           G</span>
+Tell her goodbye, please, tell her goodbye   AND FADE
+
+XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+
+<span class="t">[Verse]</span>
+
+<span class="c">E</span>
+Sylvia’s mother says, “Sylvia's busy,
+<span class="c">                          B</span>
+Too busy to come to the phone.
+
+Sylvia's mother says, “Sylvia's trying,
+<span class="c">                B7         E   E7</span>
+To start a new life of her own.”
+<span class="c">A                       E</span>
+Sylvia's mother says, “Sylvia's happy,
+<span class="c">   B                           E</span>
+So why don't you leave her a - lone?”
+<span class="c">        B</span>
+And the operator says:" Forty cents more,
+
+For the next three minutes."
+
+
+<span class="t">[Chorus]</span>
+
+<span class="c">    A                     E</span>
+Pl -ease Mrs. Avery, I've just got to talk to her,
+<span class="c">B                     E       E7</span>
+I'll only keep her a while.
+<span class="c">A                     E                           B</span>
+Please Mrs. Avery, I just want to tell her good - bye.
+
+
+<span class="t">[Verse]</span>
+
+<span class="c"> E</span>
+Sylvia's mother says, “Sylvia's packing,
+<span class="c">                           B</span>
+She’s goin' to be leaving today.”
+
+Sylvia's mother says, “Sylvia's marrying,
+<span class="c">    B7                  E    E7</span>
+A fellow down Galveston way.”
+<span class="c">A                      E</span>
+Sylvia's mother says, “Please don't say nothing,
+<span class="c">   B                          E</span>
+To make her start crying and stay
+
+<span class="c">        B</span>
+And the operator says:" Forty cents more,
+
+For the next three minutes."
+
+
+<span class="t">[Chorus]</span>
+
+<span class="c">    A                     E</span>
+Pl -ease Mrs. Avery, I've just got to talk to her,
+<span class="c">B                     E       E7</span>
+I'll only keep her a while.
+<span class="c">A                     E                            B</span>
+Please Mrs. Avery, I just want to tell her good - bye.
+
+
+<span class="t">[Verse]</span>
+
+<span class="c"> E</span>
+Sylvia's mother says, “Sylvia's hurrying,
+<span class="c">                                 B</span>
+She’s catching the nine o'clock train.”
+
+Sylvia's mother says, "Take your umbrella,
+<span class="c">         B7                      E       E7</span>
+‘cause, Sylvia, it's starting to rain."
+<span class="c">     A                      E</span>
+And Sylvia's mother says, "Thank you for calling,
+<span class="c">      B                            E</span>
+And, sir, won't you call back a - gain."
+<span class="c">         B</span>
+And the operator says:" Forty cents more,
+
+For the next three minutes."
+
+
+<span class="t">[Chorus]</span>
+
+<span class="c">     A                      E</span>
+Pl - ease Mrs. Avery, I've just got to talk to her,
+<span class="c">B                     E    E7</span>
+I'll only keep her a while.
+<span class="c">    A                 E                           B</span>
+Please Mrs. Avery, I just want to tell her good - bye.
+
+<span class="c">                           B</span>
+Tell her goodbye, please, tell her goodbye   AND FADE
+________________
+</div><div class="end"></div></section><section class="song" id="s32"><div class="song-head"><h2>The bad touch</h2></div><div class="cue">same time</div><div class="body"><span class="t">[Intro]</span>
+
+(Drums)
+
+
+
+<span class="c">| Am | C | G | F |</span>
+<span class="c">| Am | C | G | F |</span>
+
+<span class="t">[Verse 1]</span>
+<span class="c">Am                    C</span>
+Sweat baby sweat baby sex is a Texas drought
+<span class="c">           G                              F</span>
+Me and you do the kind of stuff that only prince would sing about
+<span class="c">            Am                           C</span>
+So put your hands down my pants and I'll bet you'll feel nuts
+<span class="c">        G                                F</span>
+Yes I'm Siskel, yes I'm Ebert and you're getting two thumbs up
+<span class="c">            Am                                  C</span>
+You've had enough of two-hand touch you want it rough you're out of bounds
+<span class="c">           G                                  F</span>
+I want you smothered want you covered like my waffle house hashbrowns
+<span class="c">                     Am                                         C</span>
+Come quicker than fedex never reach an apex just like coca-cola stock you are
+inclined
+<span class="c">           G                            F</span>
+To make me rise an hour early just like daylight savings time
+
+Do it now
+
+<span class="t">[Chorus]</span>
+<span class="c">Am                    C</span>
+You and me baby ain't nothin' but mammals
+<span class="c">        G                            F</span>
+So lets do it like they do on the discovery channel (Do it again now)
+<span class="c">Am                    C</span>
+You and me baby ain't nothin' but mammals
+<span class="c">        G                            F</span>
+So lets do it like they do on the discovery channel (Get horny now!)
+
+Chords x4
+
+<span class="t">[Verse 2]</span>
+<span class="c">Am                         C</span>
+Love the kind you clean up with a mop and bucket
+<span class="c">         G                            F</span>
+Like the lost catacombs of Egypt only God knows where we stuck it
+<span class="c">     Am                                      C</span>
+Hieroglyphics? let me be specific I wanna be down in your south seas
+<span class="c">               G                                                F</span>
+But I got this notion that the motion of your ocean means small craft advisory
+<span class="c">            Am                                   C</span>
+So if I capsize on your thighs high tide, b5 you sunk my battleship
+<span class="c">               G                            F</span>
+Please turn me on I'm mister coffee with an automatic drip
+<span class="c">           Am                                        C</span>
+So show me yours I'll show you mine tool time you'll Lovett just like Lyle
+<span class="c">              G                           F</span>
+And then well do it doggy style so we can both watch x-files
+
+
+<span class="t">[Chorus]</span>
+<span class="c">Am                    C</span>
+You and me baby ain't nothin' but mammals
+<span class="c">        G                            F</span>
+So lets do it like they do on the discovery channel (Do it again now)
+<span class="c">Am                    C</span>
+You and me baby ain't nothin' but mammals
+<span class="c">        G                            F</span>
+So lets do it like they do on the discovery channel (Get horny now!)
+ Chords
+(Key + Voc only!)
+
+<span class="t">[Chorus]</span>
+<span class="c">Am                    C</span>
+You and me baby ain't nothin' but mammals
+<span class="c">        G                            F</span>
+So lets do it like they do on the discovery channel (Do it again now)
+<span class="c">Am                    C</span>
+You and me baby ain't nothin' but mammals
+<span class="c">        G                            F</span>
+So lets do it like they do on the discovery channel (Get horny now!)
+
+<span class="t">[Chorus]</span>
+<span class="c">Am                    C</span>
+You and me baby ain't nothin' but mammals
+<span class="c">        G                            F</span>
+So lets do it like they do on the discovery channel (Do it again now)
+<span class="c">Am                    C</span>
+You and me baby ain't nothin' but mammals
+<span class="c">        G                            F</span>
+So lets do it like they do on the discovery channel (Get horny now!)
+
+<span class="t">[Outro]</span>
+<span class="c">| Am | C | G | F |</span>
+<span class="c">| Am | C | G | F |</span>
+<span class="c">| Am | C | G | F |</span>
+<span class="c">| Am | C | G | F |</span>
+(fade)
+
+________________
+
+
+Amarillo by morning
+
+<span class="t">[Intro]</span>
+<span class="c">D  F#m  G  A</span>
+<span class="c">D  F#m  G  A</span>
+
+
+<span class="t">[Verse 1]</span>
+<span class="c">D             F#m    G               D</span>
+  Amarillo by mornin' up from San Antone
+<span class="c">D                  F#m     G                   A</span>
+  Everything that I got is just what I've got on
+<span class="c">          Gmaj7              A</span>
+When that sun is high in the Texas sky
+<span class="c">        D              F#m    G</span>
+I'll be buckin' at the county fair
+<span class="c">D             A           G     A     D</span>
+  Amarillo by mornin', Amarillo I'll be there
+
+
+<span class="t">[Instrumental]</span>
+<span class="c">(D) F#m  G  A</span>
+
+
+<span class="t">[Verse 2]</span>
+<span class="c">D                        F#m               G            D</span>
+  They took my saddle in Houston, broke my leg in Santa Fe
+<span class="c">D                    F#m            G               A</span>
+  Lost my wife and a girlfriend somewhere along the way
+<span class="c">            Gmaj7                       A</span>
+But I'll be looking for eight when they pull that gate
+<span class="c">      D         F#m         G</span>
+and I hope that judge ain't blind
+<span class="c">D             A           G       A   D</span>
+  Amarillo by mornin', Amarillo's on my mind
+
+
+<span class="t">[Instrumental]</span>
+<span class="c">(D) F#m  G  F#m</span>
+
+
+[Verse 3] (key change)
+<span class="c">E             G#m    A               E</span>
+  Amarillo by mornin' up from San Antone
+<span class="c">E                 G#m      A                 B</span>
+  Everything that I got is just what I've got on
+<span class="c">        Amaj7                 B</span>
+I ain't got a dime but what I got is mine
+<span class="c">        E        G#m      A</span>
+I ain't rich but Lord I'm free
+<span class="c">E             B           A       B          E  A B</span>
+  Amarillo by mornin', Amarillo's where I'll be
+<span class="c">E             B           A       B       E</span>
+  Amarillo by mornin', Amarillo's where I'll be
+
+
+<span class="t">[Outro]</span>
+<span class="c">(E) G#m  A  B</span>
+<span class="c"> E  G#m  A  B</span>
+<span class="c"> E  G#m  A  B  E</span>
+</div><div class="end"></div></section><section class="song" id="s33"><div class="song-head"><h2>Amarillo By Morning (George Strait)</h2><div class="ug-actions-inline"><a class="ug-ref" href="https://tabs.ultimate-guitar.com/tab/george-strait/amarillo-by-morning-chords-642882" target="_blank" rel="noopener">UG ↗</a><button type="button" class="del-ug" data-idx="33">Delete</button></div></div><div class="cue">Key: D</div><div class="body">AMARILLO BY MORNING
+by George Strait
+
+Live performance - https://www.youtube.com/watch?v=kX_9Go0Z8e4
+
+
+<span class="t">[Intro]</span>
+<span class="c">D  F#m  G  A</span>
+<span class="c">D  F#m  G  A</span>
+
+
+<span class="t">[Verse 1]</span>
+<span class="c">D             F#m    G               D</span>
+  Amarillo by mornin' up from San Antone
+<span class="c">D                  F#m     G                   A</span>
+  Everything that I got is just what I've got on
+<span class="c">          Gmaj7              A</span>
+When that sun is high in the Texas sky
+<span class="c">        D              F#m    G</span>
+I'll be buckin' at the county fair
+<span class="c">D             A           G     A     D</span>
+  Amarillo by mornin', Amarillo I'll be there
+
+
+<span class="t">[Instrumental]</span>
+<span class="c">(D) F#m  G  A</span>
+
+
+<span class="t">[Verse 2]</span>
+<span class="c">D                        F#m               G            D</span>
+  They took my saddle in Houston, broke my leg in Santa Fe
+<span class="c">D                    F#m            G               A</span>
+  Lost my wife and a girlfriend somewhere along the way
+<span class="c">            Gmaj7                       A</span>
+But I'll be looking for eight when they pull that gate
+<span class="c">      D         F#m         G</span>
+and I hope that judge ain't blind
+<span class="c">D             A           G       A   D</span>
+  Amarillo by mornin', Amarillo's on my mind
+
+
+<span class="t">[Instrumental]</span>
+<span class="c">(D) F#m  G  F#m</span>
+
+
+[Verse 3] (key change)
+<span class="c">E             G#m    A               E</span>
+  Amarillo by mornin' up from San Antone
+<span class="c">E                 G#m      A                 B</span>
+  Everything that I got is just what I've got on
+<span class="c">        Amaj7                 B</span>
+I ain't got a dime but what I got is mine
+<span class="c">        E        G#m      A</span>
+I ain't rich but Lord I'm free
+<span class="c">E             B           A       B          E  A B</span>
+  Amarillo by mornin', Amarillo's where I'll be
+<span class="c">E             B           A       B       E</span>
+  Amarillo by mornin', Amarillo's where I'll be
+
+
+<span class="t">[Outro]</span>
+<span class="c">(E) G#m  A  B</span>
+<span class="c"> E  G#m  A  B</span>
+<span class="c"> E  G#m  A  B  E</span>
+</div><div class="end"></div></section><div class="bar"><button id="prev" aria-label="Previous song">⏮</button><button id="pp" class="go">Play</button><button id="next" aria-label="Next song">⏭</button><button id="sd" aria-label="Slower">−</button><span id="sp">25</span><button id="su" aria-label="Faster">+</button><button id="fd" aria-label="Smaller text">A−</button><button id="fu" aria-label="Larger text">A+</button><button id="th" aria-label="Toggle light or dark">◐</button><button class="link" id="add-ug">+ UG Link</button><button class="link" id="re">Re-import</button></div></div>
+
+<div id="ug-modal" role="dialog" aria-modal="true" aria-labelledby="ug-heading">
+  <div class="ug-box">
+    <h3 id="ug-heading">Add Ultimate Guitar Link</h3>
+    <label for="ug-url">Ultimate Guitar URL</label>
+    <input type="url" id="ug-url" placeholder="https://tabs.ultimate-guitar.com/tab/...">
+    <p class="ug-hint" id="ug-parsed-info"></p>
+
+    <label for="ug-target">Placement</label>
+    <select id="ug-target">
+      <option value="__new__">+ Add as new song at end of setlist</option>
+    </select>
+
+    <label for="ug-title">Song Title</label>
+    <input type="text" id="ug-title" placeholder="Auto-detected from URL">
+
+    <label for="ug-cue">Cue / Tempo Note (optional)</label>
+    <input type="text" id="ug-cue" placeholder="e.g., 4/4, punkish, come in after 1 measure">
+
+    <div id="ug-err" class="ug-err"></div>
+
+    <div id="ug-fallback">
+      <label for="ug-body">UG blocked auto-fetch — paste copied tab text here</label>
+      <textarea id="ug-body" placeholder="Paste copied chords/lyrics here..."></textarea>
+    </div>
+
+    <div class="ug-actions">
+      <button type="button" class="ug-btn-sm" id="ug-cancel">Cancel</button>
+      <button type="button" class="go ug-btn-sm" id="ug-save">Pull &amp; Add</button>
+    </div>
+  </div>
+</div>
+
 <script>
 var SONGS=[
 ["GodLovesUgly","E, 4/4, bluesy hip hop, slowish, don’t let me speed, come in after 1 measure"],
@@ -72,7 +3097,6 @@ var SONGS=[
 ["Sylvia’s Mother",""],
 ["The bad touch","same time"]
 ["Amarillo By Morning","same time"]
-
 ];
 var KEY="sa-setlist-v1",$=function(s){return document.querySelector(s)};
 var S={songs:[],play:false,speed:40,fs:20,hold:0,acc:0,last:0};
@@ -82,6 +3106,8 @@ function norm(s){return s.replace(/[’‘]/g,"'").replace(/[“”]/g,'"').repl
 function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')}
 var CH=/^\(?(N\.C\.?|[A-G][#b]?(maj|min|dim|aug|sus|m|M)?\d*(add\d+)?(\/[A-G][#b]?\d*)?|x\d+|\||%)\)?$/;
 function isChord(l){var t=l.trim().split(/\s+/);return t[0]!==''&&t.every(function(x){return CH.test(x)})}
+var UG_RE=/^https?:\/\/(?:tabs\.)?ultimate-guitar\.com\/tab\/[^\s]+$/i;
+
 function parse(text){
   var lines=text.replace(/\r/g,'').split('\n').filter(function(l){return l.indexOf('\t')<0});
   var pos=[],cur=0,missing=[];
@@ -91,8 +3117,9 @@ function parse(text){
     pos.push(f);if(f<0)missing.push(s[0]);else cur=f+1;
   });
   var out=[];
+  var extraUgUrls=[];
   SONGS.forEach(function(s,k){
-    var b=[],cue=s[1];
+    var b=[],cue=s[1],ugUrl='';
     if(pos[k]>=0){
       var end=lines.length;
       for(var j=k+1;j<SONGS.length;j++){if(pos[j]>=0){end=pos[j];break}}
@@ -100,11 +3127,25 @@ function parse(text){
       while(b.length&&!b[0].trim())b.shift();
       if(b.length&&/^\(.*\)?$/.test(b[0].trim())){if(!cue)cue=b[0].trim().replace(/^\(|\)$/g,'');b.shift()}
       while(b.length&&!b[b.length-1].trim())b.pop();
+
+      // Check if any UG URLs appear inside this block (e.g., 1 right under title, or extra URLs at bottom of file)
+      var filtered=[];
+      b.forEach(function(line){
+        var tr=line.trim();
+        if(UG_RE.test(tr)){
+          if(!ugUrl&&filtered.length===0){ugUrl=tr;}
+          else{extraUgUrls.push(tr);}
+        }else{
+          filtered.push(line);
+        }
+      });
+      b=filtered;
     }
-    out.push({title:s[0],cue:cue,lines:b});
+    out.push({title:s[0],cue:cue,lines:b,ugUrl:ugUrl,hasUg:!!ugUrl});
   });
-  return {songs:out,missing:missing};
+  return {songs:out,missing:missing,extraUgUrls:extraUgUrls};
 }
+
 function lineHtml(l){
   if(!l.trim())return '\n';
   if(/^\s*\[.*\]\s*$/.test(l))return '<span class="t">'+esc(l)+'</span>\n';
@@ -112,28 +3153,263 @@ function lineHtml(l){
   return esc(l)+'\n';
 }
 
+function parseUgUrl(url){
+  try{
+    var u=new URL(url.trim());
+    if(!/ultimate-guitar\.com$/i.test(u.hostname))return null;
+    var parts=u.pathname.split('/').filter(Boolean);
+    if(parts[0]==='tab'&&parts.length>=3){
+      var toTitle=function(str){
+        return decodeURIComponent(str).replace(/[-_]+/g,' ').trim()
+          .replace(/\b\w/g,function(c){return c.toUpperCase()});
+      };
+      var artist=toTitle(parts[1]);
+      var slug=parts[2].replace(/-\d+$/,'').replace(/-(chords|tabs|ukulele|bass|power|guitar-pro|official|ver-\d+)$/gi,'');
+      var title=toTitle(slug);
+      return {artist:artist,title:title,url:u.href};
+    }
+    return {artist:'',title:'',url:u.href};
+  }catch(e){return null}
+}
+
+function decodeUgContent(raw){
+  var txt=document.createElement('textarea');
+  txt.innerHTML=raw;
+  var clean=txt.value.replace(/\r/g,'').replace(/\[\/?ch\]/gi,'').replace(/\[\/?tab\]/gi,'');
+  var lines=clean.split('\n').map(function(l){return l.replace(/\s+$/,'')});
+  while(lines.length&&!lines[0].trim())lines.shift();
+  while(lines.length&&!lines[lines.length-1].trim())lines.pop();
+  return lines;
+}
+
+function extractFromUgHtml(html){
+  var doc=new DOMParser().parseFromString(html,'text/html');
+  var storeEl=doc.querySelector('.js-store');
+  if(storeEl){
+    var rawAttr=storeEl.getAttribute('data-content');
+    if(rawAttr){
+      var data=JSON.parse(rawAttr);
+      var page=data&&data.store&&data.store.page&&data.store.page.data;
+      var tabView=page&&page.tab_view;
+      var wiki=tabView&&tabView.wiki_tab;
+      if(wiki&&wiki.content){
+        var meta=tabView.meta||{};
+        var tabInfo=page.tab||{};
+        var cueParts=[];
+        if(meta.capo)cueParts.push('Capo '+meta.capo);
+        if(meta.tonality)cueParts.push('Key: '+meta.tonality);
+        return {
+          title:tabInfo.song_name||'',
+          artist:tabInfo.artist_name||'',
+          cue:cueParts.join(', '),
+          lines:decodeUgContent(wiki.content)
+        };
+      }
+    }
+  }
+  var m=html.match(/"wiki_tab"\s*:\s*\{[\s\S]*?"content"\s*:\s*"((?:\\.|[^"\\])*)"/);
+  if(m&&m[1]){
+    return {title:'',artist:'',cue:'',lines:decodeUgContent(JSON.parse('"'+m[1]+'"'))};
+  }
+  throw new Error('Could not parse UG page');
+}
+
+async function fetchUgTab(url){
+  var proxies=[
+    function(u){return 'https://api.allorigins.win/raw?url='+encodeURIComponent(u)},
+    function(u){return 'https://corsproxy.io/?'+encodeURIComponent(u)},
+    function(u){return 'https://api.codetabs.com/v1/proxy?quest='+encodeURIComponent(u)}
+  ];
+  for(var i=0;i<proxies.length;i++){
+    try{
+      var res=await fetch(proxies[i](url));
+      if(!res.ok)continue;
+      var html=await res.text();
+      if(html&&html.length>500)return extractFromUgHtml(html);
+    }catch(e){}
+  }
+  throw new Error('Proxy blocked by UG');
+}
+
+/* Automatically resolves any UG links embedded in songs.txt */
+async function resolveSongsTxtUgLinks(parsed){
+  var songs=parsed.songs;
+  var updated=false;
+
+  // 1. Resolve UG links placed directly under an existing song title
+  for(var i=0;i<songs.length;i++){
+    if(songs[i].ugUrl&&!songs[i].lines.length){
+      status('Pulling UG: '+songs[i].title+'…');
+      try{
+        var fetched=await fetchUgTab(songs[i].ugUrl);
+        songs[i].lines=fetched.lines;
+        if(!songs[i].cue&&fetched.cue)songs[i].cue=fetched.cue;
+        updated=true;
+      }catch(e){}
+    }
+  }
+
+  // 2. Resolve any standalone UG links placed at the bottom of songs.txt
+  for(var j=0;j<parsed.extraUgUrls.length;j++){
+    var u=parsed.extraUgUrls[j];
+    var info=parseUgUrl(u);
+    var label=(info&&info.title)?info.title:'UG link';
+    status('Pulling UG: '+label+'…');
+    try{
+      var f=await fetchUgTab(u);
+      var title=f.title?(f.artist?f.title+' ('+f.artist+')':f.title):(info&&info.title?(info.artist?info.title+' ('+info.artist+')':info.title):'UG Song');
+      songs.push({title:title,cue:f.cue||'',lines:f.lines,ugUrl:u,addedViaUg:true,hasUg:true});
+      updated=true;
+    }catch(e){
+      if(info&&info.title){
+        var fallbackTitle=info.artist?info.title+' ('+info.artist+')':info.title;
+        songs.push({title:fallbackTitle,cue:'',lines:[],ugUrl:u,addedViaUg:true,hasUg:true});
+        updated=true;
+      }
+    }
+  }
+
+  if(updated){
+    sv(KEY,JSON.stringify(songs));
+    start(songs,'');
+  }
+}
+
+function openUgModal(){
+  stop('Paused');
+  var sel=$('#ug-target');
+  sel.innerHTML='<option value="__new__">+ Add as new song at end of setlist</option>'+
+    S.songs.map(function(s,i){return '<option value="'+i+'">Replace #'+(i+1)+': '+esc(s.title)+(s.lines.length?'':' (empty)')+'</option>'}).join('');
+  $('#ug-url').value='';$('#ug-title').value='';$('#ug-cue').value='';$('#ug-body').value='';
+  $('#ug-parsed-info').textContent='';$('#ug-err').textContent='';
+  $('#ug-fallback').style.display='none';
+  $('#ug-save').disabled=false;$('#ug-save').textContent='Pull & Add';
+  $('#ug-modal').classList.add('open');
+  $('#ug-url').focus();
+}
+function closeUgModal(){$('#ug-modal').classList.remove('open')}
+
+function deleteUgSong(idx){
+  var song=S.songs[idx];
+  if(!song||!confirm('Remove "'+song.title+'"?'))return;
+  if(song.addedViaUg){S.songs.splice(idx,1)}
+  else{S.songs[idx].lines=[];delete S.songs[idx].ugUrl;delete S.songs[idx].hasUg}
+  sv(KEY,JSON.stringify(S.songs));
+  start(S.songs,'');
+  goTo(Math.min(idx,S.songs.length-1));
+}
+
+$('#ug-url').addEventListener('input',function(){
+  var info=parseUgUrl(this.value);
+  var hint=$('#ug-parsed-info');
+  $('#ug-err').textContent='';
+  if(!info){hint.textContent='';return}
+  if(info.title){
+    hint.textContent='Detected: "'+info.title+'"'+(info.artist?' by '+info.artist:'');
+    var nTitle=norm(info.title),matchIdx=-1;
+    for(var i=0;i<S.songs.length;i++){
+      var sNorm=norm(S.songs[i].title);
+      if(sNorm===nTitle||sNorm.indexOf(nTitle)>=0||nTitle.indexOf(sNorm.replace(/\s*\(.*?\)\s*/g,''))>=0){matchIdx=i;break}
+    }
+    if(matchIdx>=0){
+      $('#ug-target').value=String(matchIdx);
+      $('#ug-title').value=S.songs[matchIdx].title;
+      if(S.songs[matchIdx].cue)$('#ug-cue').value=S.songs[matchIdx].cue;
+    }else{
+      $('#ug-target').value='__new__';
+      $('#ug-title').value=info.artist?info.title+' ('+info.artist+')':info.title;
+    }
+  }
+});
+
+$('#ug-cancel').onclick=closeUgModal;
+$('#ug-modal').addEventListener('click',function(e){if(e.target===this)closeUgModal()});
+
+$('#ug-save').onclick=async function(){
+  var url=$('#ug-url').value.trim();
+  var fallbackText=$('#ug-body').value.trim();
+  var btn=$('#ug-save'),errEl=$('#ug-err');
+  errEl.textContent='';
+  if(!url&&!fallbackText){errEl.textContent='Paste an Ultimate Guitar URL first.';return}
+
+  var fetched=null;
+  if(fallbackText){
+    fetched={title:'',artist:'',cue:'',lines:decodeUgContent(fallbackText)};
+  }else{
+    btn.disabled=true;btn.textContent='Pulling…';
+    try{
+      fetched=await fetchUgTab(url);
+    }catch(e){
+      btn.disabled=false;btn.textContent='Save';
+      errEl.textContent='UG blocked automatic browser pull. Open the link, copy the chords, and paste below:';
+      $('#ug-fallback').style.display='block';
+      $('#ug-body').focus();
+      return;
+    }
+  }
+  btn.disabled=false;btn.textContent='Pull & Add';
+
+  var title=$('#ug-title').value.trim()||(fetched.title?(fetched.artist?fetched.title+' ('+fetched.artist+')':fetched.title):'UG Song');
+  var cue=$('#ug-cue').value.trim()||fetched.cue||'';
+  var target=$('#ug-target').value;
+  var jumpIdx=0;
+  if(target==='__new__'){
+    S.songs.push({title:title,cue:cue,lines:fetched.lines,ugUrl:url,addedViaUg:true,hasUg:true});
+    jumpIdx=S.songs.length-1;
+  }else{
+    jumpIdx=+target;
+    S.songs[jumpIdx]={title:title,cue:cue||S.songs[jumpIdx].cue,lines:fetched.lines,ugUrl:url||S.songs[jumpIdx].ugUrl,addedViaUg:S.songs[jumpIdx].addedViaUg||false,hasUg:true};
+  }
+  sv(KEY,JSON.stringify(S.songs));
+  closeUgModal();
+  start(S.songs,'');
+  goTo(jumpIdx);
+  status('Added "'+title+'"');
+};
+
+function importScreen(msg){
+  $('#app').innerHTML='<div id="imp"><h1>Load your set list</h1><p>Paste the full text of your Google Doc once (Ctrl/Cmd+A, then copy in the doc). It stays saved in this browser.</p>'+(msg?'<p style="color:var(--ch)">'+msg+'</p>':'')+'<textarea id="ta" placeholder="Paste the doc text here"></textarea><p><button class="go" id="build">Build</button></p></div>';
+  $('#build').onclick=function(){
+    var t=$('#ta').value;if(t.trim().length<50){importScreen('Paste the whole document first.');return}
+    var r=parse(t);
+    if(r.missing.length>=SONGS.length-2){importScreen('Could not find the song titles. Paste the whole doc, including the song pages.');return}
+    sv(KEY,JSON.stringify(r.songs));start(r.songs,r.missing.length?'Not found in paste: '+r.missing.join(', '):'');
+    resolveSongsTxtUgLinks(r);
+  };
+}
+
 function start(songs,warn){
   S.songs=songs;S.speed=+ld('speed')||40;S.fs=+ld('fs')||20;
   var opts=songs.map(function(s,i){return '<option value="'+i+'">'+(i+1)+'. '+esc(s.title)+'</option>'}).join('');
   var secs=songs.map(function(s,i){
-    var body=s.lines.length?s.lines.map(lineHtml).join(''):'';
-    return '<section class="song" id="s'+i+'"><h2>'+esc(s.title)+'</h2>'+(s.cue?'<div class="cue">'+esc(s.cue)+'</div>':'')+
-      (body?'<div class="body">'+esc('').concat(body)+'</div>':'<div class="know">'+(i<6?'You know this.':'—')+'</div>')+'<div class="end"></div></section>';
+    var body=s.lines&&s.lines.length?s.lines.map(lineHtml).join(''):'';
+    var ugControls='';
+    if(s.hasUg||s.addedViaUg||s.ugUrl){
+      var linkHtml=s.ugUrl?'<a class="ug-ref" href="'+esc(s.ugUrl)+'" target="_blank" rel="noopener">UG ↗</a>':'';
+      var delLabel=s.addedViaUg?'Delete':'Clear UG';
+      ugControls='<div class="ug-actions-inline">'+linkHtml+'<button type="button" class="del-ug" data-idx="'+i+'">'+delLabel+'</button></div>';
+    }
+    return '<section class="song" id="s'+i+'"><div class="song-head"><h2>'+esc(s.title)+'</h2>'+ugControls+'</div>'+(s.cue?'<div class="cue">'+esc(s.cue)+'</div>':'')+
+      (body?'<div class="body">'+body+'</div>':'<div class="know">'+(i<6?'You know this.':'—')+'</div>')+'<div class="end"></div></section>';
   }).join('');
   $('#app').innerHTML='<header><select id="sel" aria-label="Jump to song">'+opts+'</select><div id="status" role="status"></div></header>'+(warn?'<p style="padding:8px 16px;color:var(--ch)">'+esc(warn)+'</p>':'')+secs+
   '<div class="bar"><button id="prev" aria-label="Previous song">⏮</button><button id="pp" class="go">Play</button><button id="next" aria-label="Next song">⏭</button>'+
   '<button id="sd" aria-label="Slower">−</button><span id="sp"></span><button id="su" aria-label="Faster">+</button>'+
-  '<button id="fd" aria-label="Smaller text">A−</button><button id="fu" aria-label="Larger text">A+</button><button id="th" aria-label="Toggle light or dark">◐</button><button class="link" id="re">Re-import</button></div>';
+  '<button id="fd" aria-label="Smaller text">A−</button><button id="fu" aria-label="Larger text">A+</button><button id="th" aria-label="Toggle light or dark">◐</button>'+
+  '<button class="link" id="add-ug">+ UG Link</button><button class="link" id="re">Re-import</button></div>';
   document.documentElement.style.setProperty('--fs',S.fs+'px');
   $('#sel').onchange=function(){goTo(+this.value)};
   $('#pp').onclick=toggle;$('#next').onclick=function(){goTo(cur()+1)};$('#prev').onclick=function(){goTo(cur()-1)};
   $('#sd').onclick=function(){spd(-5)};$('#su').onclick=function(){spd(5)};
   $('#fd').onclick=function(){fsz(-2)};$('#fu').onclick=function(){fsz(2)};
   $('#th').onclick=function(){var d=document.documentElement,dark=getComputedStyle(d).getPropertyValue('--bg').trim()==='#101a24';d.dataset.theme=dark?'light':'dark'};
+  $('#add-ug').onclick=openUgModal;
   $('#re').onclick=function(){stop();importScreen('')};
+  document.querySelectorAll('.del-ug').forEach(function(btn){btn.onclick=function(){deleteUgSong(+this.getAttribute('data-idx'))}});
   window.addEventListener('scroll',function(){var i=cur();var s=$('#sel');if(s&&+s.value!==i)s.value=i},{passive:true});
   spd(0);status('Ready. Space = play');
 }
+
 function cur(){var n=S.songs.length,r=0;for(var i=0;i<n;i++){if(document.getElementById('s'+i).getBoundingClientRect().top<=innerHeight*0.35)r=i}return r}
 function atEnd(){var e=document.getElementById('s'+cur()).querySelector('.end');return e.getBoundingClientRect().top<innerHeight*0.8}
 function status(t){var s=$('#status');if(s)s.textContent=t}
@@ -164,7 +3440,8 @@ function tick(t){
   status('Scrolling');requestAnimationFrame(tick);
 }
 document.addEventListener('keydown',function(e){
-  if(!S.songs.length||/TEXTAREA|SELECT/.test(e.target.tagName))return;
+  if(e.key==='Escape'&&$('#ug-modal').classList.contains('open')){closeUgModal();return}
+  if(!S.songs.length||$('#ug-modal').classList.contains('open')||/TEXTAREA|SELECT|INPUT/.test(e.target.tagName))return;
   var k=e.key;
   if(k===' '||k==='Enter'){if(e.target.tagName==='BUTTON')return;e.preventDefault();toggle()}
   else if(k==='ArrowRight'||k==='PageDown'){e.preventDefault();goTo(cur()+1)}
@@ -172,6 +3449,7 @@ document.addEventListener('keydown',function(e){
   else if(k==='ArrowUp'){e.preventDefault();spd(5)}
   else if(k==='ArrowDown'){e.preventDefault();spd(-5)}
 });
+
 (function(){
   function fromSaved(){
     var saved=ld(KEY);
@@ -182,15 +3460,23 @@ document.addEventListener('keydown',function(e){
     fetch('songs.txt',{cache:'no-cache'}).then(function(r){if(!r.ok)throw 0;return r.text()}).then(function(t){
       var r=parse(t);
       if(r.missing.length>=SONGS.length-2)throw 0;
+      // Merge any locally saved UG additions
+      var saved=ld(KEY);
+      if(saved){
+        try{
+          var local=JSON.parse(saved);
+          local.forEach(function(ls){
+            if(ls.addedViaUg&&!r.songs.some(function(rs){return norm(rs.title)===norm(ls.title)})){
+              r.songs.push(ls);
+            }
+          });
+        }catch(e){}
+      }
       start(r.songs,r.missing.length?'Not found in songs.txt: '+r.missing.join(', '):'');
+      resolveSongsTxtUgLinks(r);
     }).catch(fromSaved);
   }catch(e){fromSaved()}
 })();
-(function(){return;
-  var saved=ld(KEY);
-  if(saved){try{var s=JSON.parse(saved);if(s&&s.length){start(s,'');return}}catch(e){}}
-  importScreen('');
-})();
 </script>
-</body>
-</html>
+
+</body></html>
