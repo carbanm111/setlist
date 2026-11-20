@@ -111,15 +111,7 @@ function lineHtml(l){
   if(isChord(l))return '<span class="c">'+esc(l)+'</span>\n';
   return esc(l)+'\n';
 }
-function importScreen(msg){
-  $('#app').innerHTML='<div id="imp"><h1>Load your set list</h1><p>Paste the full text of your Google Doc once (Ctrl/Cmd+A, then copy in the doc). It stays saved in this browser.</p>'+(msg?'<p style="color:var(--ch)">'+msg+'</p>':'')+'<textarea id="ta" placeholder="Paste the doc text here"></textarea><p><button class="go" id="build">Build</button></p></div>';
-  $('#build').onclick=function(){
-    var t=$('#ta').value;if(t.trim().length<50){importScreen('Paste the whole document first.');return}
-    var r=parse(t);
-    if(r.missing.length>=SONGS.length-2){importScreen('Could not find the song titles. Paste the whole doc, including the song pages.');return}
-    sv(KEY,JSON.stringify(r.songs));start(r.songs,r.missing.length?'Not found in paste: '+r.missing.join(', '):'');
-  };
-}
+
 function start(songs,warn){
   S.songs=songs;S.speed=+ld('speed')||40;S.fs=+ld('fs')||20;
   var opts=songs.map(function(s,i){return '<option value="'+i+'">'+(i+1)+'. '+esc(s.title)+'</option>'}).join('');
